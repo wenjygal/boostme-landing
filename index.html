@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Boost Me</title>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@18",
+    "react-dom/client": "https://esm.sh/react-dom@18/client"
+  }
+}
+</script>
+
+<script type="module">
+  import React from "react";
+  import { createRoot } from "react-dom/client";
+  import Babel from "https://esm.sh/@babel/standalone@7";
+
+  const res = await fetch("./BoostMeLanding.jsx");
+  const source = await res.text();
+  const { code } = Babel.transform(source, {
+    presets: ["react"],
+    filename: "BoostMeLanding.jsx",
+  });
+
+  const blob = new Blob([code], { type: "text/javascript" });
+  const moduleUrl = URL.createObjectURL(blob);
+  const { default: BoostMeLanding } = await import(moduleUrl);
+
+  createRoot(document.getElementById("root")).render(React.createElement(BoostMeLanding));
+</script>
+</body>
+</html>

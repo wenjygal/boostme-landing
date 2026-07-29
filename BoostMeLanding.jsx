@@ -49,6 +49,67 @@ function Reveal({ children, delay = 0, className = "" }) {
   );
 }
 
+function ScrollStack({ children }) {
+  const wrapRefs = useRef([]);
+  wrapRefs.current = [];
+  const count = Array.isArray(children) ? children.length : 1;
+
+  useEffect(() => {
+    const items = wrapRefs.current;
+    let ticking = false;
+
+    const update = () => {
+      ticking = false;
+      const vh = window.innerHeight;
+      items.forEach((el, i) => {
+        if (!el) return;
+        const card = el.firstElementChild;
+        const rect = el.getBoundingClientRect();
+        const progress = Math.min(Math.max((vh * 0.4 - rect.top) / (vh * 0.5), 0), 1);
+        const stackDepth = Math.min(i, 2);
+        const scale = 1 - progress * 0.05 - stackDepth * 0.015;
+        const translateY = progress * -(i > 0 ? 10 : 0) + stackDepth * 8;
+        card.style.transform = `translateY(${translateY}px) scale(${scale})`;
+        card.style.filter = progress >= 1 && i < items.length - 1 ? "brightness(0.94)" : "none";
+      });
+    };
+
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    };
+
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, [count]);
+
+  return (
+    <div className="scroll-stack-scroller">
+      <div className="scroll-stack-inner">
+        {Array.isArray(children)
+          ? children.map((child, i) => (
+              <div
+                key={i}
+                ref={(el) => (wrapRefs.current[i] = el)}
+                className="scroll-stack-card-wrapper"
+                style={{ top: `calc(14vh + ${i * 14}px)`, zIndex: i + 1 }}
+              >
+                {child}
+              </div>
+            ))
+          : children}
+      </div>
+    </div>
+  );
+}
+
 const ICONS = {
   ai: (
     <svg viewBox="0 0 48 48" width="34" height="34" fill="none">
@@ -137,6 +198,31 @@ export default function BoostMeLanding() {
         }
         .card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(43,33,24,0.12); }
         .whatsapp-btn:hover { transform: scale(1.04); }
+
+        .scroll-stack-scroller {
+          position: relative;
+          width: 100%;
+          overflow: visible;
+        }
+        .scroll-stack-inner {
+          padding: 4vh 0 20vh;
+        }
+        .scroll-stack-card-wrapper {
+          position: sticky;
+          top: 14vh;
+        }
+        .scroll-stack-card {
+          transform-origin: top center;
+          will-change: transform, filter;
+          backface-visibility: hidden;
+          box-shadow: 0 20px 50px rgba(43,33,24,0.14);
+          width: 100%;
+          margin: 0 auto 30px;
+          padding: 3rem 2.6rem;
+          border-radius: 28px;
+          box-sizing: border-box;
+          background: #fff;
+        }
       `}</style>
 
       {/* HERO */}
@@ -256,80 +342,79 @@ export default function BoostMeLanding() {
           </div>
         </Reveal>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: 24,
-          }}
-        >
-          {SERVICES.map((s, i) => (
-            <Reveal key={s.name} delay={i * 0.12}>
-              <div
-                className="card"
-                style={{
-                  position: "relative",
-                  background: "#fff",
-                  borderRadius: 20,
-                  padding: "32px 26px",
-                  height: "100%",
-                  border: "1px solid rgba(43,33,24,0.06)",
-                  borderTop: `4px solid ${s.accent}`,
-                  transition: "transform 0.35s ease, box-shadow 0.35s ease",
-                }}
-              >
-                {s.badge && (
-                  <div
-                    style={{
-                      position: "absolute",
-                      top: -13,
-                      insetInlineStart: 26,
-                      background: s.accent,
-                      color: "#fff",
-                      fontSize: 12.5,
-                      fontWeight: 700,
-                      padding: "5px 14px",
-                      borderRadius: 999,
-                      boxShadow: "0 4px 10px rgba(43,33,24,0.18)",
-                    }}
-                  >
-                    {s.badge}
-                  </div>
-                )}
+        <ScrollStack>
+          {SERVICES.map((s) => (
+            <div
+              key={s.name}
+              className="scroll-stack-card"
+              style={{
+                position: "relative",
+                border: "1px solid rgba(43,33,24,0.06)",
+                borderTop: `5px solid ${s.accent}`,
+              }}
+            >
+              {s.badge && (
                 <div
                   style={{
-                    width: 58,
-                    height: 58,
-                    borderRadius: 14,
+                    position: "absolute",
+                    top: -13,
+                    insetInlineStart: 30,
+                    background: s.accent,
+                    color: "#fff",
+                    fontSize: 12.5,
+                    fontWeight: 700,
+                    padding: "5px 14px",
+                    borderRadius: 999,
+                    boxShadow: "0 4px 10px rgba(43,33,24,0.18)",
+                  }}
+                >
+                  {s.badge}
+                </div>
+              )}
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "flex-start",
+                  gap: 24,
+                  flexWrap: "wrap",
+                }}
+              >
+                <div
+                  style={{
+                    width: 64,
+                    height: 64,
+                    flexShrink: 0,
+                    borderRadius: 16,
                     background: "#FBEFE4",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    marginBottom: 20,
                   }}
                 >
                   {s.icon}
                 </div>
-                <h3 style={{ fontWeight: 800, fontSize: 21, margin: "0 0 4px" }}>{s.name}</h3>
-                <div style={{ color: s.accent, fontWeight: 600, fontSize: 14.5, marginBottom: 14 }}>
-                  {s.tagline}
-                </div>
-                <p style={{ fontSize: 15.5, lineHeight: 1.7, color: "#4a4038", margin: "0 0 18px" }}>{s.body}</p>
-                <div
-                  style={{
-                    fontSize: 13.5,
-                    fontWeight: 600,
-                    color: "#8a7c6c",
-                    borderTop: "1px dashed #e5dccf",
-                    paddingTop: 14,
-                  }}
-                >
-                  {s.time}
+                <div style={{ flex: 1, minWidth: 220 }}>
+                  <h3 style={{ fontWeight: 800, fontSize: 22, margin: "0 0 4px" }}>{s.name}</h3>
+                  <div style={{ color: s.accent, fontWeight: 600, fontSize: 14.5, marginBottom: 12 }}>
+                    {s.tagline}
+                  </div>
+                  <p style={{ fontSize: 15.5, lineHeight: 1.7, color: "#4a4038", margin: "0 0 16px" }}>{s.body}</p>
+                  <div
+                    style={{
+                      fontSize: 13.5,
+                      fontWeight: 600,
+                      color: "#8a7c6c",
+                      borderTop: "1px dashed #e5dccf",
+                      paddingTop: 14,
+                    }}
+                  >
+                    {s.time}
+                  </div>
                 </div>
               </div>
-            </Reveal>
+            </div>
           ))}
-        </div>
+        </ScrollStack>
 
         <img
           src={CAPPUCCINO_IMG}

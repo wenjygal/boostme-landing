@@ -248,7 +248,7 @@ export default function BoostMeLanding() {
               התפריט
             </div>
             <h2 style={{ fontWeight: 800, fontSize: "clamp(1.8rem, 4vw, 2.6rem)", margin: 0 }}>
-              שלושה בוסטים. לא תפריט ענק.
+              שלושה בוסטים. בוחרים אחד, או יותר.
             </h2>
             <p style={{ color: "#6b5f52", fontSize: 17, maxWidth: 480, margin: "14px auto 0" }}>
               כל בוסט נבנה לכאב ספציפי אחד. בוחרים את זה שמתאים, ומתחילים.

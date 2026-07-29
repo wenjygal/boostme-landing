@@ -268,14 +268,34 @@ export default function BoostMeLanding() {
               <div
                 className="card"
                 style={{
+                  position: "relative",
                   background: "#fff",
                   borderRadius: 20,
                   padding: "32px 26px",
                   height: "100%",
                   border: "1px solid rgba(43,33,24,0.06)",
+                  borderTop: `4px solid ${s.accent}`,
                   transition: "transform 0.35s ease, box-shadow 0.35s ease",
                 }}
               >
+                {s.badge && (
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: -13,
+                      insetInlineStart: 26,
+                      background: s.accent,
+                      color: "#fff",
+                      fontSize: 12.5,
+                      fontWeight: 700,
+                      padding: "5px 14px",
+                      borderRadius: 999,
+                      boxShadow: "0 4px 10px rgba(43,33,24,0.18)",
+                    }}
+                  >
+                    {s.badge}
+                  </div>
+                )}
                 <div
                   style={{
                     width: 58,
@@ -291,7 +311,7 @@ export default function BoostMeLanding() {
                   {s.icon}
                 </div>
                 <h3 style={{ fontWeight: 800, fontSize: 21, margin: "0 0 4px" }}>{s.name}</h3>
-                <div style={{ color: BRAND.magenta, fontWeight: 600, fontSize: 14.5, marginBottom: 14 }}>
+                <div style={{ color: s.accent, fontWeight: 600, fontSize: 14.5, marginBottom: 14 }}>
                   {s.tagline}
                 </div>
                 <p style={{ fontSize: 15.5, lineHeight: 1.7, color: "#4a4038", margin: "0 0 18px" }}>{s.body}</p>

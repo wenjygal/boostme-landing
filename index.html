@@ -8,32 +8,29 @@
 <body>
 <div id="root"></div>
 
-<script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@18",
-    "react-dom/client": "https://esm.sh/react-dom@18/client"
-  }
-}
-</script>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7/babel.min.js"></script>
 
 <script type="module">
-  import React from "react";
-  import { createRoot } from "react-dom/client";
-  import Babel from "https://esm.sh/@babel/standalone@7";
+  const { useEffect, useRef, useState } = React;
 
   const res = await fetch("./BoostMeLanding.jsx");
-  const source = await res.text();
+  let source = await res.text();
+  source = source.replace(/^import\s*\{[^}]*\}\s*from\s*["']react["'];?\s*/m, "");
+  source = source.replace(/export default function/, "function");
+  source += "\nreturn BoostMeLanding;";
+
   const { code } = Babel.transform(source, {
     presets: ["react"],
     filename: "BoostMeLanding.jsx",
   });
 
-  const blob = new Blob([code], { type: "text/javascript" });
-  const moduleUrl = URL.createObjectURL(blob);
-  const { default: BoostMeLanding } = await import(moduleUrl);
+  const BoostMeLanding = new Function("React", "useEffect", "useRef", "useState", code)(
+    React, useEffect, useRef, useState
+  );
 
-  createRoot(document.getElementById("root")).render(React.createElement(BoostMeLanding));
+  ReactDOM.createRoot(document.getElementById("root")).render(React.createElement(BoostMeLanding));
 </script>
 </body>
 </html>

@@ -111,7 +111,7 @@ const MORE_SERVICES = [
   {
     icon: ICONS.gear,
     title: "אוטומציה",
-    body: "מחברים בין הכלים שכבר יש לך (Make, n8n) כדי שתהליכים ידניים יקרו לבד.",
+    body: "מחברים בין הכלים שכבר יש לך, כדי שתהליכים ידניים יקרו לבד.",
   },
   {
     icon: ICONS.layout,
@@ -399,7 +399,7 @@ export default function BoostMeLanding() {
       </section>
 
       {/* MORE SERVICES */}
-      <section style={{ position: "relative", padding: "0 24px 110px", maxWidth: 1080, margin: "0 auto" }}>
+      <section style={{ position: "relative", padding: "110px 24px 110px", maxWidth: 1080, margin: "0 auto" }}>
         <Reveal>
           <div style={{ textAlign: "center", marginBottom: 40 }}>
             <div style={{ color: BRAND.orange, fontWeight: 600, fontSize: 14, letterSpacing: "0.08em", marginBottom: 10 }}>

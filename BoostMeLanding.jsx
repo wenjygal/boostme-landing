@@ -335,7 +335,15 @@ export default function BoostMeLanding() {
       {/* MORE SERVICES */}
       <section style={{ position: "relative", padding: "0 24px 130px", maxWidth: 820, margin: "0 auto" }}>
         <Reveal>
-          <div style={{ textAlign: "center", marginBottom: 22 }}>
+          <div
+            style={{
+              textAlign: "center",
+              marginBottom: 22,
+              border: "1px solid #e5dccf",
+              borderRadius: 14,
+              padding: "16px 22px",
+            }}
+          >
             <p style={{ color: "#a89a89", fontSize: 14.5, margin: 0 }}>
               ויש עוד ביד: אוטומציה, עמודי נחיתה, שאלונים אינטראקטיביים, ואסטרטגיית SEO / AEO / GEO.
             </p>

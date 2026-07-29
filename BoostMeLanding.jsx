@@ -144,7 +144,7 @@ export default function BoostMeLanding() {
         className="grain"
         style={{
           position: "relative",
-          minHeight: "92vh",
+          minHeight: "70vh",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",

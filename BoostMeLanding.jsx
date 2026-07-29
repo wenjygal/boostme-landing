@@ -76,59 +76,7 @@ const ICONS = {
       <circle cx="34" cy="14" r="3" fill="#fff" />
     </svg>
   ),
-  gear: (
-    <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
-      <circle cx="12" cy="12" r="3" stroke={BRAND.charcoal} strokeWidth="1.8" />
-      <path
-        d="M12 2.5v2.4M12 19.1v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"
-        stroke={BRAND.charcoal}
-        strokeWidth="1.8"
-        strokeLinecap="round"
-      />
-    </svg>
-  ),
-  layout: (
-    <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
-      <rect x="3" y="4" width="18" height="16" rx="2.5" stroke={BRAND.charcoal} strokeWidth="1.8" />
-      <path d="M3 9.5h18M8.5 9.5V20" stroke={BRAND.charcoal} strokeWidth="1.8" />
-    </svg>
-  ),
-  checklist: (
-    <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
-      <path d="M4.5 6.5l1.5 1.5 2.5-2.8M4.5 13l1.5 1.5 2.5-2.8M4.5 19.5l1.5 1.5 2.5-2.8" stroke={BRAND.charcoal} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M12 7h8M12 13.5h8M12 20h8" stroke={BRAND.charcoal} strokeWidth="1.8" strokeLinecap="round" />
-    </svg>
-  ),
-  compass: (
-    <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
-      <circle cx="12" cy="12" r="9.2" stroke={BRAND.charcoal} strokeWidth="1.8" />
-      <path d="M15.2 8.8l-2 4.4-4.4 2 2-4.4 4.4-2Z" stroke={BRAND.charcoal} strokeWidth="1.6" strokeLinejoin="round" />
-    </svg>
-  ),
 };
-
-const MORE_SERVICES = [
-  {
-    icon: ICONS.gear,
-    title: "אוטומציה",
-    body: "מחברים בין הכלים שכבר יש לך, כדי שתהליכים ידניים יקרו לבד.",
-  },
-  {
-    icon: ICONS.layout,
-    title: "עמודי נחיתה",
-    body: "עמוד נחיתה ממוקד למוצר, קמפיין, או שירות חדש, בנוי להמרה, לא רק ליפה.",
-  },
-  {
-    icon: ICONS.checklist,
-    title: "שאלונים אינטראקטיביים",
-    body: "שאלון חכם שממיין לידים או אוסף מידע, ומרגיש שיחה ולא טופס.",
-  },
-  {
-    icon: ICONS.compass,
-    title: "אסטרטגיית SEO, AEO ו-GEO",
-    body: "בונים נראות בגוגל, במנועי תשובה, ובכלי AI, כדי שימצאו אותך גם כשלא מחפשים אותך בשם.",
-  },
-];
 
 const SERVICES = [
   {
@@ -382,6 +330,17 @@ export default function BoostMeLanding() {
             </Reveal>
           ))}
         </div>
+      </section>
+
+      {/* MORE SERVICES */}
+      <section style={{ position: "relative", padding: "0 24px 130px", maxWidth: 820, margin: "0 auto" }}>
+        <Reveal>
+          <div style={{ textAlign: "center", marginBottom: 22 }}>
+            <p style={{ color: "#a89a89", fontSize: 14.5, margin: 0 }}>
+              ויש עוד ביד: אוטומציה, עמודי נחיתה, שאלונים אינטראקטיביים, ואסטרטגיית SEO / AEO / GEO.
+            </p>
+          </div>
+        </Reveal>
 
         <img
           src={CAPPUCCINO_IMG}
@@ -396,63 +355,6 @@ export default function BoostMeLanding() {
             zIndex: 2,
           }}
         />
-      </section>
-
-      {/* MORE SERVICES */}
-      <section style={{ position: "relative", padding: "110px 24px 110px", maxWidth: 1080, margin: "0 auto" }}>
-        <Reveal>
-          <div style={{ textAlign: "center", marginBottom: 40 }}>
-            <div style={{ color: BRAND.orange, fontWeight: 600, fontSize: 14, letterSpacing: "0.08em", marginBottom: 10 }}>
-              עוד ביד
-            </div>
-            <h2 style={{ fontWeight: 800, fontSize: "clamp(1.5rem, 3vw, 2rem)", margin: 0 }}>
-              שירותים נוספים
-            </h2>
-          </div>
-        </Reveal>
-
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(230px, 1fr))",
-            gap: 18,
-          }}
-        >
-          {MORE_SERVICES.map((s, i) => (
-            <Reveal key={s.title} delay={i * 0.08}>
-              <div
-                style={{
-                  display: "flex",
-                  gap: 14,
-                  alignItems: "flex-start",
-                  background: "#FBEFE4",
-                  borderRadius: 16,
-                  padding: "20px 18px",
-                  height: "100%",
-                }}
-              >
-                <div
-                  style={{
-                    width: 40,
-                    height: 40,
-                    flexShrink: 0,
-                    borderRadius: 10,
-                    background: "#fff",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  {s.icon}
-                </div>
-                <div>
-                  <h3 style={{ fontWeight: 700, fontSize: 16.5, margin: "0 0 4px" }}>{s.title}</h3>
-                  <p style={{ fontSize: 14, lineHeight: 1.6, color: "#5c5044", margin: 0 }}>{s.body}</p>
-                </div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
       </section>
 
       {/* CTA */}

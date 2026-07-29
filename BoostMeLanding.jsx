@@ -150,7 +150,7 @@ export default function BoostMeLanding() {
           justifyContent: "center",
           alignItems: "center",
           textAlign: "center",
-          padding: "0 24px 60px",
+          padding: "60px 24px",
           background: `linear-gradient(135deg, ${BRAND.magenta}, ${BRAND.orange})`,
           overflow: "hidden",
         }}

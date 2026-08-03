@@ -51,26 +51,26 @@ function Reveal({ children, delay = 0, className = "" }) {
 
 const ICONS = {
   ai: (
-    <svg viewBox="0 0 48 48" width="34" height="34" fill="none">
+    <svg viewBox="0 0 48 48" width="34" height="34" fill="none" aria-hidden="true" focusable="false">
       <circle cx="24" cy="24" r="20" stroke={BRAND.magenta} strokeWidth="2.5" />
       <path d="M24 14v8l6 4" stroke={BRAND.magenta} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
       <circle cx="24" cy="24" r="2.5" fill={BRAND.magenta} />
     </svg>
   ),
   eye: (
-    <svg viewBox="0 0 48 48" width="34" height="34" fill="none">
+    <svg viewBox="0 0 48 48" width="34" height="34" fill="none" aria-hidden="true" focusable="false">
       <path d="M6 24c4-8 12-13 18-13s14 5 18 13c-4 8-12 13-18 13S10 32 6 24Z" stroke={BRAND.orange} strokeWidth="2.5" strokeLinejoin="round" />
       <circle cx="24" cy="24" r="6" stroke={BRAND.orange} strokeWidth="2.5" />
     </svg>
   ),
   book: (
-    <svg viewBox="0 0 48 48" width="34" height="34" fill="none">
+    <svg viewBox="0 0 48 48" width="34" height="34" fill="none" aria-hidden="true" focusable="false">
       <path d="M9 10c5-2 11-2 15 1v27c-4-3-10-3-15-1V10Z" stroke={BRAND.magenta} strokeWidth="2.5" strokeLinejoin="round" />
       <path d="M39 10c-5-2-11-2-15 1v27c4-3 10-3 15-1V10Z" stroke={BRAND.magenta} strokeWidth="2.5" strokeLinejoin="round" />
     </svg>
   ),
   whisk: (
-    <svg viewBox="0 0 48 48" width="20" height="20" fill="none">
+    <svg viewBox="0 0 48 48" width="20" height="20" fill="none" aria-hidden="true" focusable="false">
       <path d="M14 34 32 16" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" />
       <ellipse cx="17" cy="31" rx="9" ry="5" transform="rotate(-45 17 31)" stroke="#fff" strokeWidth="2.2" />
       <circle cx="34" cy="14" r="3" fill="#fff" />
@@ -127,6 +127,11 @@ export default function BoostMeLanding() {
         @media (prefers-reduced-motion: reduce) {
           * { transition: none !important; animation: none !important; }
         }
+        a:focus-visible, button:focus-visible {
+          outline: 3px solid ${BRAND.charcoal};
+          outline-offset: 3px;
+          border-radius: 4px;
+        }
         .grain::before {
           content: "";
           position: absolute; inset: 0;
@@ -137,6 +142,11 @@ export default function BoostMeLanding() {
         }
         .card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(43,33,24,0.12); }
         .whatsapp-btn:hover { transform: scale(1.04); }
+        .sr-only {
+          position: absolute; width: 1px; height: 1px;
+          padding: 0; margin: -1px; overflow: hidden;
+          clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+        }
       `}</style>
 
       {/* HERO */}
@@ -193,6 +203,7 @@ export default function BoostMeLanding() {
           <a
             href="#"
             className="whatsapp-btn"
+            aria-label="דברו איתנו בוואטסאפ — נפתח בחלון חדש"
             style={{
               display: "inline-flex",
               alignItems: "center",
@@ -209,7 +220,7 @@ export default function BoostMeLanding() {
               transition: "transform 0.25s ease",
             }}
           >
-            <svg viewBox="0 0 32 32" width="19" height="19" fill="#fff">
+            <svg viewBox="0 0 32 32" width="19" height="19" fill="#fff" aria-hidden="true" focusable="false">
               <path d="M16.001 3C9.096 3 3.5 8.596 3.5 15.5c0 2.42.687 4.68 1.878 6.6L3 29l7.086-2.34a12.44 12.44 0 0 0 5.915 1.5h.006c6.905 0 12.5-5.596 12.5-12.5S22.906 3 16.001 3zm0 22.7h-.005a10.2 10.2 0 0 1-5.2-1.424l-.373-.222-3.86 1.276 1.293-3.76-.243-.386a10.18 10.18 0 0 1-1.563-5.484c0-5.634 4.585-10.22 10.221-10.22 2.73 0 5.294 1.064 7.225 2.997a10.15 10.15 0 0 1 2.994 7.228c0 5.635-4.585 10.221-10.221 10.221l.001-.001zm5.598-7.653c-.307-.153-1.815-.896-2.096-.998-.281-.102-.486-.153-.69.153-.204.307-.792.998-.972 1.203-.179.204-.358.23-.665.077-.307-.154-1.296-.478-2.469-1.523-.913-.814-1.529-1.82-1.708-2.127-.179-.307-.019-.473.135-.626.138-.138.307-.358.46-.537.154-.18.205-.307.307-.512.102-.204.051-.383-.026-.537-.077-.153-.69-1.664-.945-2.28-.249-.6-.502-.518-.69-.527l-.588-.01c-.204 0-.537.077-.818.383s-1.075 1.05-1.075 2.562 1.1 2.973 1.253 3.178c.153.204 2.166 3.306 5.248 4.635.733.316 1.305.505 1.751.647.735.234 1.404.2 1.933.121.59-.088 1.815-.742 2.071-1.459.256-.716.256-1.331.179-1.459-.076-.128-.281-.204-.588-.358z"/>
             </svg>
             דברו איתנו בוואטסאפ
@@ -319,7 +330,7 @@ export default function BoostMeLanding() {
                   style={{
                     fontSize: 13.5,
                     fontWeight: 600,
-                    color: "#8a7c6c",
+                    color: "#6b5f52",
                     borderTop: "1px dashed #e5dccf",
                     paddingTop: 14,
                   }}
@@ -334,6 +345,7 @@ export default function BoostMeLanding() {
 
       {/* MORE SERVICES */}
       <section style={{ position: "relative", padding: "0 24px 130px", maxWidth: 820, margin: "0 auto" }}>
+        <h2 className="sr-only">עוד שירותים</h2>
         <Reveal>
           <div
             style={{
@@ -344,7 +356,7 @@ export default function BoostMeLanding() {
               padding: "16px 22px",
             }}
           >
-            <p style={{ color: "#a89a89", fontSize: 14.5, margin: 0 }}>
+            <p style={{ color: "#6b5f52", fontSize: 14.5, margin: 0 }}>
               ויש עוד ביד: אוטומציה, עמודי נחיתה, שאלונים אינטראקטיביים, ואסטרטגיית SEO / AEO / GEO.
             </p>
           </div>
@@ -384,6 +396,7 @@ export default function BoostMeLanding() {
           <a
             href="#"
             className="whatsapp-btn"
+            aria-label="בואו נדבר בוואטסאפ — נפתח בחלון חדש"
             style={{
               display: "inline-flex",
               alignItems: "center",
@@ -417,7 +430,7 @@ export default function BoostMeLanding() {
         </Reveal>
       </section>
 
-      <footer style={{ textAlign: "center", padding: "26px", color: "#a89a89", fontSize: 13 }}>
+      <footer style={{ textAlign: "center", padding: "26px", color: "#6b5f52", fontSize: 13 }}>
         Boost Me · GEMS Digital Projects
       </footer>
     </div>

@@ -111,8 +111,114 @@ const SERVICES = [
   },
 ];
 
+function AccessibilityModal({ open, onClose }) {
+  const dialogRef = useRef(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKeyDown = (e) => {
+      if (e.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", onKeyDown);
+    dialogRef.current?.focus();
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [open, onClose]);
+
+  if (!open) return null;
+
+  return (
+    <div
+      onClick={onClose}
+      style={{
+        position: "fixed",
+        inset: 0,
+        background: "rgba(43,33,24,0.55)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: 20,
+        zIndex: 1000,
+      }}
+    >
+      <div
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="accessibility-statement-title"
+        tabIndex={-1}
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          background: "#fff",
+          borderRadius: 16,
+          padding: "32px 28px",
+          maxWidth: 560,
+          maxHeight: "80vh",
+          overflowY: "auto",
+          textAlign: "right",
+          direction: "rtl",
+          boxShadow: "0 20px 60px rgba(0,0,0,0.3)",
+        }}
+      >
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 18 }}>
+          <h2 id="accessibility-statement-title" style={{ fontWeight: 800, fontSize: 22, margin: 0 }}>
+            הצהרת נגישות
+          </h2>
+          <button
+            onClick={onClose}
+            aria-label="סגירת הצהרת הנגישות"
+            style={{
+              background: "none",
+              border: "none",
+              fontSize: 22,
+              lineHeight: 1,
+              cursor: "pointer",
+              color: BRAND.charcoal,
+              padding: 4,
+            }}
+          >
+            ×
+          </button>
+        </div>
+
+        <div style={{ fontSize: 14.5, lineHeight: 1.8, color: "#4a4038" }}>
+          <p>
+            אתר Boost Me פועל להנגשת השירות לכלל הגולשים, לרבות אנשים עם מוגבלות, בהתאם לחוק שוויון זכויות לאנשים
+            עם מוגבלות, התשנ"ח-1998, ולתקנות שוויון זכויות לאנשים עם מוגבלות (התאמות נגישות לשירות), תשע"ג-2013.
+          </p>
+
+          <p>
+            <strong>רמת הנגישות:</strong> האתר תוכנן להתאים לתקן הישראלי ת"י 5568 ברמה AA, המבוסס על הנחיות
+            WCAG הבינלאומיות. ההתאמות שבוצעו כוללות: ניגודיות צבעים תקנית בין טקסט לרקע, תיאור טקסטואלי (alt) לתמונות
+            משמעותיות, סימון אלמנטים דקורטיביים כך שלא יפריעו לקוראי מסך, ניווט מלא באמצעות מקלדת, מסגרת מיקוד (focus)
+            ברורה בעת ניווט מקלדת, ותוויות ARIA לכפתורים.
+          </p>
+
+          <p>
+            <strong>בדיקת דפדפנים:</strong> האתר טרם עבר בדיקת נגישות פורמלית בדפדפנים שונים. הבדיקה מתבססת כרגע על
+            סקירת קוד בלבד.
+          </p>
+
+          <p>
+            <strong>פניות והנגשה חסרה:</strong> אם נתקלתם בבעיית נגישות באתר, או שאתם זקוקים למידע בפורמט נגיש
+            אחר, אתם מוזמנים לפנות אלינו ונשמח לסייע.
+          </p>
+
+          <p>
+            <strong>רכז נגישות:</strong> גל, מייל: meimagineai@gmail.com
+          </p>
+
+          <p style={{ color: "#6b5f52", fontSize: 13, marginTop: 20 }}>
+            הצהרה זו נכתבה ועודכנה לאחרונה בתאריך 03/08/2026.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function BoostMeLanding() {
   const [heroLoaded, setHeroLoaded] = useState(false);
+  const [a11yOpen, setA11yOpen] = useState(false);
   useEffect(() => {
     const t = setTimeout(() => setHeroLoaded(true), 80);
     return () => clearTimeout(t);
@@ -421,7 +527,7 @@ export default function BoostMeLanding() {
                 justifyContent: "center",
               }}
             >
-              <svg viewBox="0 0 32 32" width="22" height="22" fill="#fff">
+              <svg viewBox="0 0 32 32" width="22" height="22" fill="#fff" aria-hidden="true" focusable="false">
                 <path d="M16.001 3C9.096 3 3.5 8.596 3.5 15.5c0 2.42.687 4.68 1.878 6.6L3 29l7.086-2.34a12.44 12.44 0 0 0 5.915 1.5h.006c6.905 0 12.5-5.596 12.5-12.5S22.906 3 16.001 3zm0 22.7h-.005a10.2 10.2 0 0 1-5.2-1.424l-.373-.222-3.86 1.276 1.293-3.76-.243-.386a10.18 10.18 0 0 1-1.563-5.484c0-5.634 4.585-10.22 10.221-10.22 2.73 0 5.294 1.064 7.225 2.997a10.15 10.15 0 0 1 2.994 7.228c0 5.635-4.585 10.221-10.221 10.221l.001-.001zm5.598-7.653c-.307-.153-1.815-.896-2.096-.998-.281-.102-.486-.153-.69.153-.204.307-.792.998-.972 1.203-.179.204-.358.23-.665.077-.307-.154-1.296-.478-2.469-1.523-.913-.814-1.529-1.82-1.708-2.127-.179-.307-.019-.473.135-.626.138-.138.307-.358.46-.537.154-.18.205-.307.307-.512.102-.204.051-.383-.026-.537-.077-.153-.69-1.664-.945-2.28-.249-.6-.502-.518-.69-.527l-.588-.01c-.204 0-.537.077-.818.383s-1.075 1.05-1.075 2.562 1.1 2.973 1.253 3.178c.153.204 2.166 3.306 5.248 4.635.733.316 1.305.505 1.751.647.735.234 1.404.2 1.933.121.59-.088 1.815-.742 2.071-1.459.256-.716.256-1.331.179-1.459-.076-.128-.281-.204-.588-.358z"/>
               </svg>
             </span>
@@ -432,7 +538,25 @@ export default function BoostMeLanding() {
 
       <footer style={{ textAlign: "center", padding: "26px", color: "#6b5f52", fontSize: 13 }}>
         Boost Me · GEMS Digital Projects
+        <br />
+        <button
+          onClick={() => setA11yOpen(true)}
+          style={{
+            background: "none",
+            border: "none",
+            color: "#6b5f52",
+            fontSize: 13,
+            textDecoration: "underline",
+            cursor: "pointer",
+            padding: "8px 0 0",
+            fontFamily: "inherit",
+          }}
+        >
+          הצהרת נגישות
+        </button>
       </footer>
+
+      <AccessibilityModal open={a11yOpen} onClose={() => setA11yOpen(false)} />
     </div>
   );
 }

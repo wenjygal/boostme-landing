@@ -111,7 +111,7 @@ const SERVICES = [
   },
 ];
 
-function AccessibilityModal({ open, onClose }) {
+function Modal({ open, onClose, titleId, title, children }) {
   const dialogRef = useRef(null);
 
   useEffect(() => {
@@ -144,7 +144,7 @@ function AccessibilityModal({ open, onClose }) {
         ref={dialogRef}
         role="dialog"
         aria-modal="true"
-        aria-labelledby="accessibility-statement-title"
+        aria-labelledby={titleId}
         tabIndex={-1}
         onClick={(e) => e.stopPropagation()}
         style={{
@@ -160,12 +160,12 @@ function AccessibilityModal({ open, onClose }) {
         }}
       >
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 18 }}>
-          <h2 id="accessibility-statement-title" style={{ fontWeight: 800, fontSize: 22, margin: 0 }}>
-            הצהרת נגישות
+          <h2 id={titleId} style={{ fontWeight: 800, fontSize: 22, margin: 0 }}>
+            {title}
           </h2>
           <button
             onClick={onClose}
-            aria-label="סגירת הצהרת הנגישות"
+            aria-label={`סגירת ${title}`}
             style={{
               background: "none",
               border: "none",
@@ -180,45 +180,99 @@ function AccessibilityModal({ open, onClose }) {
           </button>
         </div>
 
-        <div style={{ fontSize: 14.5, lineHeight: 1.8, color: "#4a4038" }}>
-          <p>
-            אתר Boost Me פועל להנגשת השירות לכלל הגולשים, לרבות אנשים עם מוגבלות, בהתאם לחוק שוויון זכויות לאנשים
-            עם מוגבלות, התשנ"ח-1998, ולתקנות שוויון זכויות לאנשים עם מוגבלות (התאמות נגישות לשירות), תשע"ג-2013.
-          </p>
-
-          <p>
-            <strong>רמת הנגישות:</strong> האתר תוכנן להתאים לתקן הישראלי ת"י 5568 ברמה AA, המבוסס על הנחיות
-            WCAG הבינלאומיות. ההתאמות שבוצעו כוללות: ניגודיות צבעים תקנית בין טקסט לרקע, תיאור טקסטואלי (alt) לתמונות
-            משמעותיות, סימון אלמנטים דקורטיביים כך שלא יפריעו לקוראי מסך, ניווט מלא באמצעות מקלדת, מסגרת מיקוד (focus)
-            ברורה בעת ניווט מקלדת, ותוויות ARIA לכפתורים.
-          </p>
-
-          <p>
-            <strong>בדיקת דפדפנים:</strong> האתר טרם עבר בדיקת נגישות פורמלית בדפדפנים שונים. הבדיקה מתבססת כרגע על
-            סקירת קוד בלבד.
-          </p>
-
-          <p>
-            <strong>פניות והנגשה חסרה:</strong> אם נתקלתם בבעיית נגישות באתר, או שאתם זקוקים למידע בפורמט נגיש
-            אחר, אתם מוזמנים לפנות אלינו ונשמח לסייע.
-          </p>
-
-          <p>
-            <strong>רכז נגישות:</strong> גל, מייל: meimagineai@gmail.com
-          </p>
-
-          <p style={{ color: "#6b5f52", fontSize: 13, marginTop: 20 }}>
-            הצהרה זו נכתבה ועודכנה לאחרונה בתאריך 03/08/2026.
-          </p>
-        </div>
+        <div style={{ fontSize: 14.5, lineHeight: 1.8, color: "#4a4038" }}>{children}</div>
       </div>
     </div>
+  );
+}
+
+function AccessibilityModal({ open, onClose }) {
+  return (
+    <Modal open={open} onClose={onClose} titleId="accessibility-statement-title" title="הצהרת נגישות">
+      <p>
+        אתר Boost Me פועל להנגשת השירות לכלל הגולשים, לרבות אנשים עם מוגבלות, בהתאם לחוק שוויון זכויות לאנשים
+        עם מוגבלות, התשנ"ח-1998, ולתקנות שוויון זכויות לאנשים עם מוגבלות (התאמות נגישות לשירות), תשע"ג-2013.
+      </p>
+
+      <p>
+        <strong>רמת הנגישות:</strong> האתר תוכנן להתאים לתקן הישראלי ת"י 5568 ברמה AA, המבוסס על הנחיות
+        WCAG הבינלאומיות. ההתאמות שבוצעו כוללות: ניגודיות צבעים תקנית בין טקסט לרקע, תיאור טקסטואלי (alt) לתמונות
+        משמעותיות, סימון אלמנטים דקורטיביים כך שלא יפריעו לקוראי מסך, ניווט מלא באמצעות מקלדת, מסגרת מיקוד (focus)
+        ברורה בעת ניווט מקלדת, ותוויות ARIA לכפתורים.
+      </p>
+
+      <p>
+        <strong>בדיקת דפדפנים:</strong> האתר טרם עבר בדיקת נגישות פורמלית בדפדפנים שונים. הבדיקה מתבססת כרגע על
+        סקירת קוד בלבד.
+      </p>
+
+      <p>
+        <strong>פניות והנגשה חסרה:</strong> אם נתקלתם בבעיית נגישות באתר, או שאתם זקוקים למידע בפורמט נגיש
+        אחר, אתם מוזמנים לפנות אלינו ונשמח לסייע.
+      </p>
+
+      <p>
+        <strong>רכז נגישות:</strong> גל, מייל: meimagineai@gmail.com
+      </p>
+
+      <p style={{ color: "#6b5f52", fontSize: 13, marginTop: 20 }}>
+        הצהרה זו נכתבה ועודכנה לאחרונה בתאריך 03/08/2026.
+      </p>
+    </Modal>
+  );
+}
+
+function PrivacyModal({ open, onClose }) {
+  return (
+    <Modal open={open} onClose={onClose} titleId="privacy-statement-title" title="מדיניות פרטיות">
+      <p>
+        Boost Me מכבד את פרטיות המשתמשים באתר, ופועל בהתאם לחוק הגנת הפרטיות, התשמ"א-1981, לרבות תיקון מס' 13
+        לחוק שנכנס לתוקף ב-14.8.2025.
+      </p>
+
+      <p>
+        <strong>איזה מידע נאסף:</strong>
+      </p>
+      <ul style={{ margin: "0 0 16px", paddingInlineStart: 20 }}>
+        <li>נתוני שימוש וגלישה באתר (עמודים שנצפו, משך שהייה, מכשיר ודפדפן) — נאספים באמצעות Google Analytics 4 ו-Microsoft Clarity, המופעלים דרך Google Tag Manager.</li>
+        <li>פרטים שאתם משתפים ביוזמתכם בפנייה בוואטסאפ (כגון שם, מספר טלפון, ותוכן ההודעה) — כשאתם פונים אלינו דרך כפתורי הוואטסאפ באתר.</li>
+      </ul>
+
+      <p>
+        <strong>שימוש במידע:</strong> המידע האנליטי משמש להבנת השימוש באתר ולשיפורו. פרטי הפנייה בוואטסאפ משמשים
+        לצורך מענה לפנייתכם וניהול ההתקשרות מולנו בלבד.
+      </p>
+
+      <p>
+        <strong>Cookies:</strong> האתר משתמש ב-Cookies של Google Analytics ו-Microsoft Clarity לצורך ניתוח שימוש
+        סטטיסטי. אלו אינם Cookies הכרחיים לתפעול האתר, ולכן הם נטענים רק לאחר קבלת הסכמתכם.
+      </p>
+
+      <p>
+        <strong>שיתוף מידע עם צדדים שלישיים:</strong> נתוני האנליטיקס מעובדים בשרתי Google ו-Microsoft בהתאם
+        למדיניות הפרטיות שלהם. אנו לא מוכרים ואיננו משתפים את המידע שלכם עם גורמים נוספים למטרות שיווק.
+      </p>
+
+      <p>
+        <strong>זכויותיכם:</strong> בהתאם לחוק, אתם רשאים לפנות אלינו בבקשה לעיין במידע שנאסף עליכם, לתקן פרטים
+        שגויים, לבקש מחיקת מידע (ככל שהדבר אפשרי בנסיבות העניין), ולהתנגד לעיבוד המידע.
+      </p>
+
+      <p>
+        <strong>יצירת קשר בנושאי פרטיות:</strong> meimagineai@gmail.com
+      </p>
+
+      <p style={{ color: "#6b5f52", fontSize: 13, marginTop: 20 }}>
+        מדיניות זו נכתבה ועודכנה לאחרונה בתאריך 03/08/2026.
+      </p>
+    </Modal>
   );
 }
 
 export default function BoostMeLanding() {
   const [heroLoaded, setHeroLoaded] = useState(false);
   const [a11yOpen, setA11yOpen] = useState(false);
+  const [privacyOpen, setPrivacyOpen] = useState(false);
   useEffect(() => {
     const t = setTimeout(() => setHeroLoaded(true), 80);
     return () => clearTimeout(t);
@@ -548,15 +602,31 @@ export default function BoostMeLanding() {
             fontSize: 13,
             textDecoration: "underline",
             cursor: "pointer",
-            padding: "8px 0 0",
+            padding: "8px 4px 0",
             fontFamily: "inherit",
           }}
         >
           הצהרת נגישות
         </button>
+        <button
+          onClick={() => setPrivacyOpen(true)}
+          style={{
+            background: "none",
+            border: "none",
+            color: "#6b5f52",
+            fontSize: 13,
+            textDecoration: "underline",
+            cursor: "pointer",
+            padding: "8px 4px 0",
+            fontFamily: "inherit",
+          }}
+        >
+          מדיניות פרטיות
+        </button>
       </footer>
 
       <AccessibilityModal open={a11yOpen} onClose={() => setA11yOpen(false)} />
+      <PrivacyModal open={privacyOpen} onClose={() => setPrivacyOpen(false)} />
     </div>
   );
 }

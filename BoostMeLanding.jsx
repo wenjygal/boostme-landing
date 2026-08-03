@@ -222,6 +222,65 @@ function AccessibilityModal({ open, onClose }) {
   );
 }
 
+function TermsModal({ open, onClose }) {
+  return (
+    <Modal open={open} onClose={onClose} titleId="terms-statement-title" title="תנאי שימוש">
+      <p>
+        תנאי שימוש אלו חלים על הגלישה והשימוש באתר Boost Me ("האתר"), המופעל על ידי גל אפרתי ("אנחנו" / "מפעילת
+        האתר"). המשך הגלישה באתר מהווה הסכמה לתנאים אלו.
+      </p>
+
+      <p>
+        <strong>1. הגדרת השירות:</strong> האתר הוא אתר תדמית המציג את שירותי Boost Me — ייעוץ בהטמעת כלי AI
+        ("בוסט AI"), ייעוץ עסקי חיצוני ("בוסט פרספקטיבה"), והדרכות/סדנאות בנושא AI. האתר עצמו אינו מהווה פלטפורמת
+        מכירה או התקשרות מחייבת — כל התקשרות בפועל לשירות מתבצעת בשיחה נפרדת (לרוב בוואטסאפ) ובאישור הצעת מחיר
+        ייעודית, שתנאיה גוברים על האמור באתר.
+      </p>
+
+      <p>
+        <strong>2. שימוש מותר ואסור באתר:</strong> מותר להשתמש באתר לצורך היכרות עם השירותים ויצירת קשר בלבד.
+        אסור: להעתיק, לשכפל, או להפיץ תוכן מהאתר ללא אישור מראש ובכתב; לבצע פעולה העלולה לפגוע בפעילות התקינה של
+        האתר או באבטחתו; להשתמש באתר למטרה בלתי חוקית.
+      </p>
+
+      <p>
+        <strong>3. הגבלת אחריות:</strong> האתר והתוכן בו מוצגים כמות שהם ("AS IS"). אנו פועלים במידת הזהירות
+        הסבירה, אך איננו אחראים לנזק עקיף שייגרם משימוש באתר, ככל שהדבר מותר לפי חוק החוזים האחידים, תשמ"ג-1982.
+        אין באמור בסעיף זה כדי לפטור מאחריות לנזק גוף, למעשה זדון, או מאחריות שלא ניתן לפי דין להתנות עליה או
+        להגבילה.
+      </p>
+
+      <p>
+        <strong>4. קניין רוחני:</strong> כל זכויות הקניין הרוחני באתר — לרבות עיצוב, טקסטים, לוגו, וגרפיקה —
+        שייכות ל-Boost Me ואינן ניתנות לשימוש, העתקה, או הפצה ללא אישור מראש ובכתב.
+      </p>
+
+      <p>
+        <strong>5. מדיניות ביטולים:</strong> האתר עצמו אינו מבצע עסקאות מכר מרחוק. תנאי ביטול והחזר, ככל שיחולו,
+        ייקבעו בהצעת המחיר או בהסכם הספציפי שנחתם מול הלקוח לכל שירות, ולא באתר זה.
+      </p>
+
+      <p>
+        <strong>6. סמכות שיפוט:</strong> על תנאי שימוש אלו יחולו דיני מדינת ישראל בלבד, וסמכות השיפוט הבלעדית
+        בכל עניין הנוגע להם נתונה לבתי המשפט המוסמכים בישראל.
+      </p>
+
+      <p>
+        <strong>7. יצירת קשר:</strong> לכל שאלה בנוגע לתנאי שימוש אלו ניתן לפנות אלינו במייל: meimagineai@gmail.com
+      </p>
+
+      <p>
+        <strong>8. עדכון תנאים:</strong> אנו רשאים לעדכן תנאי שימוש אלו מעת לעת. הנוסח המחייב הוא הנוסח המפורסם
+        באתר במועד הגלישה.
+      </p>
+
+      <p style={{ color: "#6b5f52", fontSize: 13, marginTop: 20 }}>
+        תנאים אלו נכתבו ועודכנו לאחרונה בתאריך 03/08/2026.
+      </p>
+    </Modal>
+  );
+}
+
 function PrivacyModal({ open, onClose }) {
   return (
     <Modal open={open} onClose={onClose} titleId="privacy-statement-title" title="מדיניות פרטיות">
@@ -273,6 +332,7 @@ export default function BoostMeLanding() {
   const [heroLoaded, setHeroLoaded] = useState(false);
   const [a11yOpen, setA11yOpen] = useState(false);
   const [privacyOpen, setPrivacyOpen] = useState(false);
+  const [termsOpen, setTermsOpen] = useState(false);
   useEffect(() => {
     const t = setTimeout(() => setHeroLoaded(true), 80);
     return () => clearTimeout(t);
@@ -623,10 +683,26 @@ export default function BoostMeLanding() {
         >
           מדיניות פרטיות
         </button>
+        <button
+          onClick={() => setTermsOpen(true)}
+          style={{
+            background: "none",
+            border: "none",
+            color: "#6b5f52",
+            fontSize: 13,
+            textDecoration: "underline",
+            cursor: "pointer",
+            padding: "8px 4px 0",
+            fontFamily: "inherit",
+          }}
+        >
+          תנאי שימוש
+        </button>
       </footer>
 
       <AccessibilityModal open={a11yOpen} onClose={() => setA11yOpen(false)} />
       <PrivacyModal open={privacyOpen} onClose={() => setPrivacyOpen(false)} />
+      <TermsModal open={termsOpen} onClose={() => setTermsOpen(false)} />
     </div>
   );
 }

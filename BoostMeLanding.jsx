@@ -422,6 +422,7 @@ export default function BoostMeLanding() {
           </p>
           <a
             href="#"
+            id="whatsapp-hero"
             className="whatsapp-btn"
             aria-label="דברו איתנו בוואטסאפ — נפתח בחלון חדש"
             style={{
@@ -615,6 +616,7 @@ export default function BoostMeLanding() {
           </p>
           <a
             href="#"
+            id="whatsapp-cta"
             className="whatsapp-btn"
             aria-label="בואו נדבר בוואטסאפ — נפתח בחלון חדש"
             style={{

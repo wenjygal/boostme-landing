@@ -452,7 +452,7 @@ export default function BoostMeLanding() {
               lineHeight: 1.6,
             }}
           >
-            בלי מערכת הוליסטית. בלי אסטרטגיה מולטי-ערוצית. רק בעיה אחת, ופתרון אחד שעובד, תוך ימים, לא חודשים.
+            בלי מערכת הוליסטית. בלי אסטרטגיה מולטי-ערוצית. רק בעיה אחת, ופתרון אחד שעובד.
           </p>
           <a
             href="#"
@@ -514,7 +514,7 @@ export default function BoostMeLanding() {
               התפריט
             </div>
             <h2 style={{ fontWeight: 800, fontSize: "clamp(1.8rem, 4vw, 2.6rem)", margin: 0 }}>
-              שלושה בוסטים. בוחרים אחד (או יותר).
+              ארבעה בוסטים. בוחרים אחד (או יותר).
             </h2>
             <p style={{ color: "#6b5f52", fontSize: 17, maxWidth: 480, margin: "14px auto 0" }}>
               כל בוסט נבנה לכאב ספציפי אחד. בוחרים את זה שמתאים, ומתחילים.
@@ -649,7 +649,7 @@ export default function BoostMeLanding() {
             מוכנים לבוסט ראשון?
           </h2>
           <p style={{ color: "rgba(255,255,255,0.92)", fontSize: 17, maxWidth: 440, margin: "0 auto 18px" }}>
-            ספרו לנו מה תקוע, ותוך 2 ימי עבודה תדעו בדיוק איזה בוסט מתאים לכם.
+            ספרו לנו מה תקוע, ונחזור אליכם עם ההצעה המתאימה.
           </p>
           <a
             href="#"

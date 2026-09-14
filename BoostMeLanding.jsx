@@ -539,6 +539,8 @@ export default function BoostMeLanding() {
                   borderRadius: 20,
                   padding: "32px 26px",
                   height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
                   border: "1px solid rgba(43,33,24,0.06)",
                   borderTop: `4px solid ${s.accent}`,
                   transition: "transform 0.35s ease, box-shadow 0.35s ease",
@@ -588,6 +590,7 @@ export default function BoostMeLanding() {
                     color: "#6b5f52",
                     borderTop: "1px dashed #e5dccf",
                     paddingTop: 14,
+                    marginTop: "auto",
                   }}
                 >
                   {s.time}

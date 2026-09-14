@@ -76,27 +76,61 @@ const ICONS = {
       <circle cx="34" cy="14" r="3" fill="#fff" />
     </svg>
   ),
+  landing: (
+    <svg viewBox="0 0 48 48" width="34" height="34" fill="none" aria-hidden="true" focusable="false">
+      <rect x="7" y="9" width="34" height="30" rx="4" stroke={BRAND.magenta} strokeWidth="2.5" />
+      <line x1="7" y1="17" x2="41" y2="17" stroke={BRAND.magenta} strokeWidth="2.5" />
+      <rect x="15" y="25" width="18" height="8" rx="4" stroke={BRAND.magenta} strokeWidth="2.5" />
+    </svg>
+  ),
+  automation: (
+    <svg viewBox="0 0 48 48" width="34" height="34" fill="none" aria-hidden="true" focusable="false">
+      <circle cx="12" cy="14" r="6" stroke={BRAND.orange} strokeWidth="2.5" />
+      <circle cx="36" cy="34" r="6" stroke={BRAND.orange} strokeWidth="2.5" />
+      <path d="M16 18 L30 29" stroke={BRAND.orange} strokeWidth="2.5" strokeLinecap="round" />
+      <path d="M25 29 L30 29 L30 24" stroke={BRAND.orange} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  ),
+  bot: (
+    <svg viewBox="0 0 48 48" width="34" height="34" fill="none" aria-hidden="true" focusable="false">
+      <rect x="10" y="16" width="28" height="20" rx="6" stroke={BRAND.magenta} strokeWidth="2.5" />
+      <line x1="24" y1="16" x2="24" y2="9" stroke={BRAND.magenta} strokeWidth="2.5" strokeLinecap="round" />
+      <circle cx="24" cy="7" r="2" fill={BRAND.magenta} />
+      <circle cx="18" cy="26" r="2.2" fill={BRAND.magenta} />
+      <circle cx="30" cy="26" r="2.2" fill={BRAND.magenta} />
+    </svg>
+  ),
 };
 
 const SERVICES = [
   {
-    icon: ICONS.ai,
-    name: "בוסט AI",
-    tagline: "כלי אחד. בעיה אחת פחות.",
+    icon: ICONS.landing,
+    name: "בוסט נחיתה",
+    tagline: "הצעה אחת. דף אחד.",
     body:
-      "יש לך תהליך שגוזל שעות וכלי AI שיכול לעשות אותו בדקות. אנחנו מזהים את הכלי הנכון, מטמיעים אותו אצלך, ומוודאים שהוא באמת עובד, לא רק בהדגמה.",
-    time: "משך הבנייה: 3-5 ימי עבודה מאישור הצעת המחיר",
+      "יש לך הצעה אחת למכירה, ובלי דף משלה. אנחנו בונים דף נחיתה ממוקד סביב ההצעה בלבד, לא אתר תדמית שמנסה להגיד הכל.",
+    time: "משך הבנייה: מותאם להיקף ולמורכבות, נסגר בהצעת המחיר",
     accent: BRAND.magenta,
-    badge: "הכי פופולרי",
+    badge: null,
   },
   {
-    icon: ICONS.eye,
-    name: "בוסט פרספקטיבה",
-    tagline: "עין חיצונית, בלי הבלבול.",
+    icon: ICONS.automation,
+    name: "בוסט אוטומציה",
+    tagline: "שני כלים. עכשיו הם מדברים.",
     body:
-      "קרובים מדי לבעיה כדי לראות אותה. אנחנו נכנסים, מאבחנים מה באמת תקוע, ויוצאים עם פתרון קונקרטי, לא דוח של 40 עמודים שאף אחד לא יקרא.",
-    time: "משך הבנייה: פגישת זום אחת, וסיכום תוך 2 ימי עבודה מאישור הצעת המחיר",
+      "כלים שלא מדברים ביניהם, ומישהו אצלך מעתיק ידנית. אנחנו בונים את החיבור באוטומציה, והמידע זורם לבד.",
+    time: "משך הבנייה: מותאם להיקף ולמורכבות, נסגר בהצעת המחיר",
     accent: BRAND.orange,
+    badge: null,
+  },
+  {
+    icon: ICONS.bot,
+    name: "בוסט עובד דיגיטלי",
+    tagline: "בוט שבאמת יודע על מה מדובר.",
+    body:
+      "בוט גנרי עונה יפה, ולא מדויק. אנחנו בונים בוט עם גישה לנתונים האמיתיים שלך, שעונה לפי מה שקורה אצלך בפועל.",
+    time: "משך הבנייה: מותאם להיקף ולמורכבות, נסגר בהצעת המחיר",
+    accent: BRAND.magenta,
     badge: null,
   },
   {

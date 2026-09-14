@@ -617,6 +617,17 @@ export default function BoostMeLanding() {
             <p style={{ color: "#6b5f52", fontSize: 14.5, margin: 0 }}>
               ויש עוד ביד: אודיט לדף נחיתה או לבוט קיים, אפליקציות (CRM, דשבורדים, טיפול בלידים), הקמת מדידה (GTM, GA4, Clarity), מיצוב ומותג, שאלונים אינטראקטיביים, תוכן וקופי לקמפיינים, ואסטרטגיית SEO / AEO / GEO.
             </p>
+            <div style={{ borderTop: "1px dashed #e5dccf", marginTop: 14, paddingTop: 14 }}>
+              <a
+                href="https://linktr.ee/boost_me"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="רוצים להתנסות קודם? יש לנו כלים חינמיים — נפתח בחלון חדש"
+                style={{ color: BRAND.magenta, fontWeight: 600, fontSize: 14.5, textDecoration: "underline" }}
+              >
+                רוצים להתנסות קודם? יש לנו כלים חינמיים
+              </a>
+            </div>
           </div>
         </Reveal>
 

@@ -622,10 +622,10 @@ export default function BoostMeLanding() {
                 href="https://linktr.ee/boost_me"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="רוצים להתנסות קודם? יש לנו כלים חינמיים — נפתח בחלון חדש"
+                aria-label="רוצה הצצה למה שאנחנו יכולים לעשות, וכמה כלים בחינם? נפתח בחלון חדש"
                 style={{ color: BRAND.magenta, fontWeight: 600, fontSize: 14.5, textDecoration: "underline" }}
               >
-                רוצים להתנסות קודם? יש לנו כלים חינמיים
+                רוצה הצצה למה שאנחנו יכולים לעשות, וכמה כלים בחינם?
               </a>
             </div>
           </div>

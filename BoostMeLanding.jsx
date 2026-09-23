@@ -133,17 +133,16 @@ const SERVICES = [
     accent: BRAND.magenta,
     badge: null,
   },
-  {
-    icon: ICONS.book,
-    name: "הדרכה וסדנה, או שיעור פרטי",
-    tagline: "מבינים AI בלי לפחד ממנו.",
-    body:
-      "מפגש ממוקד בזום: לצוות, לבעל עסק, או אישי אחד-על-אחד. מה זה בעצם AI, איך משתמשים בו נכון, ואיפה הוא יכול לחסוך לך זמן כבר מחר בבוקר.",
-    time: "מותאם לפי היקף, מועד בתיאום לאחר אישור הצעת מחיר",
-    accent: BRAND.charcoal,
-    badge: null,
-  },
 ];
+
+const WORKSHOP = {
+  icon: ICONS.book,
+  name: "הדרכה וסדנה, או שיעור פרטי",
+  tagline: "מבינים AI בלי לפחד ממנו.",
+  body:
+    "מפגש ממוקד בזום: לצוות, לבעל עסק, או אישי אחד-על-אחד. מה זה בעצם AI, איך משתמשים בו נכון, ואיפה הוא יכול לחסוך לך זמן כבר מחר בבוקר.",
+  time: "מותאם לפי היקף, מועד בתיאום לאחר אישור הצעת מחיר",
+};
 
 function Modal({ open, onClose, titleId, title, children }) {
   const dialogRef = useRef(null);
@@ -507,14 +506,14 @@ export default function BoostMeLanding() {
       </section>
 
       {/* MENU / SERVICES */}
-      <section style={{ position: "relative", padding: "100px 24px 150px", maxWidth: 1080, margin: "0 auto" }}>
+      <section style={{ position: "relative", padding: "100px 24px 64px", maxWidth: 1080, margin: "0 auto" }}>
         <Reveal>
           <div style={{ textAlign: "center", marginBottom: 56 }}>
             <div style={{ color: BRAND.magenta, fontWeight: 600, fontSize: 14, letterSpacing: "0.08em", marginBottom: 10 }}>
               התפריט
             </div>
             <h2 style={{ fontWeight: 800, fontSize: "clamp(1.8rem, 4vw, 2.6rem)", margin: 0 }}>
-              ארבעה בוסטים. בוחרים אחד (או יותר).
+              שלושה בוסטים. בוחרים אחד (או יותר).
             </h2>
             <p style={{ color: "#6b5f52", fontSize: 17, maxWidth: 480, margin: "14px auto 0" }}>
               כל בוסט נבנה לכאב ספציפי אחד. בוחרים את זה שמתאים, ומתחילים.
@@ -599,6 +598,70 @@ export default function BoostMeLanding() {
             </Reveal>
           ))}
         </div>
+      </section>
+
+      {/* WORKSHOP */}
+      <section style={{ position: "relative", padding: "0 24px 90px", maxWidth: 1080, margin: "0 auto" }}>
+        <Reveal>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              alignItems: "flex-start",
+              gap: 28,
+              background: "rgba(43,33,24,0.04)",
+              border: `1.5px solid ${BRAND.charcoal}`,
+              borderRadius: 20,
+              padding: "36px 32px",
+            }}
+          >
+            <div
+              style={{
+                width: 58,
+                height: 58,
+                borderRadius: 14,
+                background: "rgba(43,33,24,0.08)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                flexShrink: 0,
+              }}
+            >
+              {WORKSHOP.icon}
+            </div>
+            <div style={{ flex: "1 1 280px", minWidth: 0 }}>
+              <div
+                style={{
+                  color: BRAND.charcoal,
+                  fontWeight: 600,
+                  fontSize: 14,
+                  letterSpacing: "0.08em",
+                  marginBottom: 8,
+                }}
+              >
+                לא בנייה. שיחה.
+              </div>
+              <h3 style={{ fontWeight: 800, fontSize: 21, margin: "0 0 4px" }}>{WORKSHOP.name}</h3>
+              <div style={{ color: BRAND.charcoal, fontWeight: 600, fontSize: 14.5, marginBottom: 14 }}>
+                {WORKSHOP.tagline}
+              </div>
+              <p style={{ fontSize: 15.5, lineHeight: 1.7, color: "#4a4038", margin: "0 0 18px", maxWidth: 560 }}>
+                {WORKSHOP.body}
+              </p>
+              <div
+                style={{
+                  fontSize: 13.5,
+                  fontWeight: 600,
+                  color: "#6b5f52",
+                  borderTop: "1px dashed #e5dccf",
+                  paddingTop: 14,
+                }}
+              >
+                {WORKSHOP.time}
+              </div>
+            </div>
+          </div>
+        </Reveal>
       </section>
 
       {/* MORE SERVICES */}

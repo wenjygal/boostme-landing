@@ -246,7 +246,7 @@ function AccessibilityModal({ open, onClose }) {
       </p>
 
       <p>
-        <strong>רכז נגישות:</strong> גל, מייל: meimagineai@gmail.com
+        <strong>רכז נגישות:</strong> גל, מייל: boost@boost-me.digital
       </p>
 
       <p style={{ color: "#6b5f52", fontSize: 13, marginTop: 20 }}>
@@ -300,7 +300,7 @@ function TermsModal({ open, onClose }) {
       </p>
 
       <p>
-        <strong>7. יצירת קשר:</strong> לכל שאלה בנוגע לתנאי שימוש אלו ניתן לפנות אלינו במייל: meimagineai@gmail.com
+        <strong>7. יצירת קשר:</strong> לכל שאלה בנוגע לתנאי שימוש אלו ניתן לפנות אלינו במייל: boost@boost-me.digital
       </p>
 
       <p>
@@ -352,7 +352,7 @@ function PrivacyModal({ open, onClose }) {
       </p>
 
       <p>
-        <strong>יצירת קשר בנושאי פרטיות:</strong> meimagineai@gmail.com
+        <strong>יצירת קשר בנושאי פרטיות:</strong> boost@boost-me.digital
       </p>
 
       <p style={{ color: "#6b5f52", fontSize: 13, marginTop: 20 }}>

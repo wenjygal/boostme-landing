@@ -454,7 +454,9 @@ export default function BoostMeLanding() {
             בלי מערכת הוליסטית. בלי אסטרטגיה מולטי-ערוצית. רק בעיה אחת, ופתרון אחד שעובד.
           </p>
           <a
-            href="#"
+            href="https://wa.me/972545538883?text=%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%93%D7%91%D7%A8%20%D7%A2%D7%9C%20%D7%91%D7%95%D7%A1%D7%98"
+            target="_blank"
+            rel="noopener noreferrer"
             id="whatsapp-hero"
             className="whatsapp-btn"
             aria-label="דברו איתנו בוואטסאפ — נפתח בחלון חדש"
@@ -726,7 +728,9 @@ export default function BoostMeLanding() {
             ספרו לנו מה תקוע, ונחזור אליכם עם ההצעה המתאימה.
           </p>
           <a
-            href="#"
+            href="https://wa.me/972545538883?text=%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%93%D7%91%D7%A8%20%D7%A2%D7%9C%20%D7%91%D7%95%D7%A1%D7%98"
+            target="_blank"
+            rel="noopener noreferrer"
             id="whatsapp-cta"
             className="whatsapp-btn"
             aria-label="בואו נדבר בוואטסאפ — נפתח בחלון חדש"

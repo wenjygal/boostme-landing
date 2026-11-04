@@ -321,7 +321,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   dialog { border: 0; border-radius: 16px; padding: 0; max-width: min(600px, calc(100vw - 32px)); max-height: 82vh; color: var(--ink); background: #fff; box-shadow: 0 30px 70px rgba(0,0,0,0.35); }
   dialog::backdrop { background: rgba(43,26,46,0.6); }
   .dlg { padding: 28px 26px 24px; font-size: 0.95rem; line-height: 1.75; color: #4a3a4b; }
-  .dlg header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+  .dlg .dlg-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
   .dlg h2 { margin: 0; font-size: 1.35rem; font-weight: 800; color: var(--ink); }
   .dlg .x { font: inherit; font-size: 1.6rem; line-height: 1; background: none; border: 0; cursor: pointer; color: var(--ink); padding: 2px 6px; border-radius: 6px; }
   .dlg .date { color: var(--ink-soft); font-size: 0.85rem; margin-top: 18px; }
@@ -420,14 +420,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </div>
           <fieldset>
             <legend class="sr-only">מה תקוע לכם בעסק?</legend>
-            <label class="line"><span class="n">1</span><input type="checkbox" name="pain" data-boost="landing" value="יש לי הצעה טובה, ואין לה עמוד משלה" /><span class="box"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14 L11 20 L22 6" /></svg></span><span class="t"><span>יש לי הצעה טובה, ואין לה עמוד משלה</span></span></label>
-            <label class="line"><span class="n">2</span><input type="checkbox" name="pain" data-boost="automation" value="מישהו אצלנו מעתיק נתונים ידנית מכלי לכלי" /><span class="box"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14 L11 20 L22 6" /></svg></span><span class="t"><span>מישהו אצלנו מעתיק נתונים ידנית מכלי לכלי</span></span></label>
-            <label class="line"><span class="n">3</span><input type="checkbox" name="pain" data-boost="bot" value="עונים על אותן שאלות עשר פעמים ביום" /><span class="box"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14 L11 20 L22 6" /></svg></span><span class="t"><span>עונים על אותן שאלות עשר פעמים ביום</span></span></label>
-            <label class="line"><span class="n">4</span><input type="checkbox" name="pain" data-boost="training" value="כולם מדברים על AI, ואין לי מושג מאיפה להתחיל" /><span class="box"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14 L11 20 L22 6" /></svg></span><span class="t"><span>כולם מדברים על AI, ואין לי מושג מאיפה להתחיל</span></span></label>
-            <label class="line"><span class="n">5</span><input type="checkbox" name="pain" data-boost="landing" value="אנשים נכנסים לעמוד שלי ולא משאירים פרטים" /><span class="box"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14 L11 20 L22 6" /></svg></span><span class="t"><span>אנשים נכנסים לעמוד שלי ולא משאירים פרטים</span></span></label>
-            <label class="line"><span class="n">6</span><input type="checkbox" name="pain" data-boost="automation" value="דברים נופלים בין הוואטסאפ, המייל והאקסל" /><span class="box"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14 L11 20 L22 6" /></svg></span><span class="t"><span>דברים נופלים בין הוואטסאפ, המייל והאקסל</span></span></label>
-            <label class="line"><span class="n">7</span><input type="checkbox" name="pain" data-boost="bot" value="ניסינו בוט. הוא עונה יפה, ולא מדויק" /><span class="box"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14 L11 20 L22 6" /></svg></span><span class="t"><span>ניסינו בוט. הוא עונה יפה, ולא מדויק</span></span></label>
-            <label class="line"><span class="n">8</span><input type="checkbox" name="pain" data-boost="training" value="שילמנו על כלים שאף אחד אצלנו לא יודע להפעיל" /><span class="box"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14 L11 20 L22 6" /></svg></span><span class="t"><span>שילמנו על כלים שאף אחד אצלנו לא יודע להפעיל</span></span></label>
+            <label class="line"><span class="n" aria-hidden="true">1</span><input type="checkbox" name="pain" data-boost="landing" value="יש לי הצעה טובה, ואין לה עמוד משלה" /><span class="box"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14 L11 20 L22 6" /></svg></span><span class="t"><span>יש לי הצעה טובה, ואין לה עמוד משלה</span></span></label>
+            <label class="line"><span class="n" aria-hidden="true">2</span><input type="checkbox" name="pain" data-boost="automation" value="מישהו אצלנו מעתיק נתונים ידנית מכלי לכלי" /><span class="box"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14 L11 20 L22 6" /></svg></span><span class="t"><span>מישהו אצלנו מעתיק נתונים ידנית מכלי לכלי</span></span></label>
+            <label class="line"><span class="n" aria-hidden="true">3</span><input type="checkbox" name="pain" data-boost="bot" value="עונים על אותן שאלות עשר פעמים ביום" /><span class="box"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14 L11 20 L22 6" /></svg></span><span class="t"><span>עונים על אותן שאלות עשר פעמים ביום</span></span></label>
+            <label class="line"><span class="n" aria-hidden="true">4</span><input type="checkbox" name="pain" data-boost="training" value="כולם מדברים על AI, ואין לי מושג מאיפה להתחיל" /><span class="box"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14 L11 20 L22 6" /></svg></span><span class="t"><span>כולם מדברים על AI, ואין לי מושג מאיפה להתחיל</span></span></label>
+            <label class="line"><span class="n" aria-hidden="true">5</span><input type="checkbox" name="pain" data-boost="landing" value="אנשים נכנסים לעמוד שלי ולא משאירים פרטים" /><span class="box"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14 L11 20 L22 6" /></svg></span><span class="t"><span>אנשים נכנסים לעמוד שלי ולא משאירים פרטים</span></span></label>
+            <label class="line"><span class="n" aria-hidden="true">6</span><input type="checkbox" name="pain" data-boost="automation" value="דברים נופלים בין הוואטסאפ, המייל והאקסל" /><span class="box"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14 L11 20 L22 6" /></svg></span><span class="t"><span>דברים נופלים בין הוואטסאפ, המייל והאקסל</span></span></label>
+            <label class="line"><span class="n" aria-hidden="true">7</span><input type="checkbox" name="pain" data-boost="bot" value="ניסינו בוט. הוא עונה יפה, ולא מדויק" /><span class="box"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14 L11 20 L22 6" /></svg></span><span class="t"><span>ניסינו בוט. הוא עונה יפה, ולא מדויק</span></span></label>
+            <label class="line"><span class="n" aria-hidden="true">8</span><input type="checkbox" name="pain" data-boost="training" value="שילמנו על כלים שאף אחד אצלנו לא יודע להפעיל" /><span class="box"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14 L11 20 L22 6" /></svg></span><span class="t"><span>שילמנו על כלים שאף אחד אצלנו לא יודע להפעיל</span></span></label>
           </fieldset>
           <p class="sheet-foot">לא מצאתם את שלכם? כתבו לנו במילים שלכם. <button type="reset" id="clear" hidden>ניקוי הסימונים</button></p>
         </form>
@@ -456,7 +456,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </ul>
         <a class="wa" id="wa-main" href="#" target="_blank" rel="noopener noreferrer" data-wa>
           <svg aria-hidden="true"><use href="#i-wa" /></svg>
-          <span data-wa-label>לשיחת אבחון בוואטסאפ</span>
+          <span data-wa-label>לשיחת אבחון בוואטסאפ</span><span class="sr-only">, נפתח בחלון חדש</span>
         </a>
         <p class="free">חינם, בלי התחייבות. מחיר רק כשברור מה באמת צריך.</p>
       </div>
@@ -672,7 +672,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <p>גם זה אבחון. כתבו לנו מה מעצבן אתכם השבוע, ונמצא יחד את הדבר האחד.</p>
       <a class="wa" href="#" target="_blank" rel="noopener noreferrer" data-wa>
         <svg aria-hidden="true"><use href="#i-wa" /></svg>
-        <span data-wa-label>לשיחת אבחון בוואטסאפ</span>
+        <span data-wa-label>לשיחת אבחון בוואטסאפ</span><span class="sr-only">, נפתח בחלון חדש</span>
       </a>
     </div>
   </section>
@@ -703,14 +703,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <dialog id="dlg-flow-bot" class="dlg-wide" aria-labelledby="dlg-flow-bot-t">
   <div class="dlg">
-    <header><h2 id="dlg-flow-bot-t">זרימת הבוט, צילום מסך מ-n8n</h2><button class="x" type="button" data-close aria-label="סגירה">×</button></header>
+    <div class="dlg-head"><h2 id="dlg-flow-bot-t">זרימת הבוט, צילום מסך מ-n8n</h2><button class="x" type="button" data-close aria-label="סגירה">×</button></div>
     <div class="scroll"><img src="./assets/work-flow-bot.png" alt="צילום מסך מקורי של זרימת הבוט ב-n8n, הכתובות מטושטשות" width="1313" height="300" loading="lazy" /></div>
     <p class="date">צילום מסך אמיתי. הכתובות מטושטשות.</p>
   </div>
 </dialog>
 <dialog id="dlg-flow-podcast" class="dlg-wide" aria-labelledby="dlg-flow-podcast-t">
   <div class="dlg">
-    <header><h2 id="dlg-flow-podcast-t">אוטומציית הפודקאסט, צילום מסך מ-n8n</h2><button class="x" type="button" data-close aria-label="סגירה">×</button></header>
+    <div class="dlg-head"><h2 id="dlg-flow-podcast-t">אוטומציית הפודקאסט, צילום מסך מ-n8n</h2><button class="x" type="button" data-close aria-label="סגירה">×</button></div>
     <div class="scroll"><img src="./assets/work-flow-podcast.png" alt="צילום מסך מקורי של אוטומציית הפודקאסט ב-n8n, הכתובות מטושטשות" width="1315" height="196" loading="lazy" /></div>
     <p class="date">צילום מסך אמיתי. הכתובות מטושטשות.</p>
   </div>
@@ -719,10 +719,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- LEGAL (text carried over unchanged from the previous page) -->
 <dialog id="dlg-a11y" aria-labelledby="dlg-a11y-t">
   <div class="dlg">
-    <header><h2 id="dlg-a11y-t">הצהרת נגישות</h2><button class="x" type="button" data-close aria-label="סגירת הצהרת נגישות">×</button></header>
+    <div class="dlg-head"><h2 id="dlg-a11y-t">הצהרת נגישות</h2><button class="x" type="button" data-close aria-label="סגירת הצהרת נגישות">×</button></div>
     <p>אתר Boost Me פועל להנגשת השירות לכלל הגולשים, לרבות אנשים עם מוגבלות, בהתאם לחוק שוויון זכויות לאנשים עם מוגבלות, התשנ"ח-1998, ולתקנות שוויון זכויות לאנשים עם מוגבלות (התאמות נגישות לשירות), תשע"ג-2013.</p>
     <p><strong>רמת הנגישות:</strong> האתר תוכנן להתאים לתקן הישראלי ת"י 5568 ברמה AA, המבוסס על הנחיות WCAG הבינלאומיות. ההתאמות שבוצעו כוללות: ניגודיות צבעים תקנית בין טקסט לרקע, תיאור טקסטואלי (alt) לתמונות משמעותיות, סימון אלמנטים דקורטיביים כך שלא יפריעו לקוראי מסך, ניווט מלא באמצעות מקלדת, מסגרת מיקוד (focus) ברורה בעת ניווט מקלדת, ותוויות ARIA לכפתורים.</p>
-    <p><strong>אופן הבדיקה:</strong> האתר נבדק בכלי בדיקה אוטומטי (axe), בניווט מלא במקלדת, בתצוגה ברוחב 320 פיקסלים ובהגדלת טקסט ל-200%. האתר טרם נבדק עם תוכנת קורא מסך.</p>
+    <p><strong>אופן הבדיקה:</strong> האתר נבדק בכלי בדיקה אוטומטי (axe), בניווט מלא במקלדת, בתצוגה ברוחב 320 פיקסלים, בהגדלת טקסט ל-200%, ועם קורא המסך NVDA בדפדפן Edge.</p>
     <p><strong>התאמות נוספות:</strong> קישור "דילוג לתוכן" בראש העמוד, כיבוי אנימציות למי שהגדיר הפחתת תנועה במכשיר, וחלונות שנסגרים במקש Escape.</p>
     <p><strong>פניות והנגשה חסרה:</strong> אם נתקלתם בבעיית נגישות באתר, או שאתם זקוקים למידע בפורמט נגיש אחר, אתם מוזמנים לפנות אלינו ונשמח לסייע.</p>
     <p><strong>רכז נגישות:</strong> גל, מייל: boost@boost-me.digital</p>
@@ -732,7 +732,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <dialog id="dlg-privacy" aria-labelledby="dlg-privacy-t">
   <div class="dlg">
-    <header><h2 id="dlg-privacy-t">מדיניות פרטיות</h2><button class="x" type="button" data-close aria-label="סגירת מדיניות פרטיות">×</button></header>
+    <div class="dlg-head"><h2 id="dlg-privacy-t">מדיניות פרטיות</h2><button class="x" type="button" data-close aria-label="סגירת מדיניות פרטיות">×</button></div>
     <p>Boost Me מכבד את פרטיות המשתמשים באתר, ופועל בהתאם לחוק הגנת הפרטיות, התשמ"א-1981, לרבות תיקון מס' 13 לחוק שנכנס לתוקף ב-14.8.2025.</p>
     <p><strong>איזה מידע נאסף:</strong></p>
     <ul>
@@ -750,7 +750,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <dialog id="dlg-terms" aria-labelledby="dlg-terms-t">
   <div class="dlg">
-    <header><h2 id="dlg-terms-t">תנאי שימוש</h2><button class="x" type="button" data-close aria-label="סגירת תנאי שימוש">×</button></header>
+    <div class="dlg-head"><h2 id="dlg-terms-t">תנאי שימוש</h2><button class="x" type="button" data-close aria-label="סגירת תנאי שימוש">×</button></div>
     <p>תנאי שימוש אלו חלים על הגלישה והשימוש באתר Boost Me ("האתר"), המופעל על ידי גל אפרתי ("אנחנו" / "מפעילת האתר"). המשך הגלישה באתר מהווה הסכמה לתנאים אלו.</p>
     <p><strong>1. הגדרת השירות:</strong> האתר הוא אתר תדמית המציג את שירותי Boost Me — בניית דפי נחיתה ("בוסט נחיתה"), חיבור כלים באוטומציה ("בוסט אוטומציה"), בניית בוטים דיגיטליים מבוססי מידע אמיתי ("בוסט עובד דיגיטלי"), והדרכות/סדנאות/שיעורים פרטיים בנושא AI ("הדרכה וסדנה"). האתר עצמו אינו מהווה פלטפורמת מכירה או התקשרות מחייבת — כל התקשרות בפועל לשירות מתבצעת בשיחה נפרדת (לרוב בוואטסאפ) ובאישור הצעת מחיר ייעודית, שתנאיה גוברים על האמור באתר.</p>
     <p><strong>2. שימוש מותר ואסור באתר:</strong> מותר להשתמש באתר לצורך היכרות עם השירותים ויצירת קשר בלבד. אסור: להעתיק, לשכפל, או להפיץ תוכן מהאתר ללא אישור מראש ובכתב; לבצע פעולה העלולה לפגוע בפעילות התקינה של האתר או באבטחתו; להשתמש באתר למטרה בלתי חוקית.</p>

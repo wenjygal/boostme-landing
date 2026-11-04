@@ -227,9 +227,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .cases li { padding: 13px 0; border-bottom: 1px solid var(--plum-line); line-height: 1.5; }
   .cases b { display: block; color: var(--magenta-deep); font-size: 0.9rem; font-weight: 700; margin-bottom: 2px; }
   .cases-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(20px, 3vw, 40px); }
-  .shots { display: grid; grid-template-columns: repeat(2, minmax(0, 150px)); gap: 18px; margin-top: 26px; }
+  .shots { display: grid; grid-template-columns: repeat(3, minmax(0, 140px)); gap: 16px; margin-top: 26px; }
+  .shot:nth-child(2) { transform: rotate(-2.5deg); margin-top: 24px; }
+  .shot:nth-child(3) { transform: rotate(1.5deg); margin-top: 8px; }
   .shot { margin: 0; transform: rotate(2deg); }
-  .shot + .shot { transform: rotate(-2.5deg); margin-top: 24px; }
   .shot img { width: 100%; height: auto; border-radius: 18px; border: 5px solid var(--plum); box-shadow: 0 20px 34px -16px rgba(43,26,46,0.5); }
   .shot a { display: block; }
   .shot figcaption a { color: var(--magenta-deep); font-weight: 500; }
@@ -521,9 +522,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               <li><b>ערוץ חדשות</b>בוט שמתרגם חדשות מעברית לאנגלית עיתונאית, בזמן אמת.</li>
               <li><b>ארגון ציבורי</b>שולחים מספר טלפון, ומקבלים מיד את פרטי הדובר.</li>
               <li><b>עמותה</b>מעקב אחרי פעילות ומסמכים ב-Monday, במקום אחד.</li>
-              <li><b>ארגון קהילתי לילדים</b>אפליקציה שעוזרת לילדים לסדר את התיק לבית הספר.</li>
             </ul>
             <div class="shots">
+              <figure class="shot">
+                <a href="https://brr7.short.gy/school-bag-app" target="_blank" rel="noopener noreferrer">
+                  <img src="./assets/work-app-schoolbag.png" alt="צילום מסך של אפליקציה לסידור תיק: הגדרת מערכת שעות, יש לי טיול מחר, ציוד למקצועות וחופשות" width="311" height="465" loading="lazy" />
+                </a>
+                <figcaption>אפליקציה שעוזרת לילדים לסדר את התיק. <a href="https://brr7.short.gy/school-bag-app" target="_blank" rel="noopener noreferrer">לאפליקציה</a></figcaption>
+              </figure>
               <figure class="shot">
                 <a href="https://brr7.short.gy/parents-elections-app" target="_blank" rel="noopener noreferrer">
                   <img src="./assets/work-app-elections.png" alt="צילום מסך של אפליקציית בחירות להורים: טיימר תורות ויזואלי, כפתורי תוצאות ושיתוף לקבוצת ההורים" width="442" height="732" loading="lazy" />

@@ -216,6 +216,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .honest { margin: clamp(32px, 4vw, 48px) 0 0; font-size: clamp(1.2rem, 2.2vw, 1.5rem); font-weight: 500; max-width: 30em; line-height: 1.45; }
   .honest mark { background: var(--swipe); color: inherit; padding: 0 2px; }
 
+  /* work head + real screenshot */
+  .work-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: clamp(24px, 5vw, 72px); align-items: end; margin-bottom: clamp(32px, 4vw, 52px); }
+  .work-head .sub { margin-bottom: 0; }
+  .shot { margin: 0; width: clamp(180px, 20vw, 240px); transform: rotate(2deg); }
+  .shot img { width: 100%; height: auto; border-radius: 22px; border: 6px solid var(--plum); box-shadow: 0 24px 40px -18px rgba(43,26,46,0.55); }
+  .shot figcaption { margin-top: 12px; font-size: 0.85rem; color: var(--ink-soft); line-height: 1.4; transform: rotate(-2deg); }
   /* ledger of work */
   .ledger { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(28px, 4vw, 56px) clamp(28px, 5vw, 72px); }
   .ledger section { scroll-margin-top: 24px; }
@@ -297,7 +303,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .steps li:nth-child(3) { border-inline-start: 0; padding-inline-start: 0; }
     .steps li:nth-child(n+3) { margin-top: 18px; border-top: 1px solid var(--plum-line); }
-    .ledger, .story-grid { grid-template-columns: 1fr; }
+    .ledger, .story-grid, .work-head { grid-template-columns: 1fr; }
+    .shot { width: min(240px, 70%); justify-self: center; }
     .tools { grid-template-columns: 1fr 1fr; }
     .dock { display: flex; }
     body.docked { padding-bottom: 76px; }
@@ -411,8 +418,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <!-- WORK -->
   <section class="paper section" aria-labelledby="work-title" style="padding-top:0">
     <div class="wrap">
-      <h2 id="work-title">כבר פתרנו את זה למישהו</h2>
-      <p class="sub">דברים שבנינו ומסרנו, לפי סוג העסק. בלי שמות, כי זה לא שלנו לספר.</p>
+      <div class="work-head">
+        <div>
+          <h2 id="work-title">כבר פתרנו את זה למישהו</h2>
+          <p class="sub">דברים שבנינו ומסרנו, לפי סוג העסק. בלי שמות, כי זה לא שלנו לספר.</p>
+        </div>
+        <figure class="shot">
+          <img src="./assets/work-app-elections.png" alt="צילום מסך של אפליקציה שבנינו: מסך בית עם טיימר ויזואלי, כפתורי תוצאות ושיתוף לקבוצת ההורים" width="442" height="732" loading="lazy" />
+          <figcaption>אפליקציה שבנינו לארגון קהילתי לילדים. צילום מסך אמיתי.</figcaption>
+        </figure>
+      </div>
       <div class="ledger">
         <section id="work-landing" aria-labelledby="wl">
           <h3 id="wl">בוסט נחיתה <small>עמודים</small></h3>
@@ -439,6 +454,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <li><span>ארגון ציבורי</span><span>שולחים מספר טלפון, ומקבלים מיד את פרטי הדובר.</span></li>
             <li><span>ארגון קהילתי לילדים</span><span>בוט שמכיר את כל אתר הארגון ועונה על שאלות ממנו.</span></li>
             <li><span>ארגון קהילתי לילדים</span><span>אפליקציה שעוזרת לילדים לסדר את התיק לבית הספר.</span></li>
+            <li><span>ארגון קהילתי לילדים</span><span>אפליקציית בחירות להורים: טיימר תורות ויזואלי, תוצאות, ושיתוף לקבוצת ההורים.</span></li>
             <li><span>עמותה</span><span>מעקב אחרי פעילות ומסמכים ב-Monday, במקום אחד.</span></li>
             <li><span>שימוש אישי</span><span>"שידת הקישורים": שומרים קישור, וה-AI מתייג ומסכם אותו.</span></li>
           </ul>

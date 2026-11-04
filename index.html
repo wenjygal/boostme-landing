@@ -238,6 +238,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   /* real flow diagram */
   .flow { margin: clamp(48px, 6vw, 80px) 0 0; }
+  .flow + .flow { margin-top: clamp(36px, 4vw, 56px); }
   .flow-scroll { direction: ltr; overflow-x: auto; border-radius: 14px; border: 1px solid var(--plum-line); background: #fff; box-shadow: 0 24px 50px -30px rgba(43,26,46,0.5); }
   .flow-scroll img { width: 100%; min-width: 900px; height: auto; direction: ltr; }
   .flow figcaption { margin-top: 14px; color: var(--ink-soft); max-width: 60em; }
@@ -491,6 +492,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <figcaption>
           <b>ככה נראה מבפנים בוט שעונה מהמידע שלכם.</b>
           הודעה נכנסת מוואטסאפ או מטלגרם, הבוט בודק שהשולח מורשה, מחפש בתוכן של הארגון (אתר, פוסטים, פודקאסטים, יומן), ועונה באותו ערוץ. צילום מסך אמיתי, הכתובות מטושטשות.
+        </figcaption>
+      </figure>
+      <figure class="flow">
+        <div class="flow-scroll" tabindex="0" role="region" aria-label="תרשים הזרימה של אוטומציית הפודקאסט, אפשר לגלול לצדדים">
+          <img src="./assets/work-flow-podcast.png" alt="תרשים זרימה ב-n8n של אוטומציית פודקאסט: שליפת פרקים מוכנים, הורדת האודיו ובדיקתו, העלאה, בניית פיד ה-RSS ובדיקתו, פרסום, סימון הפרק כמפורסם, והתראה אם משהו נכשל" width="1315" height="196" loading="lazy" />
+        </div>
+        <figcaption>
+          <b>וככה נראית אוטומציה שעובדת בזמן שאתם ישנים.</b>
+          פודקאסט לנוער: כל פרק מוכן נבדק, עולה, נכנס לפיד שספוטיפיי קוראת ממנו, ומסומן כמפורסם. אם משהו לא תקין, מגיעה התראה במקום תקלה שקטה. צילום מסך אמיתי, הכתובות מטושטשות.
         </figcaption>
       </figure>
     </div>

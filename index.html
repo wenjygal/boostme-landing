@@ -236,13 +236,29 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .ledger li span:last-child { color: var(--ink); }
   .ledger-note { margin: 28px 0 0; color: var(--ink-soft); font-size: 0.92rem; }
 
-  /* real flow diagram */
-  .flow { margin: clamp(48px, 6vw, 80px) 0 0; }
-  .flow + .flow { margin-top: clamp(36px, 4vw, 56px); }
-  .flow-scroll { direction: ltr; overflow-x: auto; border-radius: 14px; border: 1px solid var(--plum-line); background: #fff; box-shadow: 0 24px 50px -30px rgba(43,26,46,0.5); }
-  .flow-scroll img { width: 100%; min-width: 900px; height: auto; direction: ltr; }
-  .flow figcaption { margin-top: 14px; color: var(--ink-soft); max-width: 60em; }
-  .flow figcaption b { display: block; color: var(--ink); font-size: 1.15rem; margin-bottom: 4px; }
+  /* designed flow charts + original screenshot */
+  .flows { display: grid; gap: clamp(28px, 3vw, 40px); margin-top: clamp(48px, 6vw, 80px); }
+  .flow { margin: 0; background: #fff; border-radius: 18px; padding: clamp(22px, 3vw, 34px); box-shadow: 0 24px 50px -32px rgba(43,26,46,0.45); display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 26px 32px; align-items: start; }
+  .flow figcaption { grid-column: 1; }
+  .flow figcaption b { display: block; font-size: clamp(1.25rem, 2.2vw, 1.55rem); font-weight: 800; line-height: 1.25; }
+  .flow figcaption span { color: var(--ink-soft); font-size: 0.95rem; }
+  .chain { grid-column: 1 / -1; list-style: none; margin: 8px 0 0; padding: 0; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); }
+  .chain li { position: relative; padding: 22px 0 0; padding-inline-end: 18px; border-top: 3px solid var(--ink); }
+  .chain li::before { content: ""; position: absolute; top: -9px; inset-inline-start: 0; width: 15px; height: 15px; border-radius: 50%; background: var(--magenta); box-shadow: 0 0 0 4px #fff; }
+  .chain li::after { content: ""; position: absolute; top: -8px; inset-inline-end: 6px; border: 6.5px solid transparent; border-inline-end-color: var(--ink); }
+  .chain li.end { border-top-color: var(--orange); }
+  .chain li.end::before { background: var(--orange); }
+  .chain li.end::after { display: none; }
+  .chain b { display: block; font-weight: 800; font-size: 1.05rem; line-height: 1.3; }
+  .chain span { display: block; color: var(--ink-soft); font-size: 0.92rem; line-height: 1.45; margin-top: 4px; }
+  .fail { grid-column: 1 / -1; margin: 0; padding: 10px 14px; border: 1.5px dashed var(--magenta-deep); border-radius: 10px; color: var(--ink); font-size: 0.95rem; justify-self: start; }
+  .orig { grid-column: 2; grid-row: 1; font: inherit; background: var(--paper); border: 1px solid var(--plum-line); border-radius: 10px; padding: 6px; cursor: pointer; width: 190px; text-align: center; transition: transform 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out); }
+  .orig img { width: 100%; height: 52px; object-fit: cover; object-position: left center; border-radius: 6px; }
+  .orig span { display: block; font-size: 0.8rem; color: var(--magenta-deep); font-weight: 500; text-decoration: underline; text-underline-offset: 0.2em; margin-top: 4px; }
+  .orig:hover { transform: translateY(-2px); box-shadow: 0 10px 20px -12px rgba(43,26,46,0.5); }
+  .dlg-wide { max-width: min(1200px, calc(100vw - 32px)); }
+  .dlg-wide .scroll { direction: ltr; overflow-x: auto; }
+  .dlg-wide .scroll img { min-width: 900px; width: 100%; height: auto; }
   /* story */
   .story { background: var(--plum); color: var(--on-plum); }
   .story-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: clamp(32px, 6vw, 88px); align-items: center; }
@@ -317,6 +333,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .shots { grid-template-columns: repeat(2, minmax(0, 1fr)); justify-self: center; max-width: 440px; width: 100%; }
     .tools { grid-template-columns: 1fr 1fr; }
     .dock { display: flex; }
+    .flow { grid-template-columns: 1fr; }
+    .orig { grid-column: 1; grid-row: auto; justify-self: start; }
+    .chain { grid-auto-flow: row; grid-auto-rows: auto; }
+    .chain li { border-top: 0; border-inline-start: 3px solid var(--ink); padding: 0 0 18px; padding-inline-start: 22px; }
+    .chain li.end { border-inline-start-color: transparent; padding-bottom: 0; }
+    .chain li::before { top: 2px; inset-inline-start: -9px; }
+    .chain li::after { display: none; }
     body.docked { padding-bottom: 76px; }
   }
   @media (max-width: 560px) {
@@ -485,24 +508,43 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </ul>
         </section>
       </div>
-      <figure class="flow">
-        <div class="flow-scroll" tabindex="0" role="region" aria-label="תרשים הזרימה של הבוט, אפשר לגלול לצדדים">
-          <img src="./assets/work-flow-bot.png" alt="תרשים זרימה ב-n8n של בוט RAG: הודעה נכנסת מוואטסאפ או טלגרם, בדיקה שהשולח מורשה, שמירת מדיה בדרייב, סוכן AI עם כלי חיפוש בתוכן האתר, בפוסטים, בפודקאסטים וביומן, ותשובה חזרה לערוץ שממנו הגיעה ההודעה" width="1313" height="300" loading="lazy" />
-        </div>
-        <figcaption>
-          <b>ככה נראה מבפנים בוט שעונה מהמידע שלכם.</b>
-          הודעה נכנסת מוואטסאפ או מטלגרם, הבוט בודק שהשולח מורשה, מחפש בתוכן של הארגון (אתר, פוסטים, פודקאסטים, יומן), ועונה באותו ערוץ. צילום מסך אמיתי, הכתובות מטושטשות.
-        </figcaption>
-      </figure>
-      <figure class="flow">
-        <div class="flow-scroll" tabindex="0" role="region" aria-label="תרשים הזרימה של אוטומציית הפודקאסט, אפשר לגלול לצדדים">
-          <img src="./assets/work-flow-podcast.png" alt="תרשים זרימה ב-n8n של אוטומציית פודקאסט: שליפת פרקים מוכנים, הורדת האודיו ובדיקתו, העלאה, בניית פיד ה-RSS ובדיקתו, פרסום, סימון הפרק כמפורסם, והתראה אם משהו נכשל" width="1315" height="196" loading="lazy" />
-        </div>
-        <figcaption>
-          <b>וככה נראית אוטומציה שעובדת בזמן שאתם ישנים.</b>
-          פודקאסט לנוער: כל פרק מוכן נבדק, עולה, נכנס לפיד שספוטיפיי קוראת ממנו, ומסומן כמפורסם. אם משהו לא תקין, מגיעה התראה במקום תקלה שקטה. צילום מסך אמיתי, הכתובות מטושטשות.
-        </figcaption>
-      </figure>
+      <div class="flows">
+        <figure class="flow">
+          <figcaption>
+            <b>ככה עובד מבפנים בוט שעונה מהמידע שלכם</b>
+            <span>בוט RAG לארגון קהילתי לילדים</span>
+          </figcaption>
+          <ol class="chain">
+            <li><b>הודעה נכנסת</b><span>מוואטסאפ או מטלגרם</span></li>
+            <li><b>בדיקת שולח</b><span>רק מי שמורשה מקבל תשובה</span></li>
+            <li><b>שמירת קבצים</b><span>תמונות ומסמכים נשמרים בדרייב</span></li>
+            <li><b>חיפוש בתוכן שלכם</b><span>אתר, פוסטים, פודקאסטים ויומן</span></li>
+            <li class="end"><b>תשובה</b><span>באותו ערוץ שממנו שאלו</span></li>
+          </ol>
+          <button class="orig" type="button" data-open="dlg-flow-bot" aria-label="הצגת צילום המסך המקורי של זרימת הבוט">
+            <img src="./assets/work-flow-bot.png" alt="" width="1313" height="300" loading="lazy" />
+            <span>ככה זה נראה במקור</span>
+          </button>
+        </figure>
+        <figure class="flow">
+          <figcaption>
+            <b>וככה אוטומציה שעובדת בזמן שאתם ישנים</b>
+            <span>פודקאסט לנוער שעולה לספוטיפיי לבד</span>
+          </figcaption>
+          <ol class="chain">
+            <li><b>פרק מוכן</b><span>נשלף מהרשימה</span></li>
+            <li><b>בדיקת אודיו</b><span>שהקובץ שלם ותקין</span></li>
+            <li><b>העלאה</b><span>האודיו עולה לאחסון</span></li>
+            <li><b>עדכון הפיד</b><span>הפיד שספוטיפיי קוראת ממנו</span></li>
+            <li class="end"><b>מסומן כמפורסם</b><span>ומגיעה הודעת הצלחה</span></li>
+          </ol>
+          <p class="fail">ואם משהו נכשל בדרך: מגיעה התראה מיד, במקום תקלה שקטה.</p>
+          <button class="orig" type="button" data-open="dlg-flow-podcast" aria-label="הצגת צילום המסך המקורי של אוטומציית הפודקאסט">
+            <img src="./assets/work-flow-podcast.png" alt="" width="1315" height="196" loading="lazy" />
+            <span>ככה זה נראה במקור</span>
+          </button>
+        </figure>
+      </div>
     </div>
   </section>
 
@@ -594,6 +636,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <span>שליחה</span>
   </a>
 </div>
+
+<dialog id="dlg-flow-bot" class="dlg-wide" aria-labelledby="dlg-flow-bot-t">
+  <div class="dlg">
+    <header><h2 id="dlg-flow-bot-t">זרימת הבוט, צילום מסך מ-n8n</h2><button class="x" type="button" data-close aria-label="סגירה">×</button></header>
+    <div class="scroll"><img src="./assets/work-flow-bot.png" alt="צילום מסך מקורי של זרימת הבוט ב-n8n, הכתובות מטושטשות" width="1313" height="300" loading="lazy" /></div>
+    <p class="date">צילום מסך אמיתי. הכתובות מטושטשות.</p>
+  </div>
+</dialog>
+<dialog id="dlg-flow-podcast" class="dlg-wide" aria-labelledby="dlg-flow-podcast-t">
+  <div class="dlg">
+    <header><h2 id="dlg-flow-podcast-t">אוטומציית הפודקאסט, צילום מסך מ-n8n</h2><button class="x" type="button" data-close aria-label="סגירה">×</button></header>
+    <div class="scroll"><img src="./assets/work-flow-podcast.png" alt="צילום מסך מקורי של אוטומציית הפודקאסט ב-n8n, הכתובות מטושטשות" width="1315" height="196" loading="lazy" /></div>
+    <p class="date">צילום מסך אמיתי. הכתובות מטושטשות.</p>
+  </div>
+</dialog>
 
 <!-- LEGAL (text carried over unchanged from the previous page) -->
 <dialog id="dlg-a11y" aria-labelledby="dlg-a11y-t">

@@ -321,6 +321,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .dlg .x { font: inherit; font-size: 1.6rem; line-height: 1; background: none; border: 0; cursor: pointer; color: var(--ink); padding: 2px 6px; border-radius: 6px; }
   .dlg .date { color: var(--ink-soft); font-size: 0.85rem; margin-top: 18px; }
 
+  /* back to top */
+  .to-top {
+    position: fixed; z-index: 60; inset-inline-end: max(16px, env(safe-area-inset-left, 0px)); bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+    width: 48px; height: 48px; border-radius: 50%; border: 0; cursor: pointer;
+    display: grid; place-items: center;
+    background: var(--plum); color: var(--on-plum);
+    box-shadow: 0 10px 22px -8px rgba(0,0,0,0.45);
+    transition: transform 0.3s var(--ease-out), background 0.2s, opacity 0.3s;
+  }
+  .to-top[hidden] { display: none; }
+  .to-top:hover { background: var(--magenta-deep); transform: translateY(-2px); }
+  body.docked .to-top { bottom: calc(88px + env(safe-area-inset-bottom, 0px)); }
+
   /* mobile sticky bar */
   .dock {
     position: fixed; inset-inline: 0; bottom: 0; z-index: 50;
@@ -669,6 +682,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </footer>
 
+<button class="to-top" id="to-top" type="button" aria-label="חזרה לראש העמוד" hidden>
+  <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
 <div class="dock" id="dock" aria-hidden="true">
   <span id="dock-text">סימנתם 0</span>
   <a class="wa" href="#" target="_blank" rel="noopener noreferrer" data-wa tabindex="-1">
@@ -825,6 +842,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     d.querySelector("[data-close]").addEventListener("click", function () { d.close(); });
     d.addEventListener("click", function (e) { if (e.target === d) d.close(); });
   });
+
+  var toTop = document.getElementById("to-top");
+  function onScroll() { toTop.hidden = window.scrollY < window.innerHeight * 0.9; }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  toTop.addEventListener("click", function () {
+    window.scrollTo({ top: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+    document.getElementById("ask-title").setAttribute("tabindex", "-1");
+    document.getElementById("ask-title").focus({ preventScroll: true });
+  });
+  onScroll();
 
   update();
 })();

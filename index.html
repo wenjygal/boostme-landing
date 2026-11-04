@@ -259,6 +259,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .dlg-wide { max-width: min(1200px, calc(100vw - 32px)); }
   .dlg-wide .scroll { direction: ltr; overflow-x: auto; }
   .dlg-wide .scroll img { min-width: 900px; width: 100%; height: auto; }
+  /* browser-framed landing shot */
+  .browser { margin: 22px 0 0; }
+  .browser > a { display: block; border-radius: 0 0 12px 12px; overflow: hidden; box-shadow: 0 24px 44px -26px rgba(43,26,46,0.6); }
+  .browser img { width: 100%; height: auto; transition: transform 0.6s var(--ease-out); }
+  .browser > a:hover img { transform: scale(1.02); }
+  .browser-bar { display: flex; gap: 6px; padding: 9px 12px; background: var(--plum); border-radius: 12px 12px 0 0; }
+  .browser-bar i { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,248,240,0.35); }
+  .browser figcaption { margin-top: 12px; color: var(--ink-soft); font-size: 0.93rem; line-height: 1.5; }
+  .browser figcaption b { color: var(--ink); }
+  .browser figcaption a { color: var(--magenta-deep); font-weight: 500; }
   /* story */
   .story { background: var(--plum); color: var(--on-plum); }
   .story-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: clamp(32px, 6vw, 88px); align-items: center; }
@@ -475,8 +485,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <li><span>קמפיין פוליטי</span><span>במקום Linktree עם עשרה קישורים, עמוד אחד עם פעולה אחת: להתפקד.</span></li>
             <li><span>קהילת הדרכות</span><span>עמוד הרשמה שמכניס כל נרשם ישר לרשימת התפוצה.</span></li>
             <li><span>משלוחי פרחים</span><span>עמוד נחיתה לשירות המשלוחים.</span></li>
-            <li><span>מותג אוזניות יוקרה</span><span>עמוד נחיתה למוצר פרימיום.</span></li>
           </ul>
+          <figure class="browser">
+            <div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+            <a href="https://wenjygal.github.io/hush-concept/" target="_blank" rel="noopener noreferrer">
+              <img src="./assets/work-hush.jpg" alt="צילום מסך של HUSH: עמוד מוצר כהה עם אוזניות מתכת בתלת-ממד ליד הכותרת Sound you turn your head for" width="1200" height="750" loading="lazy" />
+            </a>
+            <figcaption><b>HUSH, עמוד קונספט שבנינו בעצמנו.</b> מותג אוזניות שלא קיים, עם מוצר בתלת-ממד שמסתובב בדפדפן. בנינו אותו כדי להראות לאן עמוד נחיתה יכול להגיע. <a href="https://wenjygal.github.io/hush-concept/" target="_blank" rel="noopener noreferrer">לעמוד החי</a></figcaption>
+          </figure>
         </section>
         <section id="work-automation" aria-labelledby="wa2">
           <h3 id="wa2">בוסט אוטומציה <small>חיבורים</small></h3>

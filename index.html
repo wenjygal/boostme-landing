@@ -179,24 +179,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     transition: opacity 0.35s var(--ease-out), transform 0.35s var(--ease-out);
   }
   .rx li:first-child { border-top: 0; }
-  .rx .name { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; font-weight: 800; font-size: 1.12rem; }
-  .rx .count { font-size: 0.8rem; font-weight: 700; color: #fff; background: var(--magenta-deep); border-radius: 999px; padding: 2px 9px; opacity: 0; transform: scale(0.6); transition: opacity 0.25s, transform 0.35s var(--ease-out); }
+  .rx .name { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.12rem; }
+  .rx .count { order: 2; font-size: 0.8rem; font-weight: 700; color: #fff; background: var(--magenta-deep); border-radius: 999px; padding: 2px 9px; opacity: 0; transform: scale(0.6); transition: opacity 0.25s, transform 0.35s var(--ease-out); }
   .rx .what { margin: 2px 0 0; color: var(--ink-soft); font-size: 0.95rem; line-height: 1.45; }
   .rx .see { font-size: 0.88rem; color: var(--magenta-deep); font-weight: 500; }
   .rx li.hit .count { opacity: 1; transform: scale(1); }
+  .rx li:not(.top) .count { margin-inline-start: auto; }
   .slip.has-marks .rx li:not(.hit) { opacity: 0.42; }
-  .rx li.top::after {
+  .rx li.top .name::after {
     content: "זה הבוסט שלכם";
-    position: absolute; inset-inline-end: 46px; top: 8px;
+    order: 1; margin-inline-start: auto;
     border: 2.5px solid var(--orange-ink); color: var(--orange-ink);
-    font-weight: 900; font-size: 0.78rem; letter-spacing: 0.02em;
-    padding: 2px 8px; border-radius: 6px;
-    transform: rotate(-8deg);
+    font-weight: 900; font-size: 0.75rem; letter-spacing: 0.02em; white-space: nowrap;
+    padding: 1px 8px; border-radius: 6px;
+    transform: rotate(-6deg);
     background: rgba(246,137,32,0.14);
     animation: stamp 0.45s var(--ease-out) both;
   }
-  .rx li.top .name { padding-inline-end: 0; }
-  @keyframes stamp { from { opacity: 0; transform: rotate(-8deg) scale(1.8); } to { opacity: 1; transform: rotate(-8deg) scale(1); } }
+  @keyframes stamp { from { opacity: 0; transform: rotate(-6deg) scale(1.8); } to { opacity: 1; transform: rotate(-6deg) scale(1); } }
   .slip .wa { width: 100%; }
   .slip .free { margin: 12px 0 0; text-align: center; color: var(--ink-soft); font-size: 0.9rem; }
 

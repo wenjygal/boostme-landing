@@ -2,57 +2,684 @@
 <html lang="he" dir="rtl">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Boost Me — כאב אחד, פתרון אחד, בוסט אחד</title>
-<meta name="description" content="דפי נחיתה, אוטומציות בין כלים, בוטים דיגיטליים והדרכות AI — פתרון אחד לבעיה אחת, בלי מערכת הוליסטית. מדברים בוואטסאפ." />
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Boost Me | מה תקוע לכם? כאב אחד, פתרון אחד</title>
+<meta name="description" content="סמנו מה תקוע לכם בעסק, ונגיד לכם איזה בוסט פותר את זה: עמוד נחיתה, אוטומציה בין כלים, בוט שעונה מהמידע שלכם, או הדרכת AI. שיחת האבחון הראשונה חינם." />
 <link rel="icon" type="image/png" href="./favicon.png" />
 
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://boost-me.digital" />
 <meta property="og:site_name" content="Boost Me" />
-<meta property="og:title" content="Boost Me — כאב אחד, פתרון אחד, בוסט אחד" />
-<meta property="og:description" content="דפי נחיתה, אוטומציות בין כלים, בוטים דיגיטליים והדרכות AI — פתרון אחד לבעיה אחת, בלי מערכת הוליסטית." />
+<meta property="og:title" content="Boost Me | מה תקוע לכם?" />
+<meta property="og:description" content="כאב אחד. פתרון אחד. סמנו מה תקוע, וקבלו את הבוסט המדויק. שיחת אבחון ראשונה חינם." />
 <meta property="og:image" content="https://boost-me.digital/og-image.png" />
-
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Boost Me — כאב אחד, פתרון אחד, בוסט אחד" />
-<meta name="twitter:description" content="דפי נחיתה, אוטומציות בין כלים, בוטים דיגיטליים והדרכות AI — פתרון אחד לבעיה אחת, בלי מערכת הוליסטית." />
+<meta name="twitter:title" content="Boost Me | מה תקוע לכם?" />
+<meta name="twitter:description" content="כאב אחד. פתרון אחד. סמנו מה תקוע, וקבלו את הבוסט המדויק. שיחת אבחון ראשונה חינם." />
 <meta name="twitter:image" content="https://boost-me.digital/og-image.png" />
+<meta name="theme-color" content="#2B1A2E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-TVLCVNTV');</script>
+
+<style>
+  :root {
+    --plum: #2B1A2E;
+    --plum-2: #3A2540;
+    --plum-line: rgba(43, 26, 46, 0.12);
+    --paper: #FFF8F0;
+    --paper-2: #F7EBDD;
+    --ink: #2B1A2E;
+    --ink-soft: #5E4A5F;
+    --magenta: #E0128B;
+    --magenta-deep: #B30C6E;
+    --orange: #F68920;
+    --orange-ink: #8A4300;
+    --on-plum: #FFF8F0;
+    --on-plum-soft: #E3CFDD;
+    --wa: #1FAE57;
+    --wa-deep: #168A44;
+    --swipe: linear-gradient(90deg, rgba(246,137,32,0.38), rgba(224,18,139,0.30));
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --gutter: clamp(16px, 4vw, 48px);
+    --rule: 3.25rem;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: "Rubik", "Segoe UI", "Arial Hebrew", Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--plum);
+    -webkit-font-smoothing: antialiased;
+    font-variant-numeric: tabular-nums;
+  }
+  img { max-width: 100%; display: block; }
+  ::selection { background: var(--magenta); color: #fff; }
+  a { color: inherit; text-underline-offset: 0.22em; text-decoration-thickness: 1.5px; }
+  :focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; border-radius: 6px; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding-inline: var(--gutter); }
+
+  /* ---------- WhatsApp button ---------- */
+  .wa {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    background: var(--wa); color: #fff; text-decoration: none;
+    font-weight: 700; font-size: 1.05rem; line-height: 1.2;
+    padding: 16px 26px; border-radius: 999px;
+    box-shadow: 0 10px 22px -10px rgba(0, 0, 0, 0.45);
+    transition: transform 0.25s var(--ease-out), background 0.2s, box-shadow 0.25s var(--ease-out);
+  }
+  .wa:hover { background: var(--wa-deep); transform: translateY(-2px); box-shadow: 0 14px 26px -10px rgba(0, 0, 0, 0.5); }
+  .wa:active { transform: translateY(0); }
+  .wa svg { width: 22px; height: 22px; flex: none; }
+
+  /* ---------- top bar ---------- */
+  .top { padding-block: max(18px, env(safe-area-inset-top, 0px)) 0; }
+  .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .brand { display: inline-flex; align-items: center; gap: 10px; color: var(--on-plum); text-decoration: none; font-weight: 800; letter-spacing: 0.02em; font-size: 1.1rem; }
+  .brand img { width: 34px; height: auto; }
+  .top-note { color: var(--on-plum-soft); font-size: 0.95rem; margin: 0; }
+  .top-note strong { color: var(--on-plum); font-weight: 500; }
+
+  /* ---------- intake (first viewport) ---------- */
+  .intake { padding-block: clamp(28px, 5vw, 56px) clamp(48px, 7vw, 88px); }
+  .intake-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.9fr);
+    gap: clamp(20px, 3.5vw, 44px);
+    align-items: start;
+  }
+  .ask h1 {
+    color: var(--on-plum);
+    font-weight: 900;
+    font-size: clamp(3rem, 8.4vw, 6rem);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    margin: 0 0 18px;
+    text-wrap: balance;
+  }
+  .ask h1 .pen { color: var(--magenta); }
+  .ask .lede { color: var(--on-plum-soft); font-size: clamp(1.05rem, 1.6vw, 1.2rem); max-width: 34em; margin: 0 0 28px; }
+  .ask .lede strong { color: var(--on-plum); font-weight: 500; }
+
+  /* the sheet */
+  .sheet {
+    position: relative;
+    background: var(--paper);
+    border-radius: 6px 6px 18px 18px;
+    padding: 26px clamp(18px, 3vw, 34px) 22px;
+    box-shadow: 0 30px 60px -24px rgba(0,0,0,0.55), 0 2px 0 rgba(255,255,255,0.4) inset;
+    transform: rotate(-0.6deg);
+  }
+  .sheet-head {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
+    border-bottom: 2px solid var(--ink); padding-bottom: 10px; margin-bottom: 4px;
+  }
+  .sheet-head h2 { margin: 0; font-size: 1.15rem; font-weight: 800; }
+  .sheet-head span { color: var(--ink-soft); font-size: 0.9rem; }
+  .sheet fieldset { border: 0; margin: 0; padding: 0; }
+  .line {
+    display: grid; grid-template-columns: 2.2em 30px 1fr; align-items: center; gap: 10px;
+    min-height: var(--rule);
+    border-bottom: 1px solid var(--plum-line);
+    cursor: pointer;
+    position: relative;
+  }
+  .line:last-child { border-bottom: 0; }
+  .line .n { color: var(--ink-soft); font-size: 0.85rem; font-weight: 500; }
+  .line input { position: absolute; opacity: 0; pointer-events: none; }
+  .box { width: 26px; height: 26px; border: 2px solid var(--ink); border-radius: 5px; display: grid; place-items: center; background: #fff; transition: border-color 0.2s; }
+  .box svg { width: 26px; height: 26px; overflow: visible; }
+  .box path { fill: none; stroke: var(--magenta); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 40; stroke-dashoffset: 40; transition: stroke-dashoffset 0.35s var(--ease-out); }
+  .line .t { padding: 8px 4px; font-size: 1.02rem; line-height: 1.5; }
+  .line .t > span {
+    -webkit-box-decoration-break: clone; box-decoration-break: clone;
+    background-image: var(--swipe); background-repeat: no-repeat;
+    background-size: 0% 62%; background-position: 100% 70%;
+    transition: background-size 0.5s var(--ease-out);
+  }
+  .line:hover .box { border-color: var(--magenta); }
+  .line input:checked ~ .box { border-color: var(--magenta); }
+  .line input:checked ~ .box path { stroke-dashoffset: 0; }
+  .line input:checked ~ .t > span { background-size: 100% 62%; }
+  .line input:focus-visible ~ .box { outline: 3px solid var(--orange); outline-offset: 3px; }
+  .sheet-foot { margin: 14px 0 0; color: var(--ink-soft); font-size: 0.92rem; }
+  .sheet-foot button { font: inherit; color: var(--magenta-deep); background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 0.22em; }
+  .sheet-foot button[hidden] { display: none; }
+
+  /* the prescription slip */
+  .slip {
+    position: sticky; top: 20px;
+    background: var(--paper-2);
+    border-radius: 14px;
+    padding: 24px clamp(18px, 2.4vw, 28px) 26px;
+    box-shadow: 0 30px 60px -28px rgba(0,0,0,0.6);
+    margin-top: clamp(0px, 9vw, 150px);
+    transform: rotate(0.8deg);
+    overflow: hidden;
+  }
+  .slip h2 { margin: 4px 0 4px; font-size: 1.45rem; font-weight: 800; line-height: 1.2; }
+  .slip .status { margin: 0 0 14px; color: var(--ink-soft); font-size: 0.95rem; min-height: 1.6em; }
+  .rx { list-style: none; margin: 0 0 20px; padding: 0; }
+  .rx li {
+    position: relative;
+    padding: 12px 0 12px;
+    border-top: 1px dashed rgba(43,26,46,0.28);
+    transition: opacity 0.35s var(--ease-out), transform 0.35s var(--ease-out);
+  }
+  .rx li:first-child { border-top: 0; }
+  .rx .name { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; font-weight: 800; font-size: 1.12rem; }
+  .rx .count { font-size: 0.8rem; font-weight: 700; color: #fff; background: var(--magenta-deep); border-radius: 999px; padding: 2px 9px; opacity: 0; transform: scale(0.6); transition: opacity 0.25s, transform 0.35s var(--ease-out); }
+  .rx .what { margin: 2px 0 0; color: var(--ink-soft); font-size: 0.95rem; line-height: 1.45; }
+  .rx .see { font-size: 0.88rem; color: var(--magenta-deep); font-weight: 500; }
+  .rx li.hit .count { opacity: 1; transform: scale(1); }
+  .slip.has-marks .rx li:not(.hit) { opacity: 0.42; }
+  .rx li.top::after {
+    content: "זה הבוסט שלכם";
+    position: absolute; inset-inline-end: 46px; top: 8px;
+    border: 2.5px solid var(--orange-ink); color: var(--orange-ink);
+    font-weight: 900; font-size: 0.78rem; letter-spacing: 0.02em;
+    padding: 2px 8px; border-radius: 6px;
+    transform: rotate(-8deg);
+    background: rgba(246,137,32,0.14);
+    animation: stamp 0.45s var(--ease-out) both;
+  }
+  .rx li.top .name { padding-inline-end: 0; }
+  @keyframes stamp { from { opacity: 0; transform: rotate(-8deg) scale(1.8); } to { opacity: 1; transform: rotate(-8deg) scale(1); } }
+  .slip .wa { width: 100%; }
+  .slip .free { margin: 12px 0 0; text-align: center; color: var(--ink-soft); font-size: 0.9rem; }
+
+  /* ---------- paper sections ---------- */
+  .paper { background: var(--paper); color: var(--ink); }
+  .section { padding-block: clamp(64px, 9vw, 120px); }
+  .section h2 { font-size: clamp(2rem, 4.6vw, 3.25rem); line-height: 1.05; font-weight: 900; letter-spacing: -0.015em; margin: 0 0 14px; text-wrap: balance; }
+  .section .sub { color: var(--ink-soft); font-size: 1.12rem; max-width: 38em; margin: 0 0 clamp(32px, 4vw, 52px); }
+
+  /* process */
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border-top: 2px solid var(--ink); }
+  .steps li { padding: 20px 0 0; padding-inline-end: 22px; position: relative; }
+  .steps li + li { border-inline-start: 1px solid var(--plum-line); padding-inline-start: 22px; }
+  .steps b { display: block; font-size: 1.3rem; font-weight: 800; margin-bottom: 6px; }
+  .steps b em { font-style: normal; color: var(--magenta-deep); }
+  .steps p { margin: 0; color: var(--ink-soft); }
+  .honest { margin: clamp(32px, 4vw, 48px) 0 0; font-size: clamp(1.2rem, 2.2vw, 1.5rem); font-weight: 500; max-width: 30em; line-height: 1.45; }
+  .honest mark { background: var(--swipe); color: inherit; padding: 0 2px; }
+
+  /* ledger of work */
+  .ledger { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(28px, 4vw, 56px) clamp(28px, 5vw, 72px); }
+  .ledger section { scroll-margin-top: 24px; }
+  .ledger h3 { margin: 0; padding-bottom: 8px; border-bottom: 2px solid var(--ink); font-size: 1.35rem; font-weight: 800; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .ledger h3 small { font-size: 0.9rem; font-weight: 500; color: var(--ink-soft); }
+  .ledger ul { list-style: none; margin: 0; padding: 0; }
+  .ledger li { display: grid; grid-template-columns: 9.5em 1fr; gap: 14px; padding: 13px 0; border-bottom: 1px solid var(--plum-line); }
+  .ledger li span:first-child { font-weight: 700; font-size: 0.95rem; color: var(--magenta-deep); }
+  .ledger li span:last-child { color: var(--ink); }
+  .ledger-note { margin: 28px 0 0; color: var(--ink-soft); font-size: 0.92rem; }
+
+  /* story */
+  .story { background: var(--plum); color: var(--on-plum); }
+  .story-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: clamp(32px, 6vw, 88px); align-items: center; }
+  .story .big-num { font-weight: 900; font-size: clamp(6rem, 18vw, 13rem); line-height: 0.85; letter-spacing: -0.04em; margin: 0; color: var(--orange); }
+  .story .big-num-cap { font-size: clamp(1.25rem, 2.4vw, 1.7rem); font-weight: 700; margin: 14px 0 0; max-width: 18em; line-height: 1.3; }
+  .story p { color: var(--on-plum-soft); margin: 0 0 16px; max-width: 34em; }
+  .story p strong { color: var(--on-plum); font-weight: 500; }
+  .story .sig { color: var(--on-plum); font-weight: 700; margin-top: 22px; }
+  .story .tiny { font-size: 0.85rem; color: var(--on-plum-soft); opacity: 0.85; }
+  .bar { height: 14px; border-radius: 999px; background: rgba(255,248,240,0.12); margin: 26px 0 8px; overflow: hidden; max-width: 460px; }
+  .bar i { display: block; height: 100%; width: 10%; background: var(--orange); border-radius: 999px; }
+  .bar.full i { width: 100%; background: linear-gradient(90deg, var(--orange), var(--magenta)); }
+  .bar-label { font-size: 0.9rem; color: var(--on-plum-soft); margin: 0; }
+
+  /* tools */
+  .tools { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(24px, 4vw, 56px); }
+  .tools h3 { font-size: 1.1rem; font-weight: 800; margin: 0 0 4px; padding-bottom: 8px; border-bottom: 2px solid var(--ink); }
+  .tools ul { list-style: none; padding: 0; margin: 0 0 32px; }
+  .tools li { border-bottom: 1px solid var(--plum-line); }
+  .tools a { display: block; padding: 12px 0; text-decoration: none; transition: color 0.2s; }
+  .tools a b { display: block; font-weight: 700; }
+  .tools a span { color: var(--ink-soft); font-size: 0.93rem; }
+  .tools a:hover b { color: var(--magenta-deep); text-decoration: underline; }
+  .more { margin: 8px 0 0; color: var(--ink-soft); max-width: 52em; }
+  .more b { color: var(--ink); font-weight: 700; }
+
+  /* close */
+  .close { background: linear-gradient(135deg, var(--magenta) 0%, #B5470A 100%); color: #fff; text-align: center; }
+  .close .wrap { display: flex; flex-direction: column; align-items: center; }
+  .close img { width: 92px; margin-bottom: 18px; }
+  .close h2 { color: #fff; }
+  .close p { color: #fff; font-size: 1.15rem; margin: 0 0 30px; max-width: 30em; }
+  .close .wa { background: #fff; color: var(--wa-deep); box-shadow: 0 14px 30px -10px rgba(43,26,46,0.55); }
+  .close .wa:hover { background: var(--paper); }
+
+  /* footer */
+  footer { background: var(--plum); color: var(--on-plum-soft); padding-block: 30px max(30px, env(safe-area-inset-bottom, 0px)); font-size: 0.92rem; }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; align-items: center; }
+  footer nav { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+  footer button { font: inherit; color: var(--on-plum); background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 0.22em; }
+
+  /* legal dialogs */
+  dialog { border: 0; border-radius: 16px; padding: 0; max-width: min(600px, calc(100vw - 32px)); max-height: 82vh; color: var(--ink); background: #fff; box-shadow: 0 30px 70px rgba(0,0,0,0.35); }
+  dialog::backdrop { background: rgba(43,26,46,0.6); }
+  .dlg { padding: 28px 26px 24px; font-size: 0.95rem; line-height: 1.75; color: #4a3a4b; }
+  .dlg header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+  .dlg h2 { margin: 0; font-size: 1.35rem; font-weight: 800; color: var(--ink); }
+  .dlg .x { font: inherit; font-size: 1.6rem; line-height: 1; background: none; border: 0; cursor: pointer; color: var(--ink); padding: 2px 6px; border-radius: 6px; }
+  .dlg .date { color: var(--ink-soft); font-size: 0.85rem; margin-top: 18px; }
+
+  /* mobile sticky bar */
+  .dock {
+    position: fixed; inset-inline: 0; bottom: 0; z-index: 50;
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px));
+    background: rgba(43,26,46,0.96); backdrop-filter: blur(8px);
+    display: none; align-items: center; gap: 12px;
+    transform: translateY(110%); transition: transform 0.4s var(--ease-out);
+  }
+  .dock.on { transform: translateY(0); }
+  .dock span { color: var(--on-plum); font-size: 0.92rem; flex: 1; }
+  .dock .wa { padding: 12px 18px; font-size: 0.98rem; }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 920px) {
+    .intake-grid { grid-template-columns: 1fr; }
+    .slip { position: static; margin-top: 0; transform: none; }
+    .sheet { transform: none; }
+    .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .steps li:nth-child(3) { border-inline-start: 0; padding-inline-start: 0; }
+    .steps li:nth-child(n+3) { margin-top: 18px; border-top: 1px solid var(--plum-line); }
+    .ledger, .story-grid { grid-template-columns: 1fr; }
+    .tools { grid-template-columns: 1fr 1fr; }
+    .dock { display: flex; }
+    body.docked { padding-bottom: 76px; }
+  }
+  @media (max-width: 560px) {
+    body { font-size: 16px; }
+    .top-note { display: none; }
+    .line { grid-template-columns: 1.6em 28px 1fr; gap: 8px; }
+    .ledger li { grid-template-columns: 1fr; gap: 2px; }
+    .steps { grid-template-columns: 1fr; }
+    .steps li, .steps li + li { border-inline-start: 0; padding-inline: 0; }
+    .steps li:nth-child(n+2) { margin-top: 16px; border-top: 1px solid var(--plum-line); }
+    .tools { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition: none !important; animation: none !important; }
+    html { scroll-behavior: auto; }
+  }
+</style>
 </head>
 <body>
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TVLCVNTV"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<div id="root"></div>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TVLCVNTV" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-<script src="https://unpkg.com/@babel/standalone@7/babel.min.js"></script>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-wa" viewBox="0 0 32 32"><path fill="currentColor" d="M16.001 3C9.096 3 3.5 8.596 3.5 15.5c0 2.42.687 4.68 1.878 6.6L3 29l7.086-2.34a12.44 12.44 0 0 0 5.915 1.5h.006c6.905 0 12.5-5.596 12.5-12.5S22.906 3 16.001 3zm0 22.7h-.005a10.2 10.2 0 0 1-5.2-1.424l-.373-.222-3.86 1.276 1.293-3.76-.243-.386a10.18 10.18 0 0 1-1.563-5.484c0-5.634 4.585-10.22 10.221-10.22 2.73 0 5.294 1.064 7.225 2.997a10.15 10.15 0 0 1 2.994 7.228c0 5.635-4.585 10.221-10.221 10.221l.001-.001zm5.598-7.653c-.307-.153-1.815-.896-2.096-.998-.281-.102-.486-.153-.69.153-.204.307-.792.998-.972 1.203-.179.204-.358.23-.665.077-.307-.154-1.296-.478-2.469-1.523-.913-.814-1.529-1.82-1.708-2.127-.179-.307-.019-.473.135-.626.138-.138.307-.358.46-.537.154-.18.205-.307.307-.512.102-.204.051-.383-.026-.537-.077-.153-.69-1.664-.945-2.28-.249-.6-.502-.518-.69-.527l-.588-.01c-.204 0-.537.077-.818.383s-1.075 1.05-1.075 2.562 1.1 2.973 1.253 3.178c.153.204 2.166 3.306 5.248 4.635.733.316 1.305.505 1.751.647.735.234 1.404.2 1.933.121.59-.088 1.815-.742 2.071-1.459.256-.716.256-1.331.179-1.459-.076-.128-.281-.204-.588-.358z"/></symbol>
+</svg>
 
-<script type="module">
-  const { useEffect, useRef, useState } = React;
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Boost Me, לראש העמוד">
+      <img src="./assets/robot-white.png" alt="" width="34" height="38" />
+      BOOST ME
+    </a>
+    <p class="top-note">כאב אחד. <strong>פתרון אחד.</strong></p>
+  </div>
+</header>
 
-  const res = await fetch("./BoostMeLanding.jsx");
-  let source = await res.text();
-  source = source.replace(/^import\s*\{[^}]*\}\s*from\s*["']react["'];?\s*/m, "");
-  source = source.replace(/export default function/, "function");
+<main id="top">
+  <!-- INTAKE -->
+  <section class="intake" aria-labelledby="ask-title">
+    <div class="wrap intake-grid">
+      <div class="ask">
+        <h1 id="ask-title">מה תקוע<br /><span class="pen">לכם?</span></h1>
+        <p class="lede">סמנו כל שורה שמוכרת לכם. <strong>אנחנו נגיד איזה בוסט פותר את זה</strong>, ושיחת האבחון הראשונה עלינו.</p>
 
-  const { code } = Babel.transform(source, {
-    presets: ["react"],
-    filename: "BoostMeLanding.jsx",
+        <form class="sheet" id="sheet" aria-describedby="sheet-hint">
+          <div class="sheet-head">
+            <h2>דף אבחון</h2>
+            <span id="sheet-hint">אפשר לסמן כמה</span>
+          </div>
+          <fieldset>
+            <legend class="sr-only">מה תקוע לכם בעסק?</legend>
+            <label class="line"><span class="n">1</span><input type="checkbox" name="pain" data-boost="landing" value="יש לי הצעה טובה, ואין לה עמוד משלה" /><span class="box"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14 L11 20 L22 6" /></svg></span><span class="t"><span>יש לי הצעה טובה, ואין לה עמוד משלה</span></span></label>
+            <label class="line"><span class="n">2</span><input type="checkbox" name="pain" data-boost="automation" value="מישהו אצלנו מעתיק נתונים ידנית מכלי לכלי" /><span class="box"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14 L11 20 L22 6" /></svg></span><span class="t"><span>מישהו אצלנו מעתיק נתונים ידנית מכלי לכלי</span></span></label>
+            <label class="line"><span class="n">3</span><input type="checkbox" name="pain" data-boost="bot" value="עונים על אותן שאלות עשר פעמים ביום" /><span class="box"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14 L11 20 L22 6" /></svg></span><span class="t"><span>עונים על אותן שאלות עשר פעמים ביום</span></span></label>
+            <label class="line"><span class="n">4</span><input type="checkbox" name="pain" data-boost="training" value="כולם מדברים על AI, ואין לי מושג מאיפה להתחיל" /><span class="box"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14 L11 20 L22 6" /></svg></span><span class="t"><span>כולם מדברים על AI, ואין לי מושג מאיפה להתחיל</span></span></label>
+            <label class="line"><span class="n">5</span><input type="checkbox" name="pain" data-boost="landing" value="אנשים נכנסים לעמוד שלי ולא משאירים פרטים" /><span class="box"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14 L11 20 L22 6" /></svg></span><span class="t"><span>אנשים נכנסים לעמוד שלי ולא משאירים פרטים</span></span></label>
+            <label class="line"><span class="n">6</span><input type="checkbox" name="pain" data-boost="automation" value="דברים נופלים בין הוואטסאפ, המייל והאקסל" /><span class="box"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14 L11 20 L22 6" /></svg></span><span class="t"><span>דברים נופלים בין הוואטסאפ, המייל והאקסל</span></span></label>
+            <label class="line"><span class="n">7</span><input type="checkbox" name="pain" data-boost="bot" value="ניסינו בוט. הוא עונה יפה, ולא מדויק" /><span class="box"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14 L11 20 L22 6" /></svg></span><span class="t"><span>ניסינו בוט. הוא עונה יפה, ולא מדויק</span></span></label>
+            <label class="line"><span class="n">8</span><input type="checkbox" name="pain" data-boost="training" value="שילמנו על כלים שאף אחד אצלנו לא יודע להפעיל" /><span class="box"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14 L11 20 L22 6" /></svg></span><span class="t"><span>שילמנו על כלים שאף אחד אצלנו לא יודע להפעיל</span></span></label>
+          </fieldset>
+          <p class="sheet-foot">לא מצאתם את שלכם? כתבו לנו במילים שלכם. <button type="reset" id="clear" hidden>ניקוי הסימונים</button></p>
+        </form>
+      </div>
+
+      <aside class="slip" id="slip" aria-labelledby="slip-title">
+        <h2 id="slip-title">המרשם שלכם</h2>
+        <p class="status" id="status" aria-live="polite">ארבעה בוסטים, כל אחד לכאב אחר. סמנו, ונראה לכם איזה.</p>
+        <ul class="rx">
+          <li data-boost="landing">
+            <div class="name">בוסט נחיתה <span class="count" aria-hidden="true">0</span></div>
+            <p class="what">הצעה אחת, עמוד אחד, ומבקר שבסוף כותב לכם. <a class="see" href="#work-landing">מה בנינו</a></p>
+          </li>
+          <li data-boost="automation">
+            <div class="name">בוסט אוטומציה <span class="count" aria-hidden="true">0</span></div>
+            <p class="what">הכלים שלכם מתחילים לדבר, והמידע זורם לבד. <a class="see" href="#work-automation">מה בנינו</a></p>
+          </li>
+          <li data-boost="bot">
+            <div class="name">בוסט עובד דיגיטלי <span class="count" aria-hidden="true">0</span></div>
+            <p class="what">בוט שעונה מהמידע האמיתי שלכם, לא מנחש. <a class="see" href="#work-bot">מה בנינו</a></p>
+          </li>
+          <li data-boost="training">
+            <div class="name">הדרכה וסדנה <span class="count" aria-hidden="true">0</span></div>
+            <p class="what">מבינים AI בלי לפחד ממנו: לצוות, לעסק, או אחד-על-אחד. <a class="see" href="#work-training">מה העברנו</a></p>
+          </li>
+        </ul>
+        <a class="wa" id="wa-main" href="#" target="_blank" rel="noopener noreferrer" data-wa>
+          <svg aria-hidden="true"><use href="#i-wa" /></svg>
+          <span data-wa-label>לשיחת אבחון בוואטסאפ</span>
+        </a>
+        <p class="free">חינם, בלי התחייבות. מחיר רק כשברור מה באמת צריך.</p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="paper section" aria-labelledby="how-title">
+    <div class="wrap">
+      <h2 id="how-title">מה קורה אחרי שכותבים לנו</h2>
+      <p class="sub">בלי מצגות ארוכות ובלי "פתרון מקיף". מתחילים מהכאב, ובוחרים את הכלי הכי קטן שפותר אותו.</p>
+      <ol class="steps">
+        <li><b>אבחון <em>חינם</em></b><p>שיחה קצרה. מוצאות איתכם את הדבר האחד שבאמת תקוע.</p></li>
+        <li><b>בחירה</b><p>הבוסט המדויק לכאב, לא הגדול ביותר. לכל בוסט הצעת מחיר משלו.</p></li>
+        <li><b>בנייה</b><p>אנחנו בונות. אתם ממשיכים לעבוד.</p></li>
+        <li><b>מסירה והדרכה</b><p>מקבלים כלי שעובד, ויודעים להשתמש בו עד הסוף.</p></li>
+      </ol>
+      <p class="honest">ואם בשיחה יתברר שלא צריך כלי חדש, <mark>נגיד לכם את זה.</mark> לפעמים התשובה היא שיעור קצר על משהו שכבר יש לכם.</p>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section class="paper section" aria-labelledby="work-title" style="padding-top:0">
+    <div class="wrap">
+      <h2 id="work-title">כבר פתרנו את זה למישהו</h2>
+      <p class="sub">דברים שבנינו ומסרנו, לפי סוג העסק. בלי שמות, כי זה לא שלנו לספר.</p>
+      <div class="ledger">
+        <section id="work-landing" aria-labelledby="wl">
+          <h3 id="wl">בוסט נחיתה <small>עמודים</small></h3>
+          <ul>
+            <li><span>קמפיין פוליטי</span><span>במקום Linktree עם עשרה קישורים, עמוד אחד עם פעולה אחת: להתפקד.</span></li>
+            <li><span>קהילת הדרכות</span><span>עמוד הרשמה שמכניס כל נרשם ישר לרשימת התפוצה.</span></li>
+            <li><span>משלוחי פרחים</span><span>עמוד נחיתה לשירות המשלוחים.</span></li>
+            <li><span>מותג אוזניות יוקרה</span><span>עמוד נחיתה למוצר פרימיום.</span></li>
+          </ul>
+        </section>
+        <section id="work-automation" aria-labelledby="wa2">
+          <h3 id="wa2">בוסט אוטומציה <small>חיבורים</small></h3>
+          <ul>
+            <li><span>ערוץ חדשות</span><span>כל ידיעה יוצאת לבד לערוץ טלגרם ציבורי ול-23 קבוצות וואטסאפ.</span></li>
+            <li><span>ארגון עם משמרות</span><span>גיליון המשמרות מסתנכרן ליומן משותף, בלי העתקה.</span></li>
+            <li><span>צוות אוטומציות</span><span>בדיקה כל 20 דקות שהכל פעיל, והפעלה מחדש של מה שנפל.</span></li>
+            <li><span>ארגון קהילתי לילדים</span><span>פרקי הפודקאסט עולים לספוטיפיי אוטומטית.</span></li>
+          </ul>
+        </section>
+        <section id="work-bot" aria-labelledby="wb">
+          <h3 id="wb">בוסט עובד דיגיטלי <small>בוטים ואפליקציות</small></h3>
+          <ul>
+            <li><span>ערוץ חדשות</span><span>בוט שמתרגם חדשות מעברית לאנגלית עיתונאית, בזמן אמת.</span></li>
+            <li><span>ארגון ציבורי</span><span>שולחים מספר טלפון, ומקבלים מיד את פרטי הדובר.</span></li>
+            <li><span>ארגון קהילתי לילדים</span><span>בוט שמכיר את כל אתר הארגון ועונה על שאלות ממנו.</span></li>
+            <li><span>ארגון קהילתי לילדים</span><span>אפליקציה שעוזרת לילדים לסדר את התיק לבית הספר.</span></li>
+            <li><span>עמותה</span><span>מעקב אחרי פעילות ומסמכים ב-Monday, במקום אחד.</span></li>
+            <li><span>שימוש אישי</span><span>"שידת הקישורים": שומרים קישור, וה-AI מתייג ומסכם אותו.</span></li>
+          </ul>
+        </section>
+        <section id="work-training" aria-labelledby="wt">
+          <h3 id="wt">הדרכה וסדנה <small>אנשים</small></h3>
+          <ul>
+            <li><span>מכללה</span><span>שיעור אסינכרוני ומפגש על עיצוב מוצר עם AI.</span></li>
+            <li><span>צוות</span><span>הדרכת זום "מאפס לצוות", וספר פרומפטים שנשאר אחריה.</span></li>
+            <li><span>מנהלת בארגון</span><span>שיעורים פרטיים על הכלים שכבר היו לה: Meta, Brevo, Short.io.</span></li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="story section" aria-labelledby="story-title">
+    <div class="wrap story-grid">
+      <div>
+        <p class="big-num" aria-hidden="true">10%</p>
+        <h2 id="story-title" class="big-num-cap">זה כמה שנוצל בפועל ממערכות ה-AI היקרות שראינו מבפנים.</h2>
+        <div class="bar" aria-hidden="true"><i></i></div>
+        <p class="bar-label">מערכת מקיפה, גדולה מדי לבעיה</p>
+        <div class="bar full" aria-hidden="true"><i></i></div>
+        <p class="bar-label">כלי אחד, נכון לכאב</p>
+      </div>
+      <div>
+        <p>עבדתי בשני מקומות שקנו מערכות AI גדולות ויקרות. בשניהם השתמשו בערך בעשירית מהן. <strong>לא כי הן היו גרועות, כי הן היו גדולות מדי לבעיה האמיתית.</strong></p>
+        <p>נפלתי בזה גם בעצמי: פרויקט שנכנסתי אליו בהתלהבות, נגרר, ונכשל. מאז השאלה הראשונה שלנו היא לא "כמה גדול לבנות", אלא "מה הכלי הנכון". ברוב המקרים התשובה קטנה בהרבה.</p>
+        <p>ניסינו המון כלים, כדי שלכם לא יהיה צורך.</p>
+        <p class="sig">גל והדס, BOOST ME</p>
+        <p class="tiny">ה-10% הם מהניסיון האישי שלנו, לא סקר.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOLS -->
+  <section class="paper section" aria-labelledby="tools-title">
+    <div class="wrap">
+      <h2 id="tools-title">רוצים לנסות לבד קודם?</h2>
+      <p class="sub">כלים והסברים שבנינו ומחלקות בחינם. הם גם הדרך הכי טובה לראות איך אנחנו חושבות.</p>
+      <div class="tools">
+        <div>
+          <h3>אסיסטנטים ב-ChatGPT</h3>
+          <ul>
+            <li><a href="https://brr7.short.gy/memira" target="_blank" rel="noopener noreferrer"><b>ממירה</b><span>בונה מוקאפ לעמוד נחיתה</span></a></li>
+            <li><a href="https://brr7.short.gy/hamesakemet" target="_blank" rel="noopener noreferrer"><b>המסכמת</b><span>מתמליל שיחה לסיכום ישיבה</span></a></li>
+            <li><a href="https://chatgpt.com/g/g-68112bd17ba4819192808392538ae818-the-strategist" target="_blank" rel="noopener noreferrer"><b>The Strategist</b><span>מייצר פרופיל עסקי</span></a></li>
+            <li><a href="https://brr7.short.gy/S-AEO" target="_blank" rel="noopener noreferrer"><b>SEO-AEO-GEO</b><span>מכין תוכן לגוגל ולמנועי AI</span></a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>כלים</h3>
+          <ul>
+            <li><a href="https://wenjygal.github.io/boostme-landing-page-checklist" target="_blank" rel="noopener noreferrer"><b>בניתי עמוד נחיתה, מה עכשיו?</b><span>צ'קליסט לפני שמפרסמים</span></a></li>
+            <li><a href="https://brr7.short.gy/zero-to-team-promptbook" target="_blank" rel="noopener noreferrer"><b>מ-0 לצוות</b><span>ספר פרומפטים חכם</span></a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>הסברים</h3>
+          <ul>
+            <li><a href="https://hadasvn.github.io/Boost-me--RAG-explanation" target="_blank" rel="noopener noreferrer"><b>מה זה RAG?</b><span>ההסבר הכי טעים שיש</span></a></li>
+            <li><a href="https://brr7.short.gy/boost-me-explain-skill-vs-agent" target="_blank" rel="noopener noreferrer"><b>סוכן מול סקיל</b><span>מה ההבדל, ומתי צריך מה</span></a></li>
+            <li><a href="https://brr7.short.gy/boostme-mamma-mia" target="_blank" rel="noopener noreferrer"><b>איך בנויה אפליקציה</b><span>סיור וירטואלי במסעדה</span></a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="more"><b>ויש עוד ביד:</b> אודיט לדף נחיתה או לבוט קיים, אפליקציות (CRM, דשבורדים, טיפול בלידים), הקמת מדידה (GTM, GA4, Clarity), מיצוב ומותג, שאלונים אינטראקטיביים, תוכן וקופי לקמפיינים, ואסטרטגיית SEO / AEO / GEO.</p>
+    </div>
+  </section>
+
+  <!-- CLOSE -->
+  <section class="close section" aria-labelledby="close-title">
+    <div class="wrap">
+      <img src="./assets/robot-white.png" alt="" width="92" height="102" />
+      <h2 id="close-title">לא בטוחים מה לסמן?</h2>
+      <p>גם זה אבחון. כתבו לנו מה מעצבן אתכם השבוע, ונמצא יחד את הדבר האחד.</p>
+      <a class="wa" href="#" target="_blank" rel="noopener noreferrer" data-wa>
+        <svg aria-hidden="true"><use href="#i-wa" /></svg>
+        <span data-wa-label>לשיחת אבחון בוואטסאפ</span>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© BOOST ME · <a href="mailto:boost@boost-me.digital">boost@boost-me.digital</a></span>
+    <nav aria-label="מסמכים משפטיים">
+      <button type="button" data-open="dlg-a11y">הצהרת נגישות</button>
+      <button type="button" data-open="dlg-privacy">מדיניות פרטיות</button>
+      <button type="button" data-open="dlg-terms">תנאי שימוש</button>
+    </nav>
+  </div>
+</footer>
+
+<div class="dock" id="dock" aria-hidden="true">
+  <span id="dock-text">סימנתם 0</span>
+  <a class="wa" href="#" target="_blank" rel="noopener noreferrer" data-wa tabindex="-1">
+    <svg aria-hidden="true"><use href="#i-wa" /></svg>
+    <span>שליחה</span>
+  </a>
+</div>
+
+<!-- LEGAL (text carried over unchanged from the previous page) -->
+<dialog id="dlg-a11y" aria-labelledby="dlg-a11y-t">
+  <div class="dlg">
+    <header><h2 id="dlg-a11y-t">הצהרת נגישות</h2><button class="x" type="button" data-close aria-label="סגירת הצהרת נגישות">×</button></header>
+    <p>אתר Boost Me פועל להנגשת השירות לכלל הגולשים, לרבות אנשים עם מוגבלות, בהתאם לחוק שוויון זכויות לאנשים עם מוגבלות, התשנ"ח-1998, ולתקנות שוויון זכויות לאנשים עם מוגבלות (התאמות נגישות לשירות), תשע"ג-2013.</p>
+    <p><strong>רמת הנגישות:</strong> האתר תוכנן להתאים לתקן הישראלי ת"י 5568 ברמה AA, המבוסס על הנחיות WCAG הבינלאומיות. ההתאמות שבוצעו כוללות: ניגודיות צבעים תקנית בין טקסט לרקע, תיאור טקסטואלי (alt) לתמונות משמעותיות, סימון אלמנטים דקורטיביים כך שלא יפריעו לקוראי מסך, ניווט מלא באמצעות מקלדת, מסגרת מיקוד (focus) ברורה בעת ניווט מקלדת, ותוויות ARIA לכפתורים.</p>
+    <p><strong>בדיקת דפדפנים:</strong> האתר טרם עבר בדיקת נגישות פורמלית בדפדפנים שונים. הבדיקה מתבססת כרגע על סקירת קוד בלבד.</p>
+    <p><strong>פניות והנגשה חסרה:</strong> אם נתקלתם בבעיית נגישות באתר, או שאתם זקוקים למידע בפורמט נגיש אחר, אתם מוזמנים לפנות אלינו ונשמח לסייע.</p>
+    <p><strong>רכז נגישות:</strong> גל, מייל: boost@boost-me.digital</p>
+    <p class="date">הצהרה זו נכתבה ועודכנה לאחרונה בתאריך 03/08/2026.</p>
+  </div>
+</dialog>
+
+<dialog id="dlg-privacy" aria-labelledby="dlg-privacy-t">
+  <div class="dlg">
+    <header><h2 id="dlg-privacy-t">מדיניות פרטיות</h2><button class="x" type="button" data-close aria-label="סגירת מדיניות פרטיות">×</button></header>
+    <p>Boost Me מכבד את פרטיות המשתמשים באתר, ופועל בהתאם לחוק הגנת הפרטיות, התשמ"א-1981, לרבות תיקון מס' 13 לחוק שנכנס לתוקף ב-14.8.2025.</p>
+    <p><strong>איזה מידע נאסף:</strong></p>
+    <ul>
+      <li>נתוני שימוש וגלישה באתר (עמודים שנצפו, משך שהייה, מכשיר ודפדפן) — נאספים באמצעות Google Analytics 4 ו-Microsoft Clarity, המופעלים דרך Google Tag Manager.</li>
+      <li>פרטים שאתם משתפים ביוזמתכם בפנייה בוואטסאפ (כגון שם, מספר טלפון, ותוכן ההודעה) — כשאתם פונים אלינו דרך כפתורי הוואטסאפ באתר.</li>
+    </ul>
+    <p><strong>שימוש במידע:</strong> המידע האנליטי משמש להבנת השימוש באתר ולשיפורו. פרטי הפנייה בוואטסאפ משמשים לצורך מענה לפנייתכם וניהול ההתקשרות מולנו בלבד.</p>
+    <p><strong>Cookies:</strong> האתר משתמש ב-Cookies של Google Analytics ו-Microsoft Clarity לצורך ניתוח שימוש סטטיסטי. אלו אינם Cookies הכרחיים לתפעול האתר, ולכן הם נטענים רק לאחר קבלת הסכמתכם.</p>
+    <p><strong>שיתוף מידע עם צדדים שלישיים:</strong> נתוני האנליטיקס מעובדים בשרתי Google ו-Microsoft בהתאם למדיניות הפרטיות שלהם. אנו לא מוכרים ואיננו משתפים את המידע שלכם עם גורמים נוספים למטרות שיווק.</p>
+    <p><strong>זכויותיכם:</strong> בהתאם לחוק, אתם רשאים לפנות אלינו בבקשה לעיין במידע שנאסף עליכם, לתקן פרטים שגויים, לבקש מחיקת מידע (ככל שהדבר אפשרי בנסיבות העניין), ולהתנגד לעיבוד המידע.</p>
+    <p><strong>יצירת קשר בנושאי פרטיות:</strong> boost@boost-me.digital</p>
+    <p class="date">מדיניות זו נכתבה ועודכנה לאחרונה בתאריך 03/08/2026.</p>
+  </div>
+</dialog>
+
+<dialog id="dlg-terms" aria-labelledby="dlg-terms-t">
+  <div class="dlg">
+    <header><h2 id="dlg-terms-t">תנאי שימוש</h2><button class="x" type="button" data-close aria-label="סגירת תנאי שימוש">×</button></header>
+    <p>תנאי שימוש אלו חלים על הגלישה והשימוש באתר Boost Me ("האתר"), המופעל על ידי גל אפרתי ("אנחנו" / "מפעילת האתר"). המשך הגלישה באתר מהווה הסכמה לתנאים אלו.</p>
+    <p><strong>1. הגדרת השירות:</strong> האתר הוא אתר תדמית המציג את שירותי Boost Me — בניית דפי נחיתה ("בוסט נחיתה"), חיבור כלים באוטומציה ("בוסט אוטומציה"), בניית בוטים דיגיטליים מבוססי מידע אמיתי ("בוסט עובד דיגיטלי"), והדרכות/סדנאות/שיעורים פרטיים בנושא AI ("הדרכה וסדנה"). האתר עצמו אינו מהווה פלטפורמת מכירה או התקשרות מחייבת — כל התקשרות בפועל לשירות מתבצעת בשיחה נפרדת (לרוב בוואטסאפ) ובאישור הצעת מחיר ייעודית, שתנאיה גוברים על האמור באתר.</p>
+    <p><strong>2. שימוש מותר ואסור באתר:</strong> מותר להשתמש באתר לצורך היכרות עם השירותים ויצירת קשר בלבד. אסור: להעתיק, לשכפל, או להפיץ תוכן מהאתר ללא אישור מראש ובכתב; לבצע פעולה העלולה לפגוע בפעילות התקינה של האתר או באבטחתו; להשתמש באתר למטרה בלתי חוקית.</p>
+    <p><strong>3. הגבלת אחריות:</strong> האתר והתוכן בו מוצגים כמות שהם ("AS IS"). אנו פועלים במידת הזהירות הסבירה, אך איננו אחראים לנזק עקיף שייגרם משימוש באתר, ככל שהדבר מותר לפי חוק החוזים האחידים, תשמ"ג-1982. אין באמור בסעיף זה כדי לפטור מאחריות לנזק גוף, למעשה זדון, או מאחריות שלא ניתן לפי דין להתנות עליה או להגבילה.</p>
+    <p><strong>4. קניין רוחני:</strong> כל זכויות הקניין הרוחני באתר — לרבות עיצוב, טקסטים, לוגו, וגרפיקה — שייכות ל-Boost Me ואינן ניתנות לשימוש, העתקה, או הפצה ללא אישור מראש ובכתב.</p>
+    <p><strong>5. מדיניות ביטולים:</strong> האתר עצמו אינו מבצע עסקאות מכר מרחוק. תנאי ביטול והחזר, ככל שיחולו, ייקבעו בהצעת המחיר או בהסכם הספציפי שנחתם מול הלקוח לכל שירות, ולא באתר זה.</p>
+    <p><strong>6. סמכות שיפוט:</strong> על תנאי שימוש אלו יחולו דיני מדינת ישראל בלבד, וסמכות השיפוט הבלעדית בכל עניין הנוגע להם נתונה לבתי המשפט המוסמכים בישראל.</p>
+    <p><strong>7. יצירת קשר:</strong> לכל שאלה בנוגע לתנאי שימוש אלו ניתן לפנות אלינו במייל: boost@boost-me.digital</p>
+    <p><strong>8. עדכון תנאים:</strong> אנו רשאים לעדכן תנאי שימוש אלו מעת לעת. הנוסח המחייב הוא הנוסח המפורסם באתר במועד הגלישה.</p>
+    <p class="date">תנאים אלו נכתבו ועודכנו לאחרונה בתאריך 26/09/2026.</p>
+  </div>
+</dialog>
+
+<script>
+(function () {
+  var PHONE = "972545538883";
+  var NAMES = { landing: "בוסט נחיתה", automation: "בוסט אוטומציה", bot: "בוסט עובד דיגיטלי", training: "הדרכה וסדנה" };
+  var sheet = document.getElementById("sheet");
+  var slip = document.getElementById("slip");
+  var status = document.getElementById("status");
+  var clearBtn = document.getElementById("clear");
+  var dock = document.getElementById("dock");
+  var dockText = document.getElementById("dock-text");
+  var boxes = Array.prototype.slice.call(sheet.querySelectorAll('input[name="pain"]'));
+  var rows = Array.prototype.slice.call(slip.querySelectorAll(".rx li"));
+  var waLinks = Array.prototype.slice.call(document.querySelectorAll("[data-wa]"));
+
+  function waHref(marked) {
+    var msg;
+    if (marked.length) {
+      msg = "היי BOOST ME, הגעתי מהאתר. סימנתי בדף האבחון:\n" +
+        marked.map(function (b) { return "- " + b.value; }).join("\n") +
+        "\nאשמח לשיחת אבחון.";
+    } else {
+      msg = "היי BOOST ME, הגעתי מהאתר ואשמח לשיחת אבחון.";
+    }
+    return "https://wa.me/" + PHONE + "?text=" + encodeURIComponent(msg);
+  }
+
+  function update() {
+    var marked = boxes.filter(function (b) { return b.checked; });
+    var counts = { landing: 0, automation: 0, bot: 0, training: 0 };
+    marked.forEach(function (b) { counts[b.dataset.boost]++; });
+    var max = Math.max(counts.landing, counts.automation, counts.bot, counts.training);
+    var leaders = Object.keys(counts).filter(function (k) { return max > 0 && counts[k] === max; });
+
+    rows.forEach(function (li) {
+      var k = li.dataset.boost;
+      li.classList.toggle("hit", counts[k] > 0);
+      li.classList.toggle("top", leaders.length === 1 && leaders[0] === k);
+      li.querySelector(".count").textContent = counts[k];
+    });
+    slip.classList.toggle("has-marks", marked.length > 0);
+    clearBtn.hidden = marked.length === 0;
+
+    if (!marked.length) {
+      status.textContent = "ארבעה בוסטים, כל אחד לכאב אחר. סמנו, ונראה לכם איזה.";
+    } else if (leaders.length === 1) {
+      status.textContent = "לפי מה שסימנתם: " + NAMES[leaders[0]] + ". את השאר נסגור בשיחה.";
+    } else {
+      status.textContent = "סימנתם כמה כיוונים. בשיחת האבחון נמצא את הדבר האחד שכדאי להתחיל ממנו.";
+    }
+
+    var href = waHref(marked);
+    waLinks.forEach(function (a) { a.href = href; });
+    document.querySelectorAll("[data-wa-label]").forEach(function (s) {
+      s.textContent = marked.length ? "שליחת " + marked.length + " הסימונים בוואטסאפ" : "לשיחת אבחון בוואטסאפ";
+    });
+    if (marked.length === 1) {
+      document.querySelectorAll("[data-wa-label]").forEach(function (s) { s.textContent = "שליחת הסימון בוואטסאפ"; });
+    }
+    dockText.textContent = marked.length === 1 ? "סימנתם שורה אחת" : "סימנתם " + marked.length + " שורות";
+    dock.classList.toggle("on", marked.length > 0);
+    document.body.classList.toggle("docked", marked.length > 0);
+    dock.setAttribute("aria-hidden", marked.length ? "false" : "true");
+    dock.querySelector("a").tabIndex = marked.length ? 0 : -1;
+  }
+
+  sheet.addEventListener("change", update);
+  sheet.addEventListener("reset", function () { setTimeout(update, 0); });
+  sheet.addEventListener("submit", function (e) { e.preventDefault(); });
+
+  waLinks.forEach(function (a) {
+    a.addEventListener("click", function () {
+      var n = boxes.filter(function (b) { return b.checked; }).length;
+      (window.dataLayer = window.dataLayer || []).push({ event: "whatsapp_click", marked_count: n });
+    });
   });
 
-  const BoostMeLanding = new Function(
-    "React", "useEffect", "useRef", "useState",
-    code + "\nreturn BoostMeLanding;"
-  )(React, useEffect, useRef, useState);
+  document.querySelectorAll("[data-open]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var d = document.getElementById(btn.dataset.open);
+      if (d && d.showModal) d.showModal();
+    });
+  });
+  document.querySelectorAll("dialog").forEach(function (d) {
+    d.querySelector("[data-close]").addEventListener("click", function () { d.close(); });
+    d.addEventListener("click", function (e) { if (e.target === d) d.close(); });
+  });
 
-  ReactDOM.createRoot(document.getElementById("root")).render(React.createElement(BoostMeLanding));
+  update();
+})();
 </script>
 </body>
 </html>

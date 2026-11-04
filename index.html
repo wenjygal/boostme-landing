@@ -236,6 +236,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .ledger li span:last-child { color: var(--ink); }
   .ledger-note { margin: 28px 0 0; color: var(--ink-soft); font-size: 0.92rem; }
 
+  /* real flow diagram */
+  .flow { margin: clamp(48px, 6vw, 80px) 0 0; }
+  .flow-scroll { direction: ltr; overflow-x: auto; border-radius: 14px; border: 1px solid var(--plum-line); background: #fff; box-shadow: 0 24px 50px -30px rgba(43,26,46,0.5); }
+  .flow-scroll img { width: 100%; min-width: 900px; height: auto; direction: ltr; }
+  .flow figcaption { margin-top: 14px; color: var(--ink-soft); max-width: 60em; }
+  .flow figcaption b { display: block; color: var(--ink); font-size: 1.15rem; margin-bottom: 4px; }
   /* story */
   .story { background: var(--plum); color: var(--on-plum); }
   .story-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: clamp(32px, 6vw, 88px); align-items: center; }
@@ -478,6 +484,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </ul>
         </section>
       </div>
+      <figure class="flow">
+        <div class="flow-scroll" tabindex="0" role="region" aria-label="תרשים הזרימה של הבוט, אפשר לגלול לצדדים">
+          <img src="./assets/work-flow-bot.png" alt="תרשים זרימה ב-n8n של בוט RAG: הודעה נכנסת מוואטסאפ או טלגרם, בדיקה שהשולח מורשה, שמירת מדיה בדרייב, סוכן AI עם כלי חיפוש בתוכן האתר, בפוסטים, בפודקאסטים וביומן, ותשובה חזרה לערוץ שממנו הגיעה ההודעה" width="1313" height="300" loading="lazy" />
+        </div>
+        <figcaption>
+          <b>ככה נראה מבפנים בוט שעונה מהמידע שלכם.</b>
+          הודעה נכנסת מוואטסאפ או מטלגרם, הבוט בודק שהשולח מורשה, מחפש בתוכן של הארגון (אתר, פוסטים, פודקאסטים, יומן), ועונה באותו ערוץ. צילום מסך אמיתי, הכתובות מטושטשות.
+        </figcaption>
+      </figure>
     </div>
   </section>
 

@@ -1,0 +1,4 @@
+exclude:
+  - PRODUCT.md
+  - README.md
+  - BoostMeLanding.jsx

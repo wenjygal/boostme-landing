@@ -216,51 +216,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .honest { margin: clamp(32px, 4vw, 48px) 0 0; font-size: clamp(1.2rem, 2.2vw, 1.5rem); font-weight: 500; max-width: 30em; line-height: 1.45; }
   .honest mark { background: var(--swipe); color: inherit; padding: 0 2px; }
 
-  /* work head + real screenshot */
-  .work-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: clamp(24px, 5vw, 72px); align-items: end; margin-bottom: clamp(32px, 4vw, 52px); }
-  .work-head .sub { margin-bottom: 0; }
-  .shots { display: grid; grid-template-columns: repeat(2, clamp(150px, 15vw, 210px)); gap: 18px; align-items: start; }
+  /* work chapters: one boost, one visual, its cases beside it */
+  .chapters { display: grid; gap: clamp(56px, 7vw, 96px); }
+  .chapter { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: clamp(28px, 5vw, 72px); align-items: start; scroll-margin-top: 24px; }
+  .chapter:nth-child(even) { grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); }
+  .chapter:nth-child(even) .chapter-media { order: -1; }
+  .chapter-plain { grid-template-columns: 1fr; }
+  .chapter h3 { margin: 0 0 6px; padding-bottom: 10px; border-bottom: 2px solid var(--ink); font-size: clamp(1.5rem, 2.6vw, 1.9rem); font-weight: 900; }
+  .cases { list-style: none; margin: 0; padding: 0; }
+  .cases li { padding: 13px 0; border-bottom: 1px solid var(--plum-line); line-height: 1.5; }
+  .cases b { display: block; color: var(--magenta-deep); font-size: 0.9rem; font-weight: 700; margin-bottom: 2px; }
+  .cases-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(20px, 3vw, 40px); }
+  .shots { display: grid; grid-template-columns: repeat(2, minmax(0, 150px)); gap: 18px; margin-top: 26px; }
   .shot { margin: 0; transform: rotate(2deg); }
-  .shot + .shot { transform: rotate(-2.5deg); margin-top: 36px; }
-  .shots-note { grid-column: 1 / -1; margin: 0; font-size: 0.8rem; color: var(--ink-soft); }
-  .shot img { width: 100%; height: auto; border-radius: 22px; border: 6px solid var(--plum); box-shadow: 0 24px 40px -18px rgba(43,26,46,0.55); }
-  .shot figcaption { margin-top: 12px; font-size: 0.85rem; color: var(--ink-soft); line-height: 1.4; }
-  /* ledger of work */
-  .ledger { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(28px, 4vw, 56px) clamp(28px, 5vw, 72px); }
-  .ledger section { scroll-margin-top: 24px; }
-  .ledger h3 { margin: 0; padding-bottom: 8px; border-bottom: 2px solid var(--ink); font-size: 1.35rem; font-weight: 800; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
-  .ledger h3 small { font-size: 0.9rem; font-weight: 500; color: var(--ink-soft); }
-  .ledger ul { list-style: none; margin: 0; padding: 0; }
-  .ledger li { display: grid; grid-template-columns: 9.5em 1fr; gap: 14px; padding: 13px 0; border-bottom: 1px solid var(--plum-line); }
-  .ledger li span:first-child { font-weight: 700; font-size: 0.95rem; color: var(--magenta-deep); }
-  .ledger li span:last-child { color: var(--ink); }
-  .ledger-note { margin: 28px 0 0; color: var(--ink-soft); font-size: 0.92rem; }
+  .shot + .shot { transform: rotate(-2.5deg); margin-top: 24px; }
+  .shot img { width: 100%; height: auto; border-radius: 18px; border: 5px solid var(--plum); box-shadow: 0 20px 34px -16px rgba(43,26,46,0.5); }
+  .shot figcaption { margin-top: 10px; font-size: 0.82rem; color: var(--ink-soft); line-height: 1.35; }
 
-  /* designed flow charts + original screenshot */
-  .flows { display: grid; gap: clamp(28px, 3vw, 40px); margin-top: clamp(48px, 6vw, 80px); }
-  .flow { margin: 0; background: #fff; border-radius: 18px; padding: clamp(22px, 3vw, 34px); box-shadow: 0 24px 50px -32px rgba(43,26,46,0.45); display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 26px 32px; align-items: start; }
-  .flow figcaption { grid-column: 1; }
-  .flow figcaption b { display: block; font-size: clamp(1.25rem, 2.2vw, 1.55rem); font-weight: 800; line-height: 1.25; }
-  .flow figcaption span { color: var(--ink-soft); font-size: 0.95rem; }
-  .chain { grid-column: 1 / -1; list-style: none; margin: 8px 0 0; padding: 0; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); }
-  .chain li { position: relative; padding: 22px 0 0; padding-inline-end: 18px; border-top: 3px solid var(--ink); }
-  .chain li::before { content: ""; position: absolute; top: -9px; inset-inline-start: 0; width: 15px; height: 15px; border-radius: 50%; background: var(--magenta); box-shadow: 0 0 0 4px #fff; }
-  .chain li::after { content: ""; position: absolute; top: -8px; inset-inline-end: 6px; border: 6.5px solid transparent; border-inline-end-color: var(--ink); }
-  .chain li.end { border-top-color: var(--orange); }
-  .chain li.end::before { background: var(--orange); }
-  .chain li.end::after { display: none; }
-  .chain b { display: block; font-weight: 800; font-size: 1.05rem; line-height: 1.3; }
-  .chain span { display: block; color: var(--ink-soft); font-size: 0.92rem; line-height: 1.45; margin-top: 4px; }
-  .fail { grid-column: 1 / -1; margin: 0; padding: 10px 14px; border: 1.5px dashed var(--magenta-deep); border-radius: 10px; color: var(--ink); font-size: 0.95rem; justify-self: start; }
-  .orig { grid-column: 2; grid-row: 1; font: inherit; background: var(--paper); border: 1px solid var(--plum-line); border-radius: 10px; padding: 6px; cursor: pointer; width: 190px; text-align: center; transition: transform 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out); }
-  .orig img { width: 100%; height: 52px; object-fit: cover; object-position: left center; border-radius: 6px; }
-  .orig span { display: block; font-size: 0.8rem; color: var(--magenta-deep); font-weight: 500; text-decoration: underline; text-underline-offset: 0.2em; margin-top: 4px; }
-  .orig:hover { transform: translateY(-2px); box-shadow: 0 10px 20px -12px rgba(43,26,46,0.5); }
-  .dlg-wide { max-width: min(1200px, calc(100vw - 32px)); }
-  .dlg-wide .scroll { direction: ltr; overflow-x: auto; }
-  .dlg-wide .scroll img { min-width: 900px; width: 100%; height: auto; }
-  /* browser-framed landing shot */
-  .browser { margin: 22px 0 0; }
+  .browser { margin: 0; }
   .browser > a { display: block; border-radius: 0 0 12px 12px; overflow: hidden; box-shadow: 0 24px 44px -26px rgba(43,26,46,0.6); }
   .browser img { width: 100%; height: auto; transition: transform 0.6s var(--ease-out); }
   .browser > a:hover img { transform: scale(1.02); }
@@ -269,6 +242,28 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .browser figcaption { margin-top: 12px; color: var(--ink-soft); font-size: 0.93rem; line-height: 1.5; }
   .browser figcaption b { color: var(--ink); }
   .browser figcaption a { color: var(--magenta-deep); font-weight: 500; }
+
+  .flow { margin: 0; background: #fff; border-radius: 18px; padding: clamp(20px, 2.6vw, 30px); box-shadow: 0 24px 50px -32px rgba(43,26,46,0.45); display: grid; gap: 22px; }
+  .flow figcaption b { display: block; font-size: 1.2rem; font-weight: 800; line-height: 1.25; }
+  .flow figcaption span { color: var(--ink-soft); font-size: 0.92rem; }
+  .chain { list-style: none; margin: 8px 0 0; padding: 0; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); }
+  .chain li { position: relative; padding: 20px 0 0; padding-inline-end: 12px; border-top: 3px solid var(--ink); }
+  .chain li::before { content: ""; position: absolute; top: -9px; inset-inline-start: 0; width: 15px; height: 15px; border-radius: 50%; background: var(--magenta); box-shadow: 0 0 0 4px #fff; }
+  .chain li::after { content: ""; position: absolute; top: -8px; inset-inline-end: 4px; border: 6.5px solid transparent; border-inline-end-color: var(--ink); }
+  .chain li.end { border-top-color: var(--orange); }
+  .chain li.end::before { background: var(--orange); }
+  .chain li.end::after { display: none; }
+  .chain b { display: block; font-weight: 800; font-size: 0.98rem; line-height: 1.3; }
+  .chain span { display: block; color: var(--ink-soft); font-size: 0.85rem; line-height: 1.4; margin-top: 4px; }
+  .fail { margin: 0; padding: 9px 13px; border: 1.5px dashed var(--magenta-deep); border-radius: 10px; color: var(--ink); font-size: 0.92rem; justify-self: start; }
+  .orig { justify-self: start; display: flex; align-items: center; gap: 10px; font: inherit; background: var(--paper); border: 1px solid var(--plum-line); border-radius: 10px; padding: 5px; padding-inline-end: 12px; cursor: pointer; transition: transform 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out); }
+  .orig img { width: 96px; height: 40px; object-fit: cover; object-position: left center; border-radius: 6px; }
+  .orig span { font-size: 0.85rem; color: var(--magenta-deep); font-weight: 500; text-decoration: underline; text-underline-offset: 0.2em; }
+  .orig:hover { transform: translateY(-2px); box-shadow: 0 10px 20px -12px rgba(43,26,46,0.5); }
+  .dlg-wide { max-width: min(1200px, calc(100vw - 32px)); }
+  .dlg-wide .scroll { direction: ltr; overflow-x: auto; }
+  .dlg-wide .scroll img { min-width: 900px; width: 100%; height: auto; }
+
   /* story */
   .story { background: var(--plum); color: var(--on-plum); }
   .story-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: clamp(32px, 6vw, 88px); align-items: center; }
@@ -339,14 +334,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .steps li:nth-child(3) { border-inline-start: 0; padding-inline-start: 0; }
     .steps li:nth-child(n+3) { margin-top: 18px; border-top: 1px solid var(--plum-line); }
-    .ledger, .story-grid, .work-head { grid-template-columns: 1fr; }
-    .shots { grid-template-columns: repeat(2, minmax(0, 1fr)); justify-self: center; max-width: 440px; width: 100%; }
+    .story-grid { grid-template-columns: 1fr; }
     .tools { grid-template-columns: 1fr 1fr; }
     .dock { display: flex; }
-    .flow { grid-template-columns: 1fr; }
-    .orig { grid-column: 1; grid-row: auto; justify-self: start; }
+    .chapter, .chapter:nth-child(even) { grid-template-columns: 1fr; }
+    .chapter:nth-child(even) .chapter-media { order: 0; }
+    .cases-row { grid-template-columns: 1fr; }
     .chain { grid-auto-flow: row; grid-auto-rows: auto; }
-    .chain li { border-top: 0; border-inline-start: 3px solid var(--ink); padding: 0 0 18px; padding-inline-start: 22px; }
+    .chain li { border-top: 0; border-inline-start: 3px solid var(--ink); padding: 0 0 16px; padding-inline-start: 22px; }
     .chain li.end { border-inline-start-color: transparent; padding-bottom: 0; }
     .chain li::before { top: 2px; inset-inline-start: -9px; }
     .chain li::after { display: none; }
@@ -356,7 +351,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     body { font-size: 16px; }
     .top-note { display: none; }
     .line { grid-template-columns: 1.6em 28px 1fr; gap: 8px; }
-    .ledger li { grid-template-columns: 1fr; gap: 2px; }
     .steps { grid-template-columns: 1fr; }
     .steps li, .steps li + li { border-inline-start: 0; padding-inline: 0; }
     .steps li:nth-child(n+2) { margin-top: 16px; border-top: 1px solid var(--plum-line); }
@@ -461,105 +455,115 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <!-- WORK -->
   <section class="paper section" aria-labelledby="work-title" style="padding-top:0">
     <div class="wrap">
-      <div class="work-head">
-        <div>
-          <h2 id="work-title">כבר פתרנו את זה למישהו</h2>
-          <p class="sub">דברים שבנינו ומסרנו, לפי סוג העסק. בלי שמות, כי זה לא שלנו לספר.</p>
-        </div>
-        <div class="shots">
-          <figure class="shot">
-            <img src="./assets/work-app-elections.png" alt="צילום מסך של אפליקציית בחירות להורים: טיימר תורות ויזואלי, כפתורי תוצאות ושיתוף לקבוצת ההורים" width="442" height="732" loading="lazy" />
-            <figcaption>אפליקציית בחירות להורים, לארגון קהילתי לילדים.</figcaption>
-          </figure>
-          <figure class="shot">
-            <img src="./assets/work-app-links.png" alt="צילום מסך של שידת הקישורים: שידה עם מגירות, כל מגירה נושא עם הקישורים ששמרו בו" width="451" height="760" loading="lazy" />
-            <figcaption>שידת הקישורים: כל מגירה נושא, וה-AI מסדר.</figcaption>
-          </figure>
-          <p class="shots-note">צילומי מסך אמיתיים.</p>
-        </div>
-      </div>
-      <div class="ledger">
-        <section id="work-landing" aria-labelledby="wl">
-          <h3 id="wl">בוסט נחיתה <small>עמודים</small></h3>
-          <ul>
-            <li><span>קמפיין פוליטי</span><span>במקום Linktree עם עשרה קישורים, עמוד אחד עם פעולה אחת: להתפקד.</span></li>
-            <li><span>קהילת הדרכות</span><span>עמוד הרשמה שמכניס כל נרשם ישר לרשימת התפוצה.</span></li>
-            <li><span>משלוחי פרחים</span><span>עמוד נחיתה לשירות המשלוחים.</span></li>
-          </ul>
-          <figure class="browser">
-            <div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i></div>
-            <a href="https://hush-concept.awareflame32.chatgpt.site/" target="_blank" rel="noopener noreferrer">
-              <img src="./assets/work-hush.jpg" alt="צילום מסך של HUSH: עמוד מוצר כהה עם אוזניות HUSH בתלת-ממד ליד הכותרת רק אתם. והמוזיקה." width="1200" height="750" loading="lazy" />
-            </a>
-            <figcaption><b>HUSH, עמוד קונספט שבנינו בעצמנו.</b> מותג אוזניות שלא קיים, עם מוצר בתלת-ממד שמסתובב בדפדפן. בנינו אותו כדי להראות לאן עמוד נחיתה יכול להגיע. <a href="https://hush-concept.awareflame32.chatgpt.site/" target="_blank" rel="noopener noreferrer">לעמוד החי</a></figcaption>
-          </figure>
-        </section>
-        <section id="work-automation" aria-labelledby="wa2">
-          <h3 id="wa2">בוסט אוטומציה <small>חיבורים</small></h3>
-          <ul>
-            <li><span>ערוץ חדשות</span><span>כל ידיעה יוצאת לבד לערוץ טלגרם ציבורי ול-23 קבוצות וואטסאפ.</span></li>
-            <li><span>ארגון עם משמרות</span><span>גיליון המשמרות מסתנכרן ליומן משותף, בלי העתקה.</span></li>
-            <li><span>צוות אוטומציות</span><span>בדיקה כל 20 דקות שהכל פעיל, והפעלה מחדש של מה שנפל.</span></li>
-            <li><span>ארגון קהילתי לילדים</span><span>פרקי הפודקאסט עולים לספוטיפיי אוטומטית.</span></li>
-          </ul>
-        </section>
-        <section id="work-bot" aria-labelledby="wb">
-          <h3 id="wb">בוסט עובד דיגיטלי <small>בוטים ואפליקציות</small></h3>
-          <ul>
-            <li><span>ערוץ חדשות</span><span>בוט שמתרגם חדשות מעברית לאנגלית עיתונאית, בזמן אמת.</span></li>
-            <li><span>ארגון ציבורי</span><span>שולחים מספר טלפון, ומקבלים מיד את פרטי הדובר.</span></li>
-            <li><span>ארגון קהילתי לילדים</span><span>בוט שמכיר את כל אתר הארגון ועונה על שאלות ממנו.</span></li>
-            <li><span>ארגון קהילתי לילדים</span><span>אפליקציה שעוזרת לילדים לסדר את התיק לבית הספר.</span></li>
-            <li><span>ארגון קהילתי לילדים</span><span>אפליקציית בחירות להורים: טיימר תורות ויזואלי, תוצאות, ושיתוף לקבוצת ההורים.</span></li>
-            <li><span>עמותה</span><span>מעקב אחרי פעילות ומסמכים ב-Monday, במקום אחד.</span></li>
-            <li><span>שימוש אישי</span><span>"שידת הקישורים": שומרים קישור, וה-AI מתייג ומסכם אותו.</span></li>
-          </ul>
-        </section>
-        <section id="work-training" aria-labelledby="wt">
-          <h3 id="wt">הדרכה וסדנה <small>אנשים</small></h3>
-          <ul>
-            <li><span>מכללה</span><span>שיעור אסינכרוני ומפגש על עיצוב מוצר עם AI.</span></li>
-            <li><span>צוות</span><span>הדרכת זום "מאפס לצוות", וספר פרומפטים שנשאר אחריה.</span></li>
-            <li><span>מנהלת בארגון</span><span>שיעורים פרטיים על הכלים שכבר היו לה: Meta, Brevo, Short.io.</span></li>
-          </ul>
-        </section>
-      </div>
-      <div class="flows">
-        <figure class="flow">
-          <figcaption>
-            <b>ככה עובד מבפנים בוט שעונה מהמידע שלכם</b>
-            <span>בוט RAG לארגון קהילתי לילדים</span>
-          </figcaption>
-          <ol class="chain">
-            <li><b>הודעה נכנסת</b><span>מוואטסאפ או מטלגרם</span></li>
-            <li><b>בדיקת שולח</b><span>רק מי שמורשה מקבל תשובה</span></li>
-            <li><b>שמירת קבצים</b><span>תמונות ומסמכים נשמרים בדרייב</span></li>
-            <li><b>חיפוש בתוכן שלכם</b><span>אתר, פוסטים, פודקאסטים ויומן</span></li>
-            <li class="end"><b>תשובה</b><span>באותו ערוץ שממנו שאלו</span></li>
-          </ol>
-          <button class="orig" type="button" data-open="dlg-flow-bot" aria-label="הצגת צילום המסך המקורי של זרימת הבוט">
-            <img src="./assets/work-flow-bot.png" alt="" width="1313" height="300" loading="lazy" />
-            <span>ככה זה נראה במקור</span>
-          </button>
-        </figure>
-        <figure class="flow">
-          <figcaption>
-            <b>וככה אוטומציה שעובדת בזמן שאתם ישנים</b>
-            <span>פודקאסט לנוער שעולה לספוטיפיי לבד</span>
-          </figcaption>
-          <ol class="chain">
-            <li><b>פרק מוכן</b><span>נשלף מהרשימה</span></li>
-            <li><b>בדיקת אודיו</b><span>שהקובץ שלם ותקין</span></li>
-            <li><b>העלאה</b><span>האודיו עולה לאחסון</span></li>
-            <li><b>עדכון הפיד</b><span>הפיד שספוטיפיי קוראת ממנו</span></li>
-            <li class="end"><b>מסומן כמפורסם</b><span>ומגיעה הודעת הצלחה</span></li>
-          </ol>
-          <p class="fail">ואם משהו נכשל בדרך: מגיעה התראה מיד, במקום תקלה שקטה.</p>
-          <button class="orig" type="button" data-open="dlg-flow-podcast" aria-label="הצגת צילום המסך המקורי של אוטומציית הפודקאסט">
-            <img src="./assets/work-flow-podcast.png" alt="" width="1315" height="196" loading="lazy" />
-            <span>ככה זה נראה במקור</span>
-          </button>
-        </figure>
+      <h2 id="work-title">כבר פתרנו את זה למישהו</h2>
+      <p class="sub">דברים שבנינו, לפי סוג העסק. בלי שמות, כי זה לא שלנו לספר. כל הצילומים אמיתיים.</p>
+
+      <div class="chapters">
+        <article class="chapter" id="work-landing" aria-labelledby="wl">
+          <div class="chapter-text">
+            <h3 id="wl">בוסט נחיתה</h3>
+            <ul class="cases">
+              <li><b>קמפיין פוליטי</b>במקום Linktree עם עשרה קישורים, עמוד אחד עם פעולה אחת: להתפקד.</li>
+              <li><b>קהילת הדרכות</b>עמוד הרשמה שמכניס כל נרשם ישר לרשימת התפוצה.</li>
+              <li><b>משלוחי פרחים</b>עמוד נחיתה לשירות המשלוחים.</li>
+            </ul>
+          </div>
+          <div class="chapter-media">
+            <figure class="browser">
+              <div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+              <a href="https://hush-concept.awareflame32.chatgpt.site/" target="_blank" rel="noopener noreferrer">
+                <img src="./assets/work-hush.jpg" alt="צילום מסך של HUSH: עמוד מוצר כהה עם אוזניות HUSH בתלת-ממד ליד הכותרת רק אתם. והמוזיקה." width="1200" height="750" loading="lazy" />
+              </a>
+              <figcaption><b>HUSH, עמוד קונספט שבנינו בעצמנו.</b> מותג אוזניות שלא קיים, עם מוצר בתלת-ממד. בנינו אותו כדי להראות לאן עמוד נחיתה יכול להגיע. <a href="https://hush-concept.awareflame32.chatgpt.site/" target="_blank" rel="noopener noreferrer">לעמוד החי</a></figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="chapter" id="work-automation" aria-labelledby="wa2">
+          <div class="chapter-text">
+            <h3 id="wa2">בוסט אוטומציה</h3>
+            <ul class="cases">
+              <li><b>ערוץ חדשות</b>כל ידיעה יוצאת לבד לערוץ טלגרם ציבורי ול-23 קבוצות וואטסאפ.</li>
+              <li><b>ארגון עם משמרות</b>גיליון המשמרות מסתנכרן ליומן משותף, בלי העתקה.</li>
+              <li><b>צוות אוטומציות</b>בדיקה כל 20 דקות שהכל פעיל, והפעלה מחדש של מה שנפל.</li>
+            </ul>
+          </div>
+          <div class="chapter-media">
+            <figure class="flow">
+              <figcaption><b>אוטומציה שעובדת בזמן שאתם ישנים</b><span>פודקאסט לנוער שעולה לספוטיפיי לבד</span></figcaption>
+              <ol class="chain">
+                <li><b>פרק מוכן</b><span>נשלף מהרשימה</span></li>
+                <li><b>בדיקת אודיו</b><span>שהקובץ שלם ותקין</span></li>
+                <li><b>העלאה</b><span>האודיו עולה לאחסון</span></li>
+                <li><b>עדכון הפיד</b><span>שספוטיפיי קוראת ממנו</span></li>
+                <li class="end"><b>מסומן כמפורסם</b><span>ומגיעה הודעת הצלחה</span></li>
+              </ol>
+              <p class="fail">ואם משהו נכשל בדרך: מגיעה התראה מיד, במקום תקלה שקטה.</p>
+              <button class="orig" type="button" data-open="dlg-flow-podcast" aria-label="הצגת צילום המסך המקורי של אוטומציית הפודקאסט">
+                <img src="./assets/work-flow-podcast.png" alt="" width="1315" height="196" loading="lazy" />
+                <span>ככה זה נראה במקור</span>
+              </button>
+            </figure>
+          </div>
+        </article>
+
+        <article class="chapter" id="work-bot" aria-labelledby="wb">
+          <div class="chapter-text">
+            <h3 id="wb">בוסט עובד דיגיטלי</h3>
+            <ul class="cases">
+              <li><b>ערוץ חדשות</b>בוט שמתרגם חדשות מעברית לאנגלית עיתונאית, בזמן אמת.</li>
+              <li><b>ארגון ציבורי</b>שולחים מספר טלפון, ומקבלים מיד את פרטי הדובר.</li>
+              <li><b>עמותה</b>מעקב אחרי פעילות ומסמכים ב-Monday, במקום אחד.</li>
+              <li><b>ארגון קהילתי לילדים</b>אפליקציה שעוזרת לילדים לסדר את התיק לבית הספר.</li>
+            </ul>
+            <div class="shots">
+              <figure class="shot">
+                <img src="./assets/work-app-elections.png" alt="צילום מסך של אפליקציית בחירות להורים: טיימר תורות ויזואלי, כפתורי תוצאות ושיתוף לקבוצת ההורים" width="442" height="732" loading="lazy" />
+                <figcaption>אפליקציית בחירות להורים</figcaption>
+              </figure>
+              <figure class="shot">
+                <img src="./assets/work-app-links.png" alt="צילום מסך של שידת הקישורים: שידה עם מגירות, כל מגירה נושא עם הקישורים ששמרו בו" width="451" height="760" loading="lazy" />
+                <figcaption>שידת הקישורים: ה-AI מתייג ומסכם</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="chapter-media">
+            <figure class="flow">
+              <figcaption><b>ככה עובד מבפנים בוט שעונה מהמידע שלכם</b><span>בוט RAG לארגון קהילתי לילדים</span></figcaption>
+              <ol class="chain">
+                <li><b>הודעה נכנסת</b><span>מוואטסאפ או מטלגרם</span></li>
+                <li><b>בדיקת שולח</b><span>רק מי שמורשה מקבל תשובה</span></li>
+                <li><b>שמירת קבצים</b><span>תמונות ומסמכים בדרייב</span></li>
+                <li><b>חיפוש בתוכן שלכם</b><span>אתר, פוסטים, פודקאסטים ויומן</span></li>
+                <li class="end"><b>תשובה</b><span>באותו ערוץ שממנו שאלו</span></li>
+              </ol>
+              <button class="orig" type="button" data-open="dlg-flow-bot" aria-label="הצגת צילום המסך המקורי של זרימת הבוט">
+                <img src="./assets/work-flow-bot.png" alt="" width="1313" height="300" loading="lazy" />
+                <span>ככה זה נראה במקור</span>
+              </button>
+            </figure>
+          </div>
+        </article>
+
+        <article class="chapter" id="work-training" aria-labelledby="wt">
+          <div class="chapter-text">
+            <h3 id="wt">הדרכה וסדנה</h3>
+            <ul class="cases">
+              <li><b>צוות</b>הדרכת זום "מאפס לצוות", וספר פרומפטים שנשאר אחריה.</li>
+              <li><b>מכללה</b>שיעור אסינכרוני ומפגש על עיצוב מוצר עם AI.</li>
+              <li><b>מנהלת בארגון</b>שיעורים פרטיים על הכלים שכבר היו לה: Meta, Brevo, Short.io.</li>
+            </ul>
+          </div>
+          <div class="chapter-media">
+            <figure class="browser">
+              <div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+              <a href="https://brr7.short.gy/zero-to-team-promptbook" target="_blank" rel="noopener noreferrer">
+                <img src="./assets/work-promptbook.jpg" alt="צילום מסך של ספר הפרומפטים החכם: בוחרים נושא כמו שיווק, מכירות או גיוס, ממלאים פרטים ומקבלים פרומפט כתוב" width="1200" height="708" loading="lazy" />
+              </a>
+              <figcaption><b>ספר הפרומפטים החכם, מה שנשאר אחרי ההדרכה.</b> בוחרים נושא, ממלאים כמה פרטים על העסק, ומקבלים פרומפט מוכן. <a href="https://brr7.short.gy/zero-to-team-promptbook" target="_blank" rel="noopener noreferrer">לנסות בעצמכם</a></figcaption>
+            </figure>
+          </div>
+        </article>
       </div>
     </div>
   </section>

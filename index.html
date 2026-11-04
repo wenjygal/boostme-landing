@@ -219,9 +219,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   /* work head + real screenshot */
   .work-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: clamp(24px, 5vw, 72px); align-items: end; margin-bottom: clamp(32px, 4vw, 52px); }
   .work-head .sub { margin-bottom: 0; }
-  .shot { margin: 0; width: clamp(180px, 20vw, 240px); transform: rotate(2deg); }
+  .shots { display: grid; grid-template-columns: repeat(2, clamp(150px, 15vw, 210px)); gap: 18px; align-items: start; }
+  .shot { margin: 0; transform: rotate(2deg); }
+  .shot + .shot { transform: rotate(-2.5deg); margin-top: 36px; }
+  .shots-note { grid-column: 1 / -1; margin: 0; font-size: 0.8rem; color: var(--ink-soft); }
   .shot img { width: 100%; height: auto; border-radius: 22px; border: 6px solid var(--plum); box-shadow: 0 24px 40px -18px rgba(43,26,46,0.55); }
-  .shot figcaption { margin-top: 12px; font-size: 0.85rem; color: var(--ink-soft); line-height: 1.4; transform: rotate(-2deg); }
+  .shot figcaption { margin-top: 12px; font-size: 0.85rem; color: var(--ink-soft); line-height: 1.4; }
   /* ledger of work */
   .ledger { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(28px, 4vw, 56px) clamp(28px, 5vw, 72px); }
   .ledger section { scroll-margin-top: 24px; }
@@ -304,7 +307,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .steps li:nth-child(3) { border-inline-start: 0; padding-inline-start: 0; }
     .steps li:nth-child(n+3) { margin-top: 18px; border-top: 1px solid var(--plum-line); }
     .ledger, .story-grid, .work-head { grid-template-columns: 1fr; }
-    .shot { width: min(240px, 70%); justify-self: center; }
+    .shots { grid-template-columns: repeat(2, minmax(0, 1fr)); justify-self: center; max-width: 440px; width: 100%; }
     .tools { grid-template-columns: 1fr 1fr; }
     .dock { display: flex; }
     body.docked { padding-bottom: 76px; }
@@ -423,10 +426,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <h2 id="work-title">כבר פתרנו את זה למישהו</h2>
           <p class="sub">דברים שבנינו ומסרנו, לפי סוג העסק. בלי שמות, כי זה לא שלנו לספר.</p>
         </div>
-        <figure class="shot">
-          <img src="./assets/work-app-elections.png" alt="צילום מסך של אפליקציה שבנינו: מסך בית עם טיימר ויזואלי, כפתורי תוצאות ושיתוף לקבוצת ההורים" width="442" height="732" loading="lazy" />
-          <figcaption>אפליקציה שבנינו לארגון קהילתי לילדים. צילום מסך אמיתי.</figcaption>
-        </figure>
+        <div class="shots">
+          <figure class="shot">
+            <img src="./assets/work-app-elections.png" alt="צילום מסך של אפליקציית בחירות להורים: טיימר תורות ויזואלי, כפתורי תוצאות ושיתוף לקבוצת ההורים" width="442" height="732" loading="lazy" />
+            <figcaption>אפליקציית בחירות להורים, לארגון קהילתי לילדים.</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="./assets/work-app-links.png" alt="צילום מסך של שידת הקישורים: שידה עם מגירות, כל מגירה נושא עם הקישורים ששמרו בו" width="451" height="760" loading="lazy" />
+            <figcaption>שידת הקישורים: כל מגירה נושא, וה-AI מסדר.</figcaption>
+          </figure>
+          <p class="shots-note">צילומי מסך אמיתיים.</p>
+        </div>
       </div>
       <div class="ledger">
         <section id="work-landing" aria-labelledby="wl">

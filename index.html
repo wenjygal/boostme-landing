@@ -231,9 +231,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .shot { margin: 0; transform: rotate(2deg); }
   .shot + .shot { transform: rotate(-2.5deg); margin-top: 24px; }
   .shot img { width: 100%; height: auto; border-radius: 18px; border: 5px solid var(--plum); box-shadow: 0 20px 34px -16px rgba(43,26,46,0.5); }
+  .shot a { display: block; }
+  .shot figcaption a { color: var(--magenta-deep); font-weight: 500; }
   .shot figcaption { margin-top: 10px; font-size: 0.82rem; color: var(--ink-soft); line-height: 1.35; }
 
   .browser { margin: 0; }
+  .feature { margin: 0 0 clamp(40px, 5vw, 64px); display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: center; }
+  .feature figcaption { color: var(--ink-soft); font-size: 1.05rem; line-height: 1.6; }
+  .feature figcaption b { display: block; color: var(--ink); font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 900; line-height: 1.15; margin-bottom: 10px; }
+  .feature figcaption a { color: var(--magenta-deep); font-weight: 700; }
   .browser-sm { margin-top: 26px; max-width: 340px; }
   .browser-sm figcaption { font-size: 0.85rem; }
   .browser > a, .browser > .browser-img { display: block; border-radius: 0 0 12px 12px; overflow: hidden; box-shadow: 0 24px 44px -26px rgba(43,26,46,0.6); }
@@ -341,7 +347,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .dock { display: flex; }
     .chapter, .chapter:nth-child(even) { grid-template-columns: 1fr; }
     .chapter:nth-child(even) .chapter-media { order: 0; }
-    .cases-row { grid-template-columns: 1fr; }
+    .cases-row, .feature { grid-template-columns: 1fr; }
     .chain { grid-auto-flow: row; grid-auto-rows: auto; }
     .chain li { border-top: 0; border-inline-start: 3px solid var(--ink); padding: 0 0 16px; padding-inline-start: 22px; }
     .chain li.end { border-inline-start-color: transparent; padding-bottom: 0; }
@@ -520,8 +526,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </ul>
             <div class="shots">
               <figure class="shot">
-                <img src="./assets/work-app-elections.png" alt="צילום מסך של אפליקציית בחירות להורים: טיימר תורות ויזואלי, כפתורי תוצאות ושיתוף לקבוצת ההורים" width="442" height="732" loading="lazy" />
-                <figcaption>אפליקציית בחירות להורים</figcaption>
+                <a href="https://hakalpi-shel-hasalon.hamal4kids.workers.dev/" target="_blank" rel="noopener noreferrer">
+                  <img src="./assets/work-app-elections.png" alt="צילום מסך של אפליקציית בחירות להורים: טיימר תורות ויזואלי, כפתורי תוצאות ושיתוף לקבוצת ההורים" width="442" height="732" loading="lazy" />
+                </a>
+                <figcaption>אפליקציית בחירות להורים. <a href="https://hakalpi-shel-hasalon.hamal4kids.workers.dev/" target="_blank" rel="noopener noreferrer">לאפליקציה</a></figcaption>
               </figure>
               <figure class="shot">
                 <img src="./assets/work-app-links.png" alt="צילום מסך של שידת הקישורים: שידה עם מגירות, כל מגירה נושא עם הקישורים ששמרו בו" width="451" height="760" loading="lazy" />
@@ -603,6 +611,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div class="wrap">
       <h2 id="tools-title">רוצים לנסות לבד קודם?</h2>
       <p class="sub">כלים והסברים שבנינו ומחלקות בחינם. הם גם הדרך הכי טובה לראות איך אנחנו חושבות.</p>
+      <figure class="feature">
+        <div class="browser">
+        <div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+        <a href="https://brr7.short.gy/boost-me-explain-skill-vs-agent" target="_blank" rel="noopener noreferrer">
+          <img src="./assets/tool-skill-agent.jpg" alt="צילום מסך של ההסבר סקיל, סוכן, מאפה: כותרת סקיל הוא מתכון, סוכן הוא האופה, התוצר הוא המאפה, על רקע לחמים טריים" width="1200" height="750" loading="lazy" />
+        </a>
+        </div>
+        <figcaption><b>סקיל הוא מתכון. סוכן הוא האופה.</b> ככה אנחנו מסבירות AI: עם ריח של מאפה, בלי ז'רגון. <a href="https://brr7.short.gy/boost-me-explain-skill-vs-agent" target="_blank" rel="noopener noreferrer">להסבר המלא</a></figcaption>
+      </figure>
       <div class="tools">
         <div>
           <h3>אסיסטנטים ב-ChatGPT</h3>

@@ -294,6 +294,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .bar-label { font-size: 0.9rem; color: var(--on-plum-soft); margin: 0; }
 
   /* tools */
+  .ready { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(32px, 5vw, 64px); }
+  .ready-card { display: flex; flex-direction: column; align-items: flex-start; }
+  .ready-card .browser { width: 100%; }
+  .ready-card h3 { margin: 20px 0 6px; font-size: clamp(1.3rem, 2.2vw, 1.6rem); font-weight: 900; }
+  .ready-card p { margin: 0 0 18px; color: var(--ink-soft); line-height: 1.55; }
+  .ready-card p a { color: var(--magenta-deep); font-weight: 500; }
+  .ready-card .wa { margin-top: auto; padding: 13px 22px; font-size: 1rem; }
+  .ready-note { margin: clamp(24px, 3vw, 36px) 0 0; color: var(--ink-soft); font-size: 0.93rem; }
   .tools { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 clamp(24px, 4vw, 56px); }
   .tools h3 { font-size: 1.1rem; font-weight: 800; margin: 0 0 4px; padding-bottom: 8px; border-bottom: 2px solid var(--ink); }
   .tools ul { list-style: none; padding: 0; margin: 0 0 32px; }
@@ -381,7 +389,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .steps { grid-template-columns: 1fr; }
     .steps li, .steps li + li { border-inline-start: 0; padding-inline: 0; }
     .steps li:nth-child(n+2) { margin-top: 16px; border-top: 1px solid var(--plum-line); }
-    .tools { grid-template-columns: 1fr; }
+    .tools, .ready { grid-template-columns: 1fr; }
   }
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { transition: none !important; animation: none !important; }
@@ -494,16 +502,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <ul class="cases">
               <li><b>קמפיין פוליטי</b>במקום Linktree עם עשרה קישורים, עמוד אחד עם פעולה אחת: להתפקד.</li>
               <li><b>קהילת הדרכות</b>עמוד הרשמה שמכניס כל נרשם ישר לרשימת התפוצה.</li>
-              <li><b>משלוחי פרחים</b>עמוד קונספט שבנינו בעצמנו: מנוי זר שבועי, עם זר שנפתח תוך כדי גלילה. <a href="https://brr7.short.gy/friday-flowers" target="_blank" rel="noopener noreferrer">לעמוד החי</a></li>
             </ul>
           </div>
           <div class="chapter-media">
             <figure class="browser">
               <div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i></div>
-              <a href="https://brr7.short.gy/luxury-headphones-concept" target="_blank" rel="noopener noreferrer">
-                <img src="./assets/work-hush.jpg" alt="צילום מסך של HUSH: עמוד מוצר כהה עם אוזניות HUSH בתלת-ממד ליד הכותרת רק אתם. והמוזיקה." width="1200" height="750" loading="lazy" />
-              </a>
-              <figcaption><b>HUSH, עמוד קונספט שבנינו בעצמנו.</b> מותג אוזניות שלא קיים, עם מוצר בתלת-ממד. בנינו אותו כדי להראות לאן עמוד נחיתה יכול להגיע. <a href="https://brr7.short.gy/luxury-headphones-concept" target="_blank" rel="noopener noreferrer">לעמוד החי</a></figcaption>
+              <div class="browser-img">
+                <img src="./assets/work-results.jpg" alt="צילום מסך של עמוד עמדות המועמדים בתצוגה לפי סוגיה: נתונים מסקר ההורים, סינון לפי סוגיה ולפי מפלגה, ורשימת מועמדים תחת השאלה מהו הצעד הראשון להשבת אמון ההורים" width="1200" height="735" loading="lazy" />
+              </div>
+              <figcaption><b>עמדות המועמדים לבחירות, לארגון חינוך.</b> סקר של כ-1,500 הורים הפך לשאלות למועמדים, ומשם לעמוד אחד שמשווה את התשובות לפי מועמד או לפי סוגיה.</figcaption>
             </figure>
           </div>
         </article>
@@ -540,7 +547,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <div class="chapter-text">
             <h3 id="wb">בוסט עובד דיגיטלי</h3>
             <ul class="cases">
-              <li><b>ערוץ חדשות</b>בוט שמתרגם חדשות מעברית לאנגלית עיתונאית, בזמן אמת.</li>
+              <li><b>דסק חדשות</b>בוט שמתרגם חדשות מעברית לאנגלית עיתונאית, בזמן אמת.</li>
               <li><b>ארגון ציבורי</b>שולחים מספר טלפון, ומקבלים מיד את פרטי הדובר.</li>
               <li><b>עמותה</b>מעקב אחרי פעילות ומסמכים ב-Monday, במקום אחד.</li>
             </ul>
@@ -611,6 +618,45 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
   </section>
 
+  <!-- READY PAGES -->
+  <section class="paper section" aria-labelledby="ready-title" style="padding-top:0">
+    <div class="wrap">
+      <h2 id="ready-title">עמודים שכבר בנויים. חסר רק העסק שלכם.</h2>
+      <p class="sub">בדיוק העיצוב הזה, עם הטקסטים והתמונות שלכם. כל עמוד נמכר פעם אחת, אז הוא יהיה רק שלכם.</p>
+      <div class="ready">
+        <article class="ready-card">
+          <figure class="browser">
+            <div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+            <a href="https://brr7.short.gy/luxury-headphones-concept" target="_blank" rel="noopener noreferrer">
+              <img src="./assets/work-hush.jpg" alt="צילום מסך של HUSH: עמוד מוצר כהה עם אוזניות HUSH בתלת-ממד ליד הכותרת רק אתם. והמוזיקה." width="1200" height="750" loading="lazy" />
+            </a>
+          </figure>
+          <h3>HUSH</h3>
+          <p>מותג אוזניות שלא קיים, עם מוצר בתלת-ממד. מתאים למוצר פרימיום. <a href="https://brr7.short.gy/luxury-headphones-concept" target="_blank" rel="noopener noreferrer">לראות את העמוד</a></p>
+          <a class="wa" href="https://wa.me/972545538883?text=%D7%94%D7%99%D7%99%20BOOST%20ME%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8.%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%90%D7%AA%20%D7%94%D7%A2%D7%9E%D7%95%D7%93%20%D7%94%D7%9E%D7%95%D7%9B%D7%9F%20HUSH." target="_blank" rel="noopener noreferrer">
+            <svg aria-hidden="true"><use href="#i-wa" /></svg>
+            <span>אני רוצה את העמוד הזה</span><span class="sr-only">, HUSH, נפתח בחלון חדש</span>
+          </a>
+        </article>
+        <article class="ready-card">
+          <figure class="browser">
+            <div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+            <a href="https://brr7.short.gy/friday-flowers" target="_blank" rel="noopener noreferrer">
+              <img src="./assets/work-flowers.jpg" alt="צילום מסך של שישי פורח: עמוד מנוי פרחים עם הכותרת שישי בבוקר" width="1200" height="750" loading="lazy" />
+            </a>
+          </figure>
+          <h3>שישי פורח</h3>
+          <p>מנוי זר שבועי שלא קיים, עם זר שנפתח תוך כדי גלילה. מתאים לשירות מנוי. <a href="https://brr7.short.gy/friday-flowers" target="_blank" rel="noopener noreferrer">לראות את העמוד</a></p>
+          <a class="wa" href="https://wa.me/972545538883?text=%D7%94%D7%99%D7%99%20BOOST%20ME%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8.%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%90%D7%AA%20%D7%94%D7%A2%D7%9E%D7%95%D7%93%20%D7%94%D7%9E%D7%95%D7%9B%D7%9F%20%D7%A9%D7%99%D7%A9%D7%99%20%D7%A4%D7%95%D7%A8%D7%97." target="_blank" rel="noopener noreferrer">
+            <svg aria-hidden="true"><use href="#i-wa" /></svg>
+            <span>אני רוצה את העמוד הזה</span><span class="sr-only">, שישי פורח, נפתח בחלון חדש</span>
+          </a>
+        </article>
+      </div>
+      <p class="ready-note">שינויים מבניים, אוטומציות וסליקה הם תוספת בתשלום. עיצוב דומה הוא כבר בנייה מחדש.</p>
+    </div>
+  </section>
+
   <!-- STORY -->
   <section class="story section" aria-labelledby="story-title">
     <div class="wrap story-grid">
@@ -652,13 +698,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <ul>
             <li><a href="https://brr7.short.gy/landing-page-launch-checklist" target="_blank" rel="noopener noreferrer"><b>בניתי עמוד נחיתה, מה עכשיו?</b><span>צ'קליסט לפני שמפרסמים</span></a></li>
             <li><a href="https://brr7.short.gy/smart-prompt-book" target="_blank" rel="noopener noreferrer"><b>מ-0 לצוות</b><span>ספר פרומפטים חכם</span></a></li>
+            <li><a href="https://brr7.short.gy/skill-vs-agent" target="_blank" rel="noopener noreferrer"><b>סוכן מול סקיל</b><span>מה ההבדל, ומתי צריך מה</span></a></li>
           </ul>
         </div>
         <div>
           <h3>הסברים</h3>
           <ul>
             <li><a href="https://brr7.short.gy/what-is-rag" target="_blank" rel="noopener noreferrer"><b>מה זה RAG?</b><span>ההסבר הכי טעים שיש</span></a></li>
-            <li><a href="https://brr7.short.gy/skill-vs-agent" target="_blank" rel="noopener noreferrer"><b>סוכן מול סקיל</b><span>מה ההבדל, ומתי צריך מה</span></a></li>
             <li><a href="https://brr7.short.gy/how-an-app-is-built" target="_blank" rel="noopener noreferrer"><b>איך בנויה אפליקציה</b><span>סיור וירטואלי במסעדה</span></a></li>
             <li><a href="https://brr7.short.gy/why-ai-forgets-explained" target="_blank" rel="noopener noreferrer"><b>למה AI שוכח?</b><span>מוסבר דרך מזוודה אחת</span></a></li>
           </ul>

@@ -63,7 +63,7 @@ Free tools built (real, linkable, from linktr.ee/boost_me):
 
 Delivered client work, approved for display WITHOUT client names (describe by business type + pain; wording to be rewritten):
 - Landing: political campaign page replacing a Linktree, one action (register); community registration page wired directly to the mailing list; candidate positions results page for an education organization (cropped screenshot, no logo, no link, no candidate photos)
-- Not delivered work: HUSH and שישי פורח are concept pages for sale. Ready-page offer: this exact design with the buyer's text and images included in the price, each page sold once. This design plus structural changes, automations or payments costs extra. A similar design is a rebuild
+- Not delivered work: HUSH and שישי פורח are concept pages for sale. Ready-page offer: this exact design with the buyer's text and images included in the price, each page sold once. This design plus structural changes, automations or payments costs extra. A similar design is a rebuild. Animated models (HUSH's 3D headphones, the flowers page's bouquet) are page components, not images: replacing one means it is no longer this page, so each page fits only a business the component already suits
 - Automation: news channel auto-distribution from Telegram to a public channel + 23 WhatsApp groups; shift spreadsheet synced to a shared calendar; watchdog that checks every 20 min that all automations are on and restarts them
 - Digital worker: real-time Hebrew → journalistic English news translation bot; bot that recognizes a phone number and returns the spokesperson's details instantly
 - Apps/CRM: nonprofit activity and document tracking built on Monday

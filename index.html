@@ -128,21 +128,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     transform: rotate(-0.6deg);
   }
   .sheet-head {
-    display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
+    display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 12px;
     border-bottom: 2px solid var(--ink); padding-bottom: 10px; margin-bottom: 4px;
   }
   .sheet-head h2 { margin: 0; font-size: 1.15rem; font-weight: 800; }
-  .sheet-head span { color: var(--ink-soft); font-size: 0.9rem; }
+  .sheet-head .hint { color: var(--ink); font-size: 1rem; font-weight: 500; }
+  .sheet-count { background: var(--magenta-deep); color: #fff; font-size: 0.85rem; font-weight: 700; border-radius: 999px; padding: 2px 11px; }
+  .sheet-count[hidden] { display: none; }
   .sheet fieldset { border: 0; margin: 0; padding: 0; }
   .line {
-    display: grid; grid-template-columns: 2.2em 30px 1fr; align-items: center; gap: 10px;
+    display: grid; grid-template-columns: 30px 1fr; align-items: center; gap: 12px;
     min-height: var(--rule);
     border-bottom: 1px solid var(--plum-line);
     cursor: pointer;
     position: relative;
   }
   .line:last-child { border-bottom: 0; }
-  .line .n { color: var(--ink-soft); font-size: 0.85rem; font-weight: 500; }
   .line input { position: absolute; opacity: 0; pointer-events: none; }
   .box { width: 26px; height: 26px; border: 2px solid var(--ink); border-radius: 5px; display: grid; place-items: center; background: #fff; transition: border-color 0.2s; }
   .box svg { width: 26px; height: 26px; overflow: visible; }
@@ -387,7 +388,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   @media (max-width: 560px) {
     body { font-size: 16px; }
     .top-note { display: none; }
-    .line { grid-template-columns: 1.6em 28px 1fr; gap: 8px; }
+    .line { grid-template-columns: 28px 1fr; gap: 10px; }
     .steps { grid-template-columns: 1fr; }
     .steps li, .steps li + li { border-inline-start: 0; padding-inline: 0; }
     .steps li:nth-child(n+2) { margin-top: 16px; border-top: 1px solid var(--plum-line); }
@@ -429,18 +430,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <form class="sheet" id="sheet" aria-describedby="sheet-hint">
           <div class="sheet-head">
             <h2>דף אבחון</h2>
-            <span id="sheet-hint">אפשר לסמן כמה</span>
+            <span class="hint" id="sheet-hint">סמנו מה מוכר לכם. אפשר כמה.</span>
+            <span class="sheet-count" id="sheet-count" aria-hidden="true" hidden></span>
           </div>
           <fieldset>
             <legend class="sr-only">מה תקוע לכם בעסק?</legend>
-            <label class="line"><span class="n" aria-hidden="true">1</span><input type="checkbox" name="pain" data-boost="landing" value="יש לי הצעה טובה, ואין לה עמוד משלה" /><span class="box"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14 L11 20 L22 6" /></svg></span><span class="t"><span>יש לי הצעה טובה, ואין לה עמוד משלה</span></span></label>
-            <label class="line"><span class="n" aria-hidden="true">2</span><input type="checkbox" name="pain" data-boost="automation" value="מישהו אצלנו מעתיק נתונים ידנית מכלי לכלי" /><span class="box"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14 L11 20 L22 6" /></svg></span><span class="t"><span>מישהו אצלנו מעתיק נתונים ידנית מכלי לכלי</span></span></label>
-            <label class="line"><span class="n" aria-hidden="true">3</span><input type="checkbox" name="pain" data-boost="bot" value="עונים על אותן שאלות עשר פעמים ביום" /><span class="box"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14 L11 20 L22 6" /></svg></span><span class="t"><span>עונים על אותן שאלות עשר פעמים ביום</span></span></label>
-            <label class="line"><span class="n" aria-hidden="true">4</span><input type="checkbox" name="pain" data-boost="training" value="כולם מדברים על AI, ואין לי מושג מאיפה להתחיל" /><span class="box"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14 L11 20 L22 6" /></svg></span><span class="t"><span>כולם מדברים על AI, ואין לי מושג מאיפה להתחיל</span></span></label>
-            <label class="line"><span class="n" aria-hidden="true">5</span><input type="checkbox" name="pain" data-boost="landing" value="אנשים נכנסים לעמוד שלי ולא משאירים פרטים" /><span class="box"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14 L11 20 L22 6" /></svg></span><span class="t"><span>אנשים נכנסים לעמוד שלי ולא משאירים פרטים</span></span></label>
-            <label class="line"><span class="n" aria-hidden="true">6</span><input type="checkbox" name="pain" data-boost="automation" value="דברים נופלים בין הוואטסאפ, המייל והאקסל" /><span class="box"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14 L11 20 L22 6" /></svg></span><span class="t"><span>דברים נופלים בין הוואטסאפ, המייל והאקסל</span></span></label>
-            <label class="line"><span class="n" aria-hidden="true">7</span><input type="checkbox" name="pain" data-boost="bot" value="ניסינו בוט. הוא עונה יפה, ולא מדויק" /><span class="box"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14 L11 20 L22 6" /></svg></span><span class="t"><span>ניסינו בוט. הוא עונה יפה, ולא מדויק</span></span></label>
-            <label class="line"><span class="n" aria-hidden="true">8</span><input type="checkbox" name="pain" data-boost="training" value="שילמנו על כלים שאף אחד אצלנו לא יודע להפעיל" /><span class="box"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14 L11 20 L22 6" /></svg></span><span class="t"><span>שילמנו על כלים שאף אחד אצלנו לא יודע להפעיל</span></span></label>
+            <label class="line"><input type="checkbox" name="pain" data-boost="landing" value="יש לי הצעה טובה, ואין לה עמוד משלה" /><span class="box"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14 L11 20 L22 6" /></svg></span><span class="t"><span>יש לי הצעה טובה, ואין לה עמוד משלה</span></span></label>
+            <label class="line"><input type="checkbox" name="pain" data-boost="automation" value="מישהו אצלנו מעתיק נתונים ידנית מכלי לכלי" /><span class="box"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14 L11 20 L22 6" /></svg></span><span class="t"><span>מישהו אצלנו מעתיק נתונים ידנית מכלי לכלי</span></span></label>
+            <label class="line"><input type="checkbox" name="pain" data-boost="bot" value="עונים על אותן שאלות עשר פעמים ביום" /><span class="box"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14 L11 20 L22 6" /></svg></span><span class="t"><span>עונים על אותן שאלות עשר פעמים ביום</span></span></label>
+            <label class="line"><input type="checkbox" name="pain" data-boost="training" value="כולם מדברים על AI, ואין לי מושג מאיפה להתחיל" /><span class="box"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14 L11 20 L22 6" /></svg></span><span class="t"><span>כולם מדברים על AI, ואין לי מושג מאיפה להתחיל</span></span></label>
+            <label class="line"><input type="checkbox" name="pain" data-boost="landing" value="אנשים נכנסים לעמוד שלי ולא משאירים פרטים" /><span class="box"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14 L11 20 L22 6" /></svg></span><span class="t"><span>אנשים נכנסים לעמוד שלי ולא משאירים פרטים</span></span></label>
+            <label class="line"><input type="checkbox" name="pain" data-boost="automation" value="דברים נופלים בין הוואטסאפ, המייל והאקסל" /><span class="box"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14 L11 20 L22 6" /></svg></span><span class="t"><span>דברים נופלים בין הוואטסאפ, המייל והאקסל</span></span></label>
+            <label class="line"><input type="checkbox" name="pain" data-boost="bot" value="ניסינו בוט. הוא עונה יפה, ולא מדויק" /><span class="box"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14 L11 20 L22 6" /></svg></span><span class="t"><span>ניסינו בוט. הוא עונה יפה, ולא מדויק</span></span></label>
+            <label class="line"><input type="checkbox" name="pain" data-boost="training" value="שילמנו על כלים שאף אחד אצלנו לא יודע להפעיל" /><span class="box"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14 L11 20 L22 6" /></svg></span><span class="t"><span>שילמנו על כלים שאף אחד אצלנו לא יודע להפעיל</span></span></label>
           </fieldset>
           <p class="sheet-foot">לא מצאתם את שלכם? כתבו לנו במילים שלכם. <button type="reset" id="clear" hidden>ניקוי הסימונים</button></p>
         </form>
@@ -846,6 +848,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   var clearBtn = document.getElementById("clear");
   var dock = document.getElementById("dock");
   var dockText = document.getElementById("dock-text");
+  var sheetCount = document.getElementById("sheet-count");
   var boxes = Array.prototype.slice.call(sheet.querySelectorAll('input[name="pain"]'));
   var rows = Array.prototype.slice.call(slip.querySelectorAll(".rx li"));
   var waLinks = Array.prototype.slice.call(document.querySelectorAll("[data-wa]"));
@@ -894,6 +897,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     if (marked.length === 1) {
       document.querySelectorAll("[data-wa-label]").forEach(function (s) { s.textContent = "שליחת הסימון בוואטסאפ"; });
     }
+    sheetCount.hidden = marked.length === 0;
+    sheetCount.textContent = marked.length === 1 ? "סימנתם שורה אחת" : "סימנתם " + marked.length + " שורות";
     dockText.textContent = marked.length === 1 ? "סימנתם שורה אחת" : "סימנתם " + marked.length + " שורות";
     dock.classList.toggle("on", marked.length > 0);
     document.body.classList.toggle("docked", marked.length > 0);

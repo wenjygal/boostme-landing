@@ -262,6 +262,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .flow { margin: 0; background: #fff; border-radius: 18px; padding: clamp(20px, 2.6vw, 30px); box-shadow: 0 24px 50px -32px rgba(43,26,46,0.45); display: grid; gap: 22px; }
   .flow figcaption b { display: block; font-size: 1.2rem; font-weight: 800; line-height: 1.25; }
   .flow figcaption span { color: var(--ink-soft); font-size: 0.92rem; }
+  .chain { list-style: none; margin: 8px 0 0; padding: 0; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); }
+  .chain li { position: relative; padding: 20px 0 0; padding-inline-end: 12px; border-top: 3px solid var(--ink); }
+  .chain li::before { content: ""; position: absolute; top: -9px; inset-inline-start: 0; width: 15px; height: 15px; border-radius: 50%; background: var(--magenta); box-shadow: 0 0 0 4px #fff; }
+  .chain li::after { content: ""; position: absolute; top: -8px; inset-inline-end: 4px; border: 6.5px solid transparent; border-inline-end-color: var(--ink); }
+  .chain li.end { border-top-color: var(--orange); }
+  .chain li.end::before { background: var(--orange); }
+  .chain li.end::after { display: none; }
+  .chain b { display: block; font-weight: 800; font-size: 0.98rem; line-height: 1.3; }
+  .chain span { display: block; color: var(--ink-soft); font-size: 0.85rem; line-height: 1.4; margin-top: 4px; }
   .fail { margin: 0; padding: 9px 13px; border: 1.5px dashed var(--magenta-deep); border-radius: 10px; color: var(--ink); font-size: 0.92rem; justify-self: start; }
   .orig { justify-self: start; display: flex; align-items: center; gap: 10px; font: inherit; background: var(--paper); border: 1px solid var(--plum-line); border-radius: 10px; padding: 5px; padding-inline-end: 12px; cursor: pointer; transition: transform 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out); }
   .orig img { width: 96px; height: 40px; object-fit: cover; object-position: left center; border-radius: 6px; }
@@ -270,34 +279,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .dlg-wide { max-width: min(1200px, calc(100vw - 32px)); }
   .dlg-wide .scroll { direction: ltr; overflow-x: auto; }
   .dlg-wide .scroll img { min-width: 900px; width: 100%; height: auto; }
-
-  /* flow illustrations: icons light up one after another once in view */
-  .fchain { --step: 380ms; --acc: var(--magenta-deep); list-style: none; margin: 8px 0 0; padding: 0; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); position: relative; }
-  .fchain::before, .fchain::after { content: ""; position: absolute; top: 27px; height: 3px; inset-inline: 10%; border-radius: 2px; }
-  .fchain::before { background: var(--plum-line); }
-  .fchain::after { background: linear-gradient(90deg, var(--orange), var(--magenta)); transform-origin: right center; }
-  .fchain .st { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; padding-inline: 4px; }
-  .fchain .ic { width: 56px; height: 56px; display: grid; place-items: center; flex: none; background: var(--paper); color: var(--ink); border: 2px solid var(--ink); }
-  .fchain .ic svg { width: 32px; height: 32px; }
-  .fchain .t b { display: block; font-weight: 800; font-size: 0.98rem; line-height: 1.3; }
-  .fchain .t span { display: block; color: var(--ink-soft); font-size: 0.85rem; line-height: 1.4; margin-top: 4px; }
-  .flow-pod .ic { border-radius: 50%; box-shadow: 0 0 0 5px #fff; }
-  .flow-bot { --acc: var(--orange); }
-  .flow-bot .ic { border-radius: 16px; background: var(--plum); color: var(--on-plum); border-color: var(--plum); box-shadow: 0 0 0 5px #fff; }
-  .flow-bot .ic svg { width: 34px; height: 34px; }
-  .fchain .end .ic { border-color: var(--orange); }
-  .flow-pod .end { --acc: var(--orange); }
-  .flow-bot .end .ic { background: var(--magenta-deep); border-color: var(--magenta-deep); }
-  .flow-bot .end { --acc: #fff; }
-  /* before the section is seen (JS only): dim, then light up in order */
-  html.fx .fchain:not(.on) .ic { opacity: 0.35; transform: scale(0.92); }
-  html.fx .fchain:not(.on) .t { opacity: 0.5; }
-  html.fx .fchain:not(.on)::after { transform: scaleX(0); }
-  html.fx .fchain .ic { transition: opacity 0.45s var(--ease-out), transform 0.45s var(--ease-out); transition-delay: calc(var(--i) * var(--step)); }
-  html.fx .fchain .t { transition: opacity 0.45s var(--ease-out); transition-delay: calc(var(--i) * var(--step)); }
-  html.fx .fchain::after { transition: transform calc(var(--step) * 4) linear; }
-  html.fx .fchain.on .end .ic { animation: land 0.6s var(--ease-out) calc(var(--step) * 4) both; }
-  @keyframes land { 0% { transform: scale(0.92); } 55% { transform: scale(1.08); } 100% { transform: scale(1); } }
 
   /* story */
   .story { background: var(--plum); color: var(--on-plum); }
@@ -394,14 +375,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .steps li:nth-child(n+3) { margin-top: 18px; border-top: 1px solid var(--plum-line); }
     .story-grid { grid-template-columns: 1fr; }
     .dock { display: flex; }
-    .fchain::before, .fchain::after { inset-inline: auto; inset-inline-start: 27px; top: 28px; bottom: 28px; width: 3px; height: auto; }
-    .fchain::after { transform-origin: center top; }
-    html.fx .fchain:not(.on)::after { transform: scaleY(0); }
-    .fchain { grid-auto-flow: row; grid-auto-rows: auto; gap: 18px; }
-    .fchain .st { flex-direction: row; text-align: start; gap: 16px; padding-inline: 0; }
     .chapter, .chapter:nth-child(even) { grid-template-columns: 1fr; }
     .chapter:nth-child(even) .chapter-media { order: 0; }
     .cases-row, .feature { grid-template-columns: 1fr; }
+    .chain { grid-auto-flow: row; grid-auto-rows: auto; }
+    .chain li { border-top: 0; border-inline-start: 3px solid var(--ink); padding: 0 0 16px; padding-inline-start: 22px; }
+    .chain li.end { border-inline-start-color: transparent; padding-bottom: 0; }
+    .chain li::before { top: 2px; inset-inline-start: -9px; }
+    .chain li::after { display: none; }
     body.docked { padding-bottom: 76px; }
   }
   @media (max-width: 560px) {
@@ -550,12 +531,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <div class="chapter-media">
             <figure class="flow">
               <figcaption><b>אוטומציה שעובדת גם בלילה</b><span>פודקאסט לנוער שעולה לספוטיפיי לבד</span></figcaption>
-              <ol class="fchain flow-pod" style="--n:5">
-                <li class="st" style="--i:0"><span class="ic" aria-hidden="true"><svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><g fill="var(--acc)"><rect x="6" y="19" width="5" height="10" rx="2.5"/><rect x="14" y="12" width="5" height="24" rx="2.5"/><rect x="22" y="6" width="5" height="36" rx="2.5"/><rect x="30" y="14" width="5" height="20" rx="2.5"/><rect x="38" y="20" width="5" height="8" rx="2.5"/></g></svg></span><div class="t"><b>פרק מוכן</b><span>נשלף מהרשימה</span></div></li>
-                <li class="st" style="--i:1"><span class="ic" aria-hidden="true"><svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M13 5h16l8 8v28a2 2 0 0 1-2 2H13a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M29 5v8h8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M17 29l5 5 9-11" stroke="var(--acc)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></span><div class="t"><b>בדיקת אודיו</b><span>שהקובץ שלם ותקין</span></div></li>
-                <li class="st" style="--i:2"><span class="ic" aria-hidden="true"><svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M13 36a8 8 0 0 1-.7-16A11.5 11.5 0 0 1 34.4 17.3 9.3 9.3 0 0 1 35 36z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M24 33V21M18.5 26.5L24 21l5.5 5.5" stroke="var(--acc)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></span><div class="t"><b>העלאה</b><span>האודיו עולה לאחסון</span></div></li>
-                <li class="st" style="--i:3"><span class="ic" aria-hidden="true"><svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><circle cx="13" cy="35" r="3.8" fill="var(--acc)"/><path d="M9 21a18 18 0 0 1 18 18M9 8a31 31 0 0 1 31 31" stroke="var(--acc)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></span><div class="t"><b>עדכון הפיד</b><span>שספוטיפיי קוראת ממנו</span></div></li>
-                <li class="st end" style="--i:4"><span class="ic" aria-hidden="true"><svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><circle cx="24" cy="25" r="16" fill="var(--acc)"/><path d="M16 25.5l6 6 11-12" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M40 5v7M36.5 8.5h7" stroke="var(--acc)" stroke-width="3" stroke-linecap="round"/></svg></span><div class="t"><b>מסומן כמפורסם</b><span>ומגיעה הודעת הצלחה</span></div></li>
+              <ol class="chain">
+                <li><b>פרק מוכן</b><span>נשלף מהרשימה</span></li>
+                <li><b>בדיקת אודיו</b><span>שהקובץ שלם ותקין</span></li>
+                <li><b>העלאה</b><span>האודיו עולה לאחסון</span></li>
+                <li><b>עדכון הפיד</b><span>שספוטיפיי קוראת ממנו</span></li>
+                <li class="end"><b>מסומן כמפורסם</b><span>ומגיעה הודעת הצלחה</span></li>
               </ol>
               <p class="fail">ואם משהו נכשל בדרך: מגיעה התראה מיד, במקום תקלה שקטה.</p>
               <button class="orig" type="button" data-open="dlg-flow-podcast" aria-label="הצגת צילום המסך המקורי של אוטומציית הפודקאסט">
@@ -596,12 +577,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <div class="chapter-media">
             <figure class="flow">
               <figcaption><b>ככה עובד מבפנים בוט שעונה מהמידע שלך</b><span>בוט RAG לארגון קהילתי לילדים</span></figcaption>
-              <ol class="fchain flow-bot" style="--n:5">
-                <li class="st" style="--i:0"><span class="ic" aria-hidden="true"><svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M8 8h32a3 3 0 0 1 3 3v18a3 3 0 0 1-3 3H23l-8 7v-7H8a3 3 0 0 1-3-3V11a3 3 0 0 1 3-3z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><g fill="var(--acc)"><circle cx="15" cy="20" r="2.4"/><circle cx="24" cy="20" r="2.4"/><circle cx="33" cy="20" r="2.4"/></g></svg></span><div class="t"><b>הודעה נכנסת</b><span>מוואטסאפ או מטלגרם</span></div></li>
-                <li class="st" style="--i:1"><span class="ic" aria-hidden="true"><svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M24 4l15 5.5V21c0 9.5-6 16.5-15 21C15 37.5 9 30.5 9 21V9.5L24 4z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M17 23l5 5 9-10" stroke="var(--acc)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></span><div class="t"><b>בדיקת שולח</b><span>רק מי שמורשה מקבל תשובה</span></div></li>
-                <li class="st" style="--i:2"><span class="ic" aria-hidden="true"><svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M5 13a3 3 0 0 1 3-3h11l4 5h17a3 3 0 0 1 3 3v18a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V13z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M14 26h20M14 32h12" stroke="var(--acc)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></span><div class="t"><b>שמירת קבצים</b><span>תמונות ומסמכים בדרייב</span></div></li>
-                <li class="st" style="--i:3"><span class="ic" aria-hidden="true"><svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><circle cx="21" cy="21" r="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M30 30l11 11" stroke="var(--acc)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M16 18h10M16 23h6" stroke="var(--acc)" stroke-width="2.5" stroke-linecap="round" fill="none"/></svg></span><div class="t"><b>חיפוש בתוכן שלך</b><span>אתר, פוסטים, פודקאסטים ויומן</span></div></li>
-                <li class="st end" style="--i:4"><span class="ic" aria-hidden="true"><svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M40 8H8a3 3 0 0 0-3 3v18a3 3 0 0 0 3 3h17l8 7v-7h7a3 3 0 0 0 3-3V11a3 3 0 0 0-3-3z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M15 20l6 6 12-12" stroke="var(--acc)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></span><div class="t"><b>תשובה</b><span>באותו ערוץ שממנו שאלו</span></div></li>
+              <ol class="chain">
+                <li><b>הודעה נכנסת</b><span>מוואטסאפ או מטלגרם</span></li>
+                <li><b>בדיקת שולח</b><span>רק מי שמורשה מקבל תשובה</span></li>
+                <li><b>שמירת קבצים</b><span>תמונות ומסמכים בדרייב</span></li>
+                <li><b>חיפוש בתוכן שלך</b><span>אתר, פוסטים, פודקאסטים ויומן</span></li>
+                <li class="end"><b>תשובה</b><span>באותו ערוץ שממנו שאלו</span></li>
               </ol>
               <button class="orig" type="button" data-open="dlg-flow-bot" aria-label="הצגת צילום המסך המקורי של זרימת הבוט">
                 <img src="./assets/work-flow-bot.png" alt="" width="1313" height="300" loading="lazy" />
@@ -958,19 +939,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   onScroll();
 
   update();
-})();
-</script>
-<script>
-(function () {
-  var chains = document.querySelectorAll(".fchain");
-  if (!chains.length) return;
-  var still = matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window);
-  document.documentElement.classList.add("fx");
-  if (still) { chains.forEach(function (c) { c.classList.add("on"); }); return; }
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("on"); io.unobserve(e.target); } });
-  }, { threshold: 0.45 });
-  chains.forEach(function (c) { io.observe(c); });
 })();
 </script>
 </body>

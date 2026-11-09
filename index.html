@@ -262,15 +262,63 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .flow { margin: 0; background: #fff; border-radius: 18px; padding: clamp(20px, 2.6vw, 30px); box-shadow: 0 24px 50px -32px rgba(43,26,46,0.45); display: grid; gap: 22px; }
   .flow figcaption b { display: block; font-size: 1.2rem; font-weight: 800; line-height: 1.25; }
   .flow figcaption span { color: var(--ink-soft); font-size: 0.92rem; }
-  .chain { list-style: none; margin: 8px 0 0; padding: 0; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); }
-  .chain li { position: relative; padding: 20px 0 0; padding-inline-end: 12px; border-top: 3px solid var(--ink); }
-  .chain li::before { content: ""; position: absolute; top: -9px; inset-inline-start: 0; width: 15px; height: 15px; border-radius: 50%; background: var(--magenta); box-shadow: 0 0 0 4px #fff; }
-  .chain li::after { content: ""; position: absolute; top: -8px; inset-inline-end: 4px; border: 6.5px solid transparent; border-inline-end-color: var(--ink); }
-  .chain li.end { border-top-color: var(--orange); }
-  .chain li.end::before { background: var(--orange); }
-  .chain li.end::after { display: none; }
-  .chain b { display: block; font-weight: 800; font-size: 0.98rem; line-height: 1.3; }
-  .chain span { display: block; color: var(--ink-soft); font-size: 0.85rem; line-height: 1.4; margin-top: 4px; }
+  .flow { container-type: inline-size; }
+  /* podcast flow: the BOOST ME robot climbs one stair per step (decision #23) */
+  .stairs { position: relative; }
+  .stairs ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); grid-template-rows: 140px auto auto; }
+  .stairs li { display: grid; grid-row: 1 / span 3; grid-template-rows: subgrid; --acc: var(--magenta-deep); }
+  .stairs .plat { align-self: end; height: calc(16px + var(--i) * 18px); margin: 0 1px; border-radius: 8px 8px 0 0; background: linear-gradient(rgba(43,26,46,0.14), rgba(43,26,46,0.14)) top / 100% 10px no-repeat, rgba(43,26,46,0.06); }
+  .stairs li.lit .plat { background: linear-gradient(270deg, var(--orange), var(--magenta)) top / 100% 10px no-repeat, rgba(224,18,139,0.07); }
+  .stairs b { margin-top: 14px; }
+  .flow-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 16px; }
+  .flow-foot .fail, .flow-foot .orig { justify-self: auto; }
+  .flow-foot .fail { border: 0; padding: 0; border-radius: 0; font-size: 0.85rem; color: var(--ink-soft); flex: 1 1 14em; }
+  .stairs b, .stairs li > span:last-child { text-align: center; padding-inline: 4px; }
+  .stairs .ic svg { display: block; width: 30px; height: 30px; color: var(--ink); }
+  .stairs .ic, .stairs b, .stairs li > span:last-child { transition: opacity 0.4s var(--ease-out); }
+  .stairs li:not(.lit) .ic, .stairs li:not(.lit) b, .stairs li:not(.lit) > span:last-child { opacity: 0.4; }
+  .stairs b { display: block; font-weight: 800; font-size: 0.92rem; line-height: 1.25; }
+  .stairs li > span:last-child { display: block; color: var(--ink-soft); font-size: 0.8rem; line-height: 1.35; margin-top: 3px; }
+  .stairs .robot { position: absolute; left: 0; top: 0; width: 54px; height: 58px; margin: -58px 0 0 -27px; pointer-events: none; will-change: transform; visibility: hidden; }
+  .stairs.is-parked .robot { visibility: visible; }
+  .stairs .robot img { display: block; width: 100%; height: 100%; transform-origin: 50% 100%; }
+  .stairs .robot.cheer img { animation: robot-cheer 0.6s var(--ease-out) both; }
+  @keyframes robot-cheer { 0% { transform: scale(1); } 45% { transform: scale(1.18) translateY(-6px); } 100% { transform: scale(1); } }
+  @container (max-width: 520px) {
+    .stairs ol { display: flex; flex-direction: column-reverse; gap: 6px; }
+    .stairs li { grid-row: auto; grid-template-rows: none; grid-template-columns: 84px minmax(0, 1fr); column-gap: 14px; align-items: end; padding-top: 62px; margin-inline-start: calc(var(--i) * 8%); }
+    .stairs .plat { grid-column: 1; grid-row: 1 / span 2; height: 12px; margin: 0 0 4px; border: 0; border-radius: 6px; background: rgba(43,26,46,0.12); }
+    .stairs li.lit .plat { border-image: none; background: linear-gradient(270deg, var(--orange), var(--magenta)); }
+    .stairs .ic { display: none; }
+    .stairs b, .stairs li > span:last-child { grid-column: 2; text-align: start; padding-inline: 0; }
+  }
+
+  /* bot flow: circles on a rail that fills step by step (decision #23) */
+  .rail { --acc: var(--magenta-deep); list-style: none; margin: 8px 0 0; padding: 0; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); position: relative; }
+  .rail::before, .rail::after { content: ""; position: absolute; top: 27px; height: 3px; inset-inline: 10%; border-radius: 2px; }
+  .rail::before { background: var(--plum-line); }
+  .rail::after { background: linear-gradient(270deg, var(--orange), var(--magenta)); transform-origin: right center; transition: transform 3400ms linear; }
+  .rail.zero::after { transform: scaleX(0); transition: none; }
+  .rail li { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; padding-inline: 4px; }
+  .rail .ic { width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; background: var(--paper); color: var(--ink); border: 2px solid var(--ink); box-shadow: 0 0 0 5px #fff; transition: opacity 0.45s var(--ease-out), transform 0.45s var(--ease-out); }
+  .rail .ic svg { display: block; width: 32px; height: 32px; }
+  .rail .end { --acc: var(--orange-ink); }
+  .rail .end .ic { border-color: var(--orange); }
+  .rail b { display: block; font-weight: 800; font-size: 0.92rem; line-height: 1.25; }
+  .rail li > span:last-child { display: block; color: var(--ink-soft); font-size: 0.8rem; line-height: 1.35; }
+  .rail b, .rail li > span:last-child { transition: opacity 0.45s var(--ease-out); }
+  .rail li:not(.lit) .ic { opacity: 0.35; transform: scale(0.92); }
+  .rail li:not(.lit) b, .rail li:not(.lit) > span:last-child { opacity: 0.5; }
+  @container (max-width: 520px) {
+    .rail { grid-auto-flow: row; grid-auto-rows: auto; gap: 16px; }
+    .rail::before, .rail::after { inset-inline: auto; inset-inline-start: 27px; top: 28px; bottom: 28px; width: 3px; height: auto; }
+    .rail::after { background: linear-gradient(180deg, var(--magenta), var(--orange)); transform-origin: center top; }
+    .rail.zero::after { transform: scaleY(0); }
+    .rail li { display: grid; grid-template-columns: 56px minmax(0, 1fr); column-gap: 16px; row-gap: 2px; align-items: center; text-align: start; padding-inline: 0; }
+    .rail .ic { grid-row: 1 / span 2; }
+    .rail b { align-self: end; }
+    .rail li > span:last-child { align-self: start; }
+  }
   .fail { margin: 0; padding: 9px 13px; border: 1.5px dashed var(--magenta-deep); border-radius: 10px; color: var(--ink); font-size: 0.92rem; justify-self: start; }
   .orig { justify-self: start; display: flex; align-items: center; gap: 10px; font: inherit; background: var(--paper); border: 1px solid var(--plum-line); border-radius: 10px; padding: 5px; padding-inline-end: 12px; cursor: pointer; transition: transform 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out); }
   .orig img { width: 96px; height: 40px; object-fit: cover; object-position: left center; border-radius: 6px; }
@@ -378,11 +426,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .chapter, .chapter:nth-child(even) { grid-template-columns: 1fr; }
     .chapter:nth-child(even) .chapter-media { order: 0; }
     .cases-row, .feature { grid-template-columns: 1fr; }
-    .chain { grid-auto-flow: row; grid-auto-rows: auto; }
-    .chain li { border-top: 0; border-inline-start: 3px solid var(--ink); padding: 0 0 16px; padding-inline-start: 22px; }
-    .chain li.end { border-inline-start-color: transparent; padding-bottom: 0; }
-    .chain li::before { top: 2px; inset-inline-start: -9px; }
-    .chain li::after { display: none; }
     body.docked { padding-bottom: 76px; }
   }
   @media (max-width: 560px) {
@@ -531,18 +574,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <div class="chapter-media">
             <figure class="flow">
               <figcaption><b>אוטומציה שעובדת גם בלילה</b><span>פודקאסט לנוער שעולה לספוטיפיי לבד</span></figcaption>
-              <ol class="chain">
-                <li><b>פרק מוכן</b><span>נשלף מהרשימה</span></li>
-                <li><b>בדיקת אודיו</b><span>שהקובץ שלם ותקין</span></li>
-                <li><b>העלאה</b><span>האודיו עולה לאחסון</span></li>
-                <li><b>עדכון הפיד</b><span>שספוטיפיי קוראת ממנו</span></li>
-                <li class="end"><b>מסומן כמפורסם</b><span>ומגיעה הודעת הצלחה</span></li>
+              <div class="stairs" data-anim="stairs">
+              <ol>
+                <li class="lit" style="--i:0;--x:88%;--y:60%"><span class="plat" aria-hidden="true"></span><b>פרק מוכן</b><span>נשלף מהרשימה</span></li>
+                <li class="lit" style="--i:1;--x:69%;--y:50.5%"><span class="plat" aria-hidden="true"></span><b>בדיקת אודיו</b><span>שהקובץ שלם ותקין</span></li>
+                <li class="lit" style="--i:2;--x:50%;--y:41%"><span class="plat" aria-hidden="true"></span><b>העלאה</b><span>האודיו עולה לאחסון</span></li>
+                <li class="lit" style="--i:3;--x:31%;--y:31.5%"><span class="plat" aria-hidden="true"></span><b>עדכון הפיד</b><span>שספוטיפיי קוראת ממנו</span></li>
+                <li class="lit end" style="--i:4;--x:12%;--y:22%"><span class="plat" aria-hidden="true"></span><b>מסומן כמפורסם</b><span>ומגיעה הודעת הצלחה</span></li>
               </ol>
-              <p class="fail">ואם משהו נכשל בדרך: מגיעה התראה מיד, במקום תקלה שקטה.</p>
-              <button class="orig" type="button" data-open="dlg-flow-podcast" aria-label="הצגת צילום המסך המקורי של אוטומציית הפודקאסט">
-                <img src="./assets/work-flow-podcast.png" alt="" width="1315" height="196" loading="lazy" />
-                <span>ככה זה נראה במקור</span>
-              </button>
+              <span class="robot" aria-hidden="true"><img src="./assets/robot-color.png" alt="" width="212" height="230" /></span>
+              </div>
+              <div class="flow-foot">
+                <p class="fail">ואם משהו נכשל בדרך: מגיעה התראה מיד, במקום תקלה שקטה.</p>
+                <button class="orig" type="button" data-open="dlg-flow-podcast" aria-label="הצגת צילום המסך המקורי של אוטומציית הפודקאסט">
+                  <img src="./assets/work-flow-podcast.png" alt="" width="1315" height="196" loading="lazy" />
+                  <span>ככה זה נראה מאחורי הקלעים</span>
+                </button>
+              </div>
             </figure>
           </div>
         </article>
@@ -577,16 +625,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <div class="chapter-media">
             <figure class="flow">
               <figcaption><b>ככה עובד מבפנים בוט שעונה מהמידע שלך</b><span>בוט RAG לארגון קהילתי לילדים</span></figcaption>
-              <ol class="chain">
-                <li><b>הודעה נכנסת</b><span>מוואטסאפ או מטלגרם</span></li>
-                <li><b>בדיקת שולח</b><span>רק מי שמורשה מקבל תשובה</span></li>
-                <li><b>שמירת קבצים</b><span>תמונות ומסמכים בדרייב</span></li>
-                <li><b>חיפוש בתוכן שלך</b><span>אתר, פוסטים, פודקאסטים ויומן</span></li>
-                <li class="end"><b>תשובה</b><span>באותו ערוץ שממנו שאלו</span></li>
+              <ol class="rail" data-anim="rail">
+                <li class="lit"><span class="ic" aria-hidden="true"><svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M8 8h32a3 3 0 0 1 3 3v18a3 3 0 0 1-3 3H23l-8 7v-7H8a3 3 0 0 1-3-3V11a3 3 0 0 1 3-3z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><g fill="var(--acc)"><circle cx="15" cy="20" r="2.4"/><circle cx="24" cy="20" r="2.4"/><circle cx="33" cy="20" r="2.4"/></g></svg></span><b>הודעה נכנסת</b><span>מוואטסאפ או מטלגרם</span></li>
+                <li class="lit"><span class="ic" aria-hidden="true"><svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M24 4l15 5.5V21c0 9.5-6 16.5-15 21C15 37.5 9 30.5 9 21V9.5L24 4z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M17 23l5 5 9-10" stroke="var(--acc)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></span><b>בדיקת שולח</b><span>רק מי שמורשה מקבל תשובה</span></li>
+                <li class="lit"><span class="ic" aria-hidden="true"><svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M5 13a3 3 0 0 1 3-3h11l4 5h17a3 3 0 0 1 3 3v18a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V13z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M14 26h20M14 32h12" stroke="var(--acc)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></span><b>שמירת קבצים</b><span>תמונות ומסמכים בדרייב</span></li>
+                <li class="lit"><span class="ic" aria-hidden="true"><svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><circle cx="21" cy="21" r="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M30 30l11 11" stroke="var(--acc)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M16 18h10M16 23h6" stroke="var(--acc)" stroke-width="2.5" stroke-linecap="round" fill="none"/></svg></span><b>חיפוש בתוכן שלך</b><span>אתר, פוסטים, פודקאסטים ויומן</span></li>
+                <li class="lit end"><span class="ic" aria-hidden="true"><svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M40 8H8a3 3 0 0 0-3 3v18a3 3 0 0 0 3 3h17l8 7v-7h7a3 3 0 0 0 3-3V11a3 3 0 0 0-3-3z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M15 20l6 6 12-12" stroke="var(--acc)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></span><b>תשובה</b><span>באותו ערוץ שממנו שאלו</span></li>
               </ol>
               <button class="orig" type="button" data-open="dlg-flow-bot" aria-label="הצגת צילום המסך המקורי של זרימת הבוט">
                 <img src="./assets/work-flow-bot.png" alt="" width="1313" height="300" loading="lazy" />
-                <span>ככה זה נראה במקור</span>
+                <span>ככה זה נראה מאחורי הקלעים</span>
               </button>
             </figure>
           </div>
@@ -939,6 +987,66 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   onScroll();
 
   update();
+})();
+</script>
+<script>
+/* flow illustrations (decision #23): lit at rest; each plays once when it scrolls into view */
+(function () {
+  var still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var T = 850;
+  var figs = Array.prototype.slice.call(document.querySelectorAll("[data-anim]"));
+  if (!figs.length) return;
+  function items(el) { return Array.prototype.slice.call(el.querySelectorAll("li")); }
+  function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+  function platPoints(st) {
+    var box = st.getBoundingClientRect();
+    return items(st).map(function (li) {
+      var r = li.querySelector(".plat").getBoundingClientRect();
+      return [r.left + r.width / 2 - box.left, r.top - box.top];
+    });
+  }
+  function put(rb, p) { rb.style.transform = "translate(" + p[0] + "px," + p[1] + "px)"; }
+  function parkRobot(st) { var pts = platPoints(st); put(st.querySelector(".robot"), pts[pts.length - 1]); }
+
+  var stairs = document.querySelector('[data-anim="stairs"]');
+  if (stairs) {
+    parkRobot(stairs); stairs.classList.add("is-parked");
+    var rz;
+    addEventListener("resize", function () { clearTimeout(rz); rz = setTimeout(function () { if (!stairs._busy) parkRobot(stairs); }, 120); });
+  }
+  if (still || !("IntersectionObserver" in window)) return;
+
+  function arm(el) {
+    items(el).forEach(function (li) { li.classList.remove("lit"); });
+    if (el.classList.contains("rail")) el.classList.add("zero");
+    if (el === stairs) put(el.querySelector(".robot"), platPoints(el)[0]);
+  }
+  function play(el) {
+    var lis = items(el);
+    lis.forEach(function (li, j) { setTimeout(function () { li.classList.add("lit"); }, j * T); });
+    if (el.classList.contains("rail")) {
+      requestAnimationFrame(function () { requestAnimationFrame(function () { el.classList.remove("zero"); }); });
+      return;
+    }
+    var rb = el.querySelector(".robot"), t0 = performance.now(), n = lis.length - 1;
+    el._busy = true; rb.classList.remove("cheer");
+    (function frame(now) {
+      var P = platPoints(el), e = Math.max(0, now - t0), s = Math.min(Math.floor(e / T), n - 1), u = clamp((e - s * T) / T, 0, 1);
+      var v = clamp((u - 0.28) / 0.72, 0, 1);
+      if (e >= n * T) { s = n - 1; v = 1; }
+      var a = P[s], b = P[s + 1], hop = Math.max(60, Math.abs(a[1] - b[1]) + 40);
+      put(rb, [a[0] + (b[0] - a[0]) * v, a[1] + (b[1] - a[1]) * v - hop * 4 * v * (1 - v)]);
+      if (e < n * T + 40) requestAnimationFrame(frame);
+      else { el._busy = false; rb.classList.add("cheer"); }
+    })(t0);
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) { if (en.isIntersecting) { io.unobserve(en.target); play(en.target); } });
+  }, { threshold: 0.45 });
+  figs.forEach(function (el) {
+    if (el.getBoundingClientRect().bottom < 0) return; /* already scrolled past: leave it lit */
+    arm(el); io.observe(el);
+  });
 })();
 </script>
 </body>

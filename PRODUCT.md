@@ -32,7 +32,7 @@ Four boosts, presented as equals:
 - בוסט נחיתה: an offer with no page of its own
 - בוסט אוטומציה: tools that don't talk to each other, someone copies by hand
 - בוסט עובד דיגיטלי: a bot that answers nicely but not accurately; built on the client's real data
-- הדרכה וסדנה (או שיעור פרטי): where to start with AI; Zoom, team / owner / 1:1
+- בוסט הטמעה והדרכה (או שיעור פרטי): where to start with AI; Zoom, team / owner / 1:1
 Additional services (secondary): audits for existing landing pages/bots, apps (CRM, dashboards, lead handling), measurement setup (GTM, GA4, Clarity), positioning and brand, interactive questionnaires, campaign copy, SEO/AEO/GEO.
 
 Pricing: no numbers on the page. The first step is a free diagnosis call with no commitment.
@@ -46,7 +46,7 @@ Legal: accessibility statement, privacy policy, terms of use (popups) must remai
 - Symbol: the logo robot doing a small victory gesture (arms up, magenta-orange gradient). "Small" is deliberate: one focused win.
 - Colors magenta #E0128B and orange #F68920 (gradient), soft cream/white grounds, dark plum for lines. Font Rubik, RTL. (Binding brand-book facts; visual world decided in new-work.)
 - Voice: direct, confident/pragmatic, warm/empathetic, slightly gently cynical. On-voice: "בלי מצגות ארוכות. בלי 'פתרון מקיף'. רק: הבעיה שלך, נפתרת, עכשיו." Off-voice: jargon, buzzwords, no concrete fact.
-- Grammar: brand speaks in first-person plural feminine ("אנחנו בונות / עושות / יכולות"); addresses visitors in second-person plural ("אתם / לכם").
+- Grammar: brand speaks in first-person plural feminine ("אנחנו בונות / עושות / יכולות"); addresses each visitor in gender-neutral singular, using forms spelled the same for both genders ("אצלך / לך / סימנת") or impersonal phrasing ("אפשר לסמן"); never "אתם / לכם" (decision 2026-11-08).
 - No long em dashes in Hebrew copy.
 - Run jointly by Gal and Hadas (partner since 2026-09-14).
 - Assets: logo white https://res.cloudinary.com/jrag9ksp/image/upload/v1785356847/white_logo_cpm31h.png, cappuccino mascot image https://res.cloudinary.com/jrag9ksp/image/upload/v1785356755/coffee_boost_me_kut0q4.webp, favicon.png, og-image.png.

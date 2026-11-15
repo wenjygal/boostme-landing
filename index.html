@@ -571,7 +571,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <div class="lead">
             <div class="lead-text">
               <p class="lead-title">עמדות המועמדים לבחירות</p>
-              <p class="lead-desc">סקר של כ-1,500 הורים הפך לשאלות למועמדים, ומשם לעמוד אחד שמשווה את התשובות לפי מועמד או לפי סוגיה.</p>
+              <p class="lead-desc">סקר של כ-1,500 הורים הפך לשאלות למועמדים, ומשם לעמוד אחד שמשווה את התשובות לפי מועמד או לפי סוגיה. <a href="https://knesset-education-survey.lovable.app/" target="_blank" rel="noopener noreferrer">לראות את העמוד<span class="sr-only">, נפתח בחלון חדש</span></a></p>
               <figure class="said">
                 <blockquote><p>גל היא אשת מקצוע יצירתית, יסודית וקשובה. היא הבינה מהר מאוד מה אנחנו צריכים, הציעה רעיונות טובים וידעה להפוך את מה שדמיינו לאתר נוח, ברור ומזמין. לאורך כל הדרך הייתה זמינה, סבלנית ופתוחה לכל בקשה והערה.</p></blockquote>
                 <figcaption><b>איילת קציר</b>מייסדת ויו"ר תנועת מובילי חינוך</figcaption>
@@ -1022,6 +1022,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     card.querySelectorAll("a").forEach(function (a) {
       a.addEventListener("click", function () { track({ event: "example_click", example: h ? h.textContent.trim() : "ready" }); });
     });
+  });
+  document.querySelectorAll(".lead-text .lead-desc a").forEach(function (a) {
+    a.addEventListener("click", function () { track({ event: "example_click", example: "candidates" }); });
   });
   document.querySelectorAll('[data-open^="dlg-flow"]').forEach(function (btn) {
     btn.addEventListener("click", function () { track({ event: "example_click", example: btn.getAttribute("data-open").replace("dlg-", "") }); });

@@ -1009,6 +1009,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     });
   });
 
+  /* measurement: checklist ticks, clicks on example work */
+  function track(o) { (window.dataLayer = window.dataLayer || []).push(o); }
+  boxes.forEach(function (b) {
+    b.addEventListener("change", function () {
+      var n = boxes.filter(function (x) { return x.checked; }).length;
+      track({ event: "checklist_mark", checked: b.checked, marked_count: n, topic: b.getAttribute("data-boost") || "" });
+    });
+  });
+  document.querySelectorAll(".ready-card").forEach(function (card) {
+    var h = card.querySelector("h3");
+    card.querySelectorAll("a").forEach(function (a) {
+      a.addEventListener("click", function () { track({ event: "example_click", example: h ? h.textContent.trim() : "ready" }); });
+    });
+  });
+  document.querySelectorAll('[data-open^="dlg-flow"]').forEach(function (btn) {
+    btn.addEventListener("click", function () { track({ event: "example_click", example: btn.getAttribute("data-open").replace("dlg-", "") }); });
+  });
+
   document.querySelectorAll("[data-open]").forEach(function (btn) {
     btn.addEventListener("click", function () {
       var d = document.getElementById(btn.dataset.open);

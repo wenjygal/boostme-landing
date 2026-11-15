@@ -536,7 +536,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <p class="what">הכלים שכבר יש לך נכנסים לעבודה היומיומית: לצוות או אחד-על-אחד, עד שזה עובד. <a class="see" href="#work-training">מה עשינו</a></p>
           </li>
         </ul>
-        <a class="wa" id="wa-main" href="#" target="_blank" rel="noopener noreferrer" data-wa>
+        <a class="wa" id="wa-main" href="#" target="_blank" rel="noopener noreferrer" data-wa data-loc="hero">
           <svg aria-hidden="true"><use href="#i-wa" /></svg>
           <span data-wa-label>לשיחת אבחון בוואטסאפ</span><span class="sr-only">, נפתח בחלון חדש</span>
         </a>
@@ -737,7 +737,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div class="ready-cta">
         <h3>מתאים לך אחד מהם, או עמוד כזה לעסק שלך?</h3>
         <p>עמוד מוכן נמכר כמו שהוא. עמוד כזה נבנה מאפס, עם הצעת מחיר משלו.</p>
-        <a class="wa" href="https://wa.me/972545538883?text=%D7%94%D7%99%D7%99%20BOOST%20ME%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8.%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%94%D7%A2%D7%9E%D7%95%D7%93%D7%99%D7%9D%20%D7%94%D7%9E%D7%95%D7%9B%D7%A0%D7%99%D7%9D%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%99%D7%97%D7%94%20%D7%A2%D7%9C%20%D7%A2%D7%9E%D7%95%D7%93%20%D7%9C%D7%A2%D7%A1%D7%A7%20%D7%A9%D7%9C%D7%99." target="_blank" rel="noopener noreferrer">
+        <a class="wa" data-track-wa="ready_pages" href="https://wa.me/972545538883?text=%D7%94%D7%99%D7%99%20BOOST%20ME%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8.%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%94%D7%A2%D7%9E%D7%95%D7%93%D7%99%D7%9D%20%D7%94%D7%9E%D7%95%D7%9B%D7%A0%D7%99%D7%9D%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%99%D7%97%D7%94%20%D7%A2%D7%9C%20%D7%A2%D7%9E%D7%95%D7%93%20%D7%9C%D7%A2%D7%A1%D7%A7%20%D7%A9%D7%9C%D7%99." target="_blank" rel="noopener noreferrer">
           <svg aria-hidden="true"><use href="#i-wa" /></svg>
           <span>לשיחה על עמוד בוואטסאפ</span><span class="sr-only">, נפתח בחלון חדש</span>
         </a>
@@ -774,7 +774,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <img src="./assets/robot-white.png" alt="" width="92" height="102" />
       <h2 id="close-title">לא ברור מה לסמן?</h2>
       <p>גם זה בסדר. אפשר לכתוב לנו מה הכי מציק לך השבוע, ונמצא יחד מאיפה להתחיל.</p>
-      <a class="wa" href="#" target="_blank" rel="noopener noreferrer" data-wa>
+      <a class="wa" href="#" target="_blank" rel="noopener noreferrer" data-wa data-loc="closing">
         <svg aria-hidden="true"><use href="#i-wa" /></svg>
         <span data-wa-label>לשיחת אבחון בוואטסאפ</span><span class="sr-only">, נפתח בחלון חדש</span>
       </a>
@@ -835,7 +835,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <div class="dock" id="dock" aria-hidden="true">
   <span id="dock-text">סימנת 0</span>
-  <a class="wa" href="#" target="_blank" rel="noopener noreferrer" data-wa tabindex="-1">
+  <a class="wa" href="#" target="_blank" rel="noopener noreferrer" data-wa data-loc="dock" tabindex="-1">
     <svg aria-hidden="true"><use href="#i-wa" /></svg>
     <span>שליחה</span>
   </a>
@@ -998,7 +998,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   waLinks.forEach(function (a) {
     a.addEventListener("click", function () {
       var n = boxes.filter(function (b) { return b.checked; }).length;
-      (window.dataLayer = window.dataLayer || []).push({ event: "whatsapp_click", marked_count: n });
+      (window.dataLayer = window.dataLayer || []).push({ event: "whatsapp_click", marked_count: n, location: a.getAttribute("data-loc") || "other" });
+    });
+  });
+
+  /* ready-pages button has its own prefilled message, so it sits outside waLinks; same event, own location */
+  document.querySelectorAll("[data-track-wa]").forEach(function (a) {
+    a.addEventListener("click", function () {
+      (window.dataLayer = window.dataLayer || []).push({ event: "whatsapp_click", marked_count: 0, location: a.getAttribute("data-track-wa") });
     });
   });
 

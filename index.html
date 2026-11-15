@@ -1026,6 +1026,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   document.querySelectorAll(".lead-text .lead-desc a").forEach(function (a) {
     a.addEventListener("click", function () { track({ event: "example_click", example: "candidates" }); });
   });
+  /* every other outbound example link (short.gy); ready-cards already tracked above, slug = which example */
+  document.querySelectorAll('a[href*="brr7.short.gy"]').forEach(function (a) {
+    if (a.closest(".ready-card")) return;
+    a.addEventListener("click", function () { track({ event: "example_click", example: a.getAttribute("href").split("/").pop() }); });
+  });
   document.querySelectorAll('[data-open^="dlg-flow"]').forEach(function (btn) {
     btn.addEventListener("click", function () { track({ event: "example_click", example: btn.getAttribute("data-open").replace("dlg-", "") }); });
   });

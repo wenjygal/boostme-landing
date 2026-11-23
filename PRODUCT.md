@@ -16,7 +16,14 @@ Moment before contacting: "כולם עושים את זה, אני צריך להד
 
 ## Product Purpose
 
-boost-me.digital is the BOOST ME brand homepage. It presents four equal boosts and converts a visitor into a WhatsApp conversation that opens a free diagnosis call. Success = a visitor recognizes their own pain in one boost and writes on WhatsApp.
+boost-me.digital is the BOOST ME brand site (a one-page site, not a landing page: decision #28). It presents four equal boosts and converts a visitor into a WhatsApp conversation that opens a free diagnosis call. Success = a visitor recognizes their own pain in one boost and writes on WhatsApp. The six landing-page principles apply to the first screen only (headline, diagnosis sheet, slip, WhatsApp); secondary paths (ready pages, free tools, who we are) are reached via the top nav.
+
+## Site Structure (2026-11-23)
+
+- Top nav (decision #30): quiet anchor links בוסטים · עמודים מוכנים · כלים חינם · מי אנחנו; icon-only menu button under 760px; no WhatsApp button in the nav. Event `nav_click`.
+- First screen: headline "מה תקוע אצלך בעסק?", lede "אנחנו מוצאות איתך את הדבר האחד שתקוע, ובונות בדיוק את הכלי שפותר אותו.", diagnosis sheet + slip.
+- Mobile (<920px, decision #29): the bottom dock shows the leading boost ("נראה שמתאים לך:"), tapping it opens the slip as a bottom sheet; dock button "לשלוח לנו". Event `diagnosis_open`.
+- Order: intake → בוסטים שכבר עובדים → עמודים מוכנים → 10% story (Gal's, first person, signed "גל, BOOST ME") → מי אנחנו (one joint line; per-person lines pending, Hadas's must come from Hadas) → closing CTA → free tools → footer.
 
 ## Positioning
 
@@ -56,7 +63,7 @@ Legal: accessibility statement, privacy policy, terms of use (popups) must remai
 Founder story (usable as proof): worked in two places that bought large, expensive AI systems; about 10% of capabilities were used in practice, because the systems were too big for the real problem. Fell into the same trap personally: a project entered with enthusiasm, dragged on, and failed. Reframed weakness: "tried 20 systems" = trial and error the client doesn't have to repeat.
 
 Free tools built (real, linkable, from linktr.ee/boost_me):
-- GPTs: The Strategist (business profile), המסכמת (transcript → meeting summary), ממירה (landing-page mockups), SEO-AEO-GEO (content optimization)
+- GPTs: The Strategist, המסכמת, ממירה, SEO-AEO-GEO. REMOVED from the site 2026-11-05 (OpenAI retiring GPTs); do not re-add
 - "בניתי עמוד נחיתה, מה עכשיו?" checklist: https://wenjygal.github.io/boostme-landing-page-checklist
 - "מ0 לצוות: ספר פרומפטים חכם": https://brr7.short.gy/zero-to-team-promptbook
 - Explainers: RAG (https://hadasvn.github.io/Boost-me--RAG-explanation), skill vs agent (https://brr7.short.gy/boost-me-explain-skill-vs-agent), virtual app tour (https://brr7.short.gy/boostme-mamma-mia)
@@ -73,7 +80,9 @@ Delivered client work, approved for display WITHOUT client names (describe by bu
 - App ("שידת הקישורים"): personal link organizer, no login; saved links are auto-tagged and summarized with AI
 - Training: async lesson + session for a college on AI product design; Zoom team training "מאפס לצוות" + prompt book; private lessons for an org manager on tools she already has (Meta, Brevo, Short.io)
 
-Absent, must not be fabricated: testimonials/quotes, client names or logos, numbers of clients, results metrics, prices.
+Testimonial on hand (decision #24): Ayelet Katzir, founder and chair of תנועת מובילי חינוך, medium-length quote in the בוסט נחיתה chapter, with her name and title; no logo, no link.
+
+Absent, must not be fabricated: any other testimonials/quotes, client names or logos beyond the above, numbers of clients, results metrics, prices.
 
 ## Product Principles
 

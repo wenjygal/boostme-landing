@@ -305,7 +305,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .stairs b, .stairs li > span:last-child { text-align: center; padding-inline: 4px; }
   .stairs .ic svg { display: block; width: 30px; height: 30px; color: var(--ink); }
   .stairs .ic, .stairs b, .stairs li > span:last-child { transition: opacity 0.4s var(--ease-out); }
-  .stairs li:not(.lit) .ic, .stairs li:not(.lit) b, .stairs li:not(.lit) > span:last-child { opacity: 0.4; }
+  .stairs li:not(.lit) .ic { opacity: 0.4; } /* text stays full contrast (a11y 2026-11-23) */
   .stairs b { display: block; font-weight: 800; font-size: 0.92rem; line-height: 1.25; }
   .stairs li > span:last-child { display: block; color: var(--ink-soft); font-size: 0.8rem; line-height: 1.35; margin-top: 3px; }
   .stairs .robot { position: absolute; left: 0; top: 0; width: 54px; height: 58px; margin: -58px 0 0 -27px; pointer-events: none; will-change: transform; visibility: hidden; }
@@ -337,7 +337,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .rail li > span:last-child { display: block; color: var(--ink-soft); font-size: 0.8rem; line-height: 1.35; }
   .rail b, .rail li > span:last-child { transition: opacity 0.45s var(--ease-out); }
   .rail li:not(.lit) .ic { opacity: 0.35; transform: scale(0.92); }
-  .rail li:not(.lit) b, .rail li:not(.lit) > span:last-child { opacity: 0.5; }
   @container (max-width: 520px) {
     .rail { grid-auto-flow: row; grid-auto-rows: auto; gap: 16px; }
     .rail::before, .rail::after { inset-inline: auto; inset-inline-start: 27px; top: 28px; bottom: 28px; width: 3px; height: auto; }
@@ -619,7 +618,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <h3 id="wl">בוסט נחיתה</h3>
           <div class="lead">
             <div class="lead-text">
-              <p class="lead-title">עמדות המועמדים לבחירות</p>
+              <h4 class="lead-title">עמדות המועמדים לבחירות</h4>
               <p class="lead-desc">סקר של כ-1,500 הורים הפך לשאלות למועמדים, ומשם לעמוד אחד שמשווה את התשובות לפי מועמד או לפי סוגיה. <a href="https://knesset-education-survey.lovable.app/" target="_blank" rel="noopener noreferrer">לראות את העמוד<span class="sr-only">, נפתח בחלון חדש</span></a></p>
               <figure class="said">
                 <blockquote><p>גל היא אשת מקצוע יצירתית, יסודית וקשובה. היא הבינה מהר מאוד מה אנחנו צריכים, הציעה רעיונות טובים וידעה להפוך את מה שדמיינו לאתר נוח, ברור ומזמין. לאורך כל הדרך הייתה זמינה, סבלנית ופתוחה לכל בקשה והערה.</p></blockquote>
@@ -664,7 +663,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               </div>
               <div class="flow-foot">
                 <p class="fail">ואם משהו נכשל בדרך: מגיעה התראה מיד, במקום תקלה שקטה.</p>
-                <button class="orig" type="button" data-open="dlg-flow-podcast" aria-label="הצגת צילום המסך המקורי של אוטומציית הפודקאסט">
+                <button class="orig" type="button" data-open="dlg-flow-podcast" aria-label="ככה זה נראה מאחורי הקלעים: צילום המסך המקורי של אוטומציית הפודקאסט">
                   <img src="./assets/work-flow-podcast.png" alt="" width="1315" height="196" loading="lazy" />
                   <span>ככה זה נראה מאחורי הקלעים</span>
                 </button>
@@ -684,7 +683,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               <li class="lit"><span class="ic" aria-hidden="true"><svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><circle cx="21" cy="21" r="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M30 30l11 11" stroke="var(--acc)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M16 18h10M16 23h6" stroke="var(--acc)" stroke-width="2.5" stroke-linecap="round" fill="none"/></svg></span><b>חיפוש בתוכן שלך</b><span>אתר, פוסטים, פודקאסטים ויומן</span></li>
               <li class="lit end"><span class="ic" aria-hidden="true"><svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M40 8H8a3 3 0 0 0-3 3v18a3 3 0 0 0 3 3h17l8 7v-7h7a3 3 0 0 0 3-3V11a3 3 0 0 0-3-3z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M15 20l6 6 12-12" stroke="var(--acc)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></span><b>תשובה</b><span>באותו ערוץ שממנו שאלו</span></li>
             </ol>
-            <button class="orig" type="button" data-open="dlg-flow-bot" aria-label="הצגת צילום המסך המקורי של זרימת הבוט">
+            <button class="orig" type="button" data-open="dlg-flow-bot" aria-label="ככה זה נראה מאחורי הקלעים: צילום המסך המקורי של זרימת הבוט">
               <img src="./assets/work-flow-bot.png" alt="" width="1313" height="300" loading="lazy" />
               <span>ככה זה נראה מאחורי הקלעים</span>
             </button>
@@ -697,7 +696,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </ul>
           <div class="apps">
             <div class="apps-text">
-              <p class="lead-title">אפליקציות קטנות</p>
+              <h4 class="lead-title">אפליקציות קטנות</h4>
               <p class="lead-desc">כלים קטנים לבעיה אחת: לסדר תיק לילדים, לנהל בחירות להורים, ולשמור קישורים שה-AI מתייג ומסכם.</p>
             </div>
             <div class="shots">
@@ -725,7 +724,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <h3 id="wt">בוסט הטמעה והדרכה</h3>
           <div class="lead">
             <div class="lead-text">
-              <p class="lead-title">מאי-נחת ליוזמה</p>
+              <h4 class="lead-title">מאי-נחת ליוזמה</h4>
               <p class="lead-desc">פלטפורמה למכללה, שמורים חדשים חוזרים אליה: תשעה פרקים, גרסת פודקאסט, וספר פרומפטים שמלווה את העבודה.</p>
             </div>
             <figure class="browser">
@@ -737,7 +736,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </div>
           <div class="lead lead-flip">
             <div class="lead-text">
-              <p class="lead-title">ספר הפרומפטים החכם</p>
+              <h4 class="lead-title">ספר הפרומפטים החכם</h4>
               <p class="lead-desc">הדרכה בזום שהביאה צוות מאפס לעבודה עם הכלי, ואחריה נשאר ספר פרומפטים לשימוש חוזר: בוחרים נושא, ממלאים פרטים, מקבלים פרומפט. <a href="https://brr7.short.gy/smart-prompt-book" target="_blank" rel="noopener noreferrer">לנסות את הספר</a></p>
             </div>
             <figure class="browser">

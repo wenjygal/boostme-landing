@@ -485,6 +485,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       padding-bottom: calc(26px + env(safe-area-inset-bottom, 0px));
       animation: sheet-up 0.35s var(--ease-out) both;
     }
+    body.slip-open .slip { display: flex; flex-direction: column; padding-bottom: 0; }
+    body.slip-open .slip .rx { margin-bottom: 4px; }
+    body.slip-open .slip .free { order: 1; margin: 0 0 14px; }
+    body.slip-open .slip .wa { order: 2; flex: none; margin-bottom: calc(18px + env(safe-area-inset-bottom, 0px)); }
+    body.slip-open .slip .rx li { padding-block: 8px; }
     body.slip-open .slip-x { display: block; position: absolute; top: 10px; inset-inline-end: 12px; font: inherit; font-size: 1.6rem; line-height: 1; background: none; border: 0; cursor: pointer; color: var(--ink); padding: 4px 8px; border-radius: 6px; }
     @keyframes sheet-up { from { transform: translateY(100%); } to { transform: translateY(0); } }
   }
@@ -582,9 +587,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </ul>
         <a class="wa" id="wa-main" href="#" target="_blank" rel="noopener noreferrer" data-wa data-loc="hero">
           <svg aria-hidden="true"><use href="#i-wa" /></svg>
-          <span data-wa-label>לשיחת אבחון בוואטסאפ</span><span class="sr-only">, נפתח בחלון חדש</span>
+          <span data-wa-label>לתיאום שיחת אבחון</span><span class="sr-only">, נפתח בחלון חדש</span>
         </a>
-        <p class="free">חינם, בלי התחייבות. מחיר רק כשברור מה באמת צריך.</p>
+        <p class="free">שעה בזום, חינם ובלי התחייבות. מחיר רק כשברור מה באמת צריך.</p>
       </div>
     </div>
   </section>
@@ -595,7 +600,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <h2 id="how-title">מה קורה אחרי שכותבים לנו</h2>
       <p class="sub">בלי מצגות ארוכות. מתחילים ממה שהכי מציק לך, ובוחרים יחד את הכלי הכי פשוט שפותר את זה.</p>
       <ol class="steps">
-        <li><b>אבחון <em>חינם</em></b><p>שיחה קצרה. מוצאות איתך את הדבר האחד שבאמת תקוע.</p></li>
+        <li><b>אבחון <em>חינם</em></b><p>שעה בזום. מוצאות איתך את הדבר האחד שבאמת תקוע.</p></li>
         <li><b>בחירה</b><p>הבוסט שמתאים לך, לא הגדול ביותר. לכל בוסט הצעת מחיר משלו.</p></li>
         <li><b>בנייה</b><p>אנחנו בונות, והעבודה שלך לא נעצרת.</p></li>
         <li><b>מסירה והדרכה</b><p>מקבלים כלי שעובד, ויודעים להשתמש בו עד הסוף.</p></li>
@@ -827,7 +832,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <p>גם זה בסדר. אפשר לכתוב לנו מה הכי מציק לך השבוע, ונמצא יחד מאיפה להתחיל.</p>
       <a class="wa" href="#" target="_blank" rel="noopener noreferrer" data-wa data-loc="closing">
         <svg aria-hidden="true"><use href="#i-wa" /></svg>
-        <span data-wa-label>לשיחת אבחון בוואטסאפ</span><span class="sr-only">, נפתח בחלון חדש</span>
+        <span data-wa-label>לתיאום שיחת אבחון</span><span class="sr-only">, נפתח בחלון חדש</span>
       </a>
     </div>
   </section>
@@ -1032,7 +1037,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     var href = waHref(marked);
     waLinks.forEach(function (a) { a.href = href; });
     document.querySelectorAll("[data-wa-label]").forEach(function (s) {
-      s.textContent = marked.length ? "שליחת " + marked.length + " הסימונים בוואטסאפ" : "לשיחת אבחון בוואטסאפ";
+      s.textContent = marked.length ? "שליחת " + marked.length + " הסימונים בוואטסאפ" : "לתיאום שיחת אבחון";
     });
     if (marked.length === 1) {
       document.querySelectorAll("[data-wa-label]").forEach(function (s) { s.textContent = "שליחת הסימון בוואטסאפ"; });

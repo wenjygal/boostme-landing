@@ -31,7 +31,7 @@ BOOST ME finds the right, precise tool for one specific pain, not the biggest pr
 
 ## Operating Context
 
-Method: diagnosis (find the one real pain) → choice (the precise boost, not the biggest) → build → handover + training. Every boost is quoted separately with its own terms and timeline; no uniform package. Contact happens on WhatsApp (+972545538883).
+Method: diagnosis (find the one real pain) → choice (the precise boost, not the biggest) → build → handover + training. Every boost is quoted separately with its own terms and timeline; no uniform package. Contact happens on WhatsApp (+972545538883); WhatsApp is for scheduling. The free diagnosis itself is a one-hour Zoom call (Gal, 2026-11-23); never call it short.
 
 ## Capabilities and Constraints
 

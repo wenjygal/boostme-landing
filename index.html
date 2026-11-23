@@ -433,6 +433,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     transform: translateY(110%); transition: transform 0.4s var(--ease-out);
   }
   .dock.on { transform: translateY(0); }
+  .dock-dx { flex: 1; min-width: 0; display: flex; flex-direction: column; line-height: 1.25; }
+  .dock .dock-dx small { color: var(--on-plum-soft); font-size: 0.8rem; flex: none; }
+  .dock-dx button { font: inherit; font-weight: 800; font-size: 1rem; color: var(--on-plum); background: none; border: 0; padding: 2px 0 0; text-align: start; cursor: pointer; text-decoration: underline; text-decoration-color: var(--orange); text-decoration-thickness: 2px; text-underline-offset: 0.25em; }
+  .slip-x { display: none; }
+  .slip-backdrop { position: fixed; inset: 0; z-index: 65; background: rgba(43,26,46,0.6); }
+  .slip-backdrop[hidden] { display: none; }
   .dock span { color: var(--on-plum); font-size: 0.92rem; flex: 1; }
   .dock .wa { padding: 12px 18px; font-size: 0.98rem; }
 
@@ -451,6 +457,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .cases-row, .feature, .lead, .apps { grid-template-columns: 1fr; }
     .lead-flip .browser { order: 0; }
     body.docked { padding-bottom: 76px; }
+    .sheet-count { display: none; }
+    body.slip-open { overflow: hidden; }
+    body.slip-open .slip {
+      position: fixed; inset-inline: 0; bottom: 0; z-index: 70;
+      max-height: 82vh; overflow-y: auto; overscroll-behavior: contain;
+      border-radius: 18px 18px 0 0; margin: 0;
+      padding-bottom: calc(26px + env(safe-area-inset-bottom, 0px));
+      animation: sheet-up 0.35s var(--ease-out) both;
+    }
+    body.slip-open .slip-x { display: block; position: absolute; top: 10px; inset-inline-end: 12px; font: inherit; font-size: 1.6rem; line-height: 1; background: none; border: 0; cursor: pointer; color: var(--ink); padding: 4px 8px; border-radius: 6px; }
+    @keyframes sheet-up { from { transform: translateY(100%); } to { transform: translateY(0); } }
   }
   @media (max-width: 560px) {
     body { font-size: 16px; }
@@ -516,6 +533,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </div>
 
       <div class="slip" id="slip" role="region" aria-labelledby="slip-title">
+        <button class="slip-x" type="button" id="slip-x" aria-label="סגירת ההמלצה">×</button>
         <h2 id="slip-title">מה יכול לעזור לך</h2>
         <p class="status" id="status" aria-live="polite">ארבעה בוסטים, כל אחד למשהו אחר שמציק. אפשר לסמן בדף האבחון, ונראה לך כאן מה יכול לעזור.</p>
         <ul class="rx">
@@ -833,11 +851,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
 </button>
 
+<div class="slip-backdrop" id="slip-backdrop" hidden></div>
 <div class="dock" id="dock" aria-hidden="true">
-  <span id="dock-text">סימנת 0</span>
+  <span class="dock-dx"><small id="dock-text">נראה שמתאים לך:</small><button type="button" id="dock-open" aria-controls="slip" aria-expanded="false">בוסט</button></span>
   <a class="wa" href="#" target="_blank" rel="noopener noreferrer" data-wa data-loc="dock" tabindex="-1">
     <svg aria-hidden="true"><use href="#i-wa" /></svg>
-    <span>שליחה</span>
+    <span>לשלוח לנו</span><span class="sr-only">, נפתח בחלון חדש</span>
   </a>
 </div>
 
@@ -933,6 +952,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   var clearBtn = document.getElementById("clear");
   var dock = document.getElementById("dock");
   var dockText = document.getElementById("dock-text");
+  var dockOpen = document.getElementById("dock-open");
+  var slipX = document.getElementById("slip-x");
+  var backdrop = document.getElementById("slip-backdrop");
   var sheetCount = document.getElementById("sheet-count");
   var boxes = Array.prototype.slice.call(sheet.querySelectorAll('input[name="pain"]'));
   var rows = Array.prototype.slice.call(slip.querySelectorAll(".rx li"));
@@ -984,12 +1006,44 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
     sheetCount.hidden = marked.length === 0;
     sheetCount.textContent = marked.length === 1 ? "סימנת שורה אחת" : "סימנת " + marked.length + " שורות";
-    dockText.textContent = marked.length === 1 ? "סימנת שורה אחת" : "סימנת " + marked.length + " שורות";
+    if (leaders.length === 1) {
+      dockText.textContent = "נראה שמתאים לך:";
+      dockOpen.textContent = NAMES[leaders[0]] + " ›";
+    } else {
+      dockText.textContent = "נמצא יחד מאיפה להתחיל";
+      dockOpen.textContent = "מה יכול לעזור ›";
+    }
+    if (!marked.length) closeSlip(false);
     dock.classList.toggle("on", marked.length > 0);
     document.body.classList.toggle("docked", marked.length > 0);
     dock.setAttribute("aria-hidden", marked.length ? "false" : "true");
     dock.querySelector("a").tabIndex = marked.length ? 0 : -1;
+    dockOpen.tabIndex = marked.length ? 0 : -1;
   }
+
+  /* mobile: the recommendation slip opens as a bottom sheet from the dock (decision #29) */
+  function openSlip() {
+    document.body.classList.add("slip-open");
+    backdrop.hidden = false;
+    dockOpen.setAttribute("aria-expanded", "true");
+    slip.setAttribute("tabindex", "-1");
+    slip.focus({ preventScroll: true });
+    track({ event: "diagnosis_open", marked_count: boxes.filter(function (b) { return b.checked; }).length });
+  }
+  function closeSlip(refocus) {
+    if (!document.body.classList.contains("slip-open")) return;
+    document.body.classList.remove("slip-open");
+    backdrop.hidden = true;
+    dockOpen.setAttribute("aria-expanded", "false");
+    slip.removeAttribute("tabindex");
+    if (refocus !== false) dockOpen.focus({ preventScroll: true });
+  }
+  dockOpen.addEventListener("click", openSlip);
+  slipX.addEventListener("click", function () { closeSlip(); });
+  backdrop.addEventListener("click", function () { closeSlip(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeSlip(); });
+  slip.querySelectorAll(".see").forEach(function (a) { a.addEventListener("click", function () { closeSlip(false); }); });
+  matchMedia("(min-width: 921px)").addEventListener("change", function (m) { if (m.matches) closeSlip(false); });
 
   sheet.addEventListener("change", update);
   sheet.addEventListener("reset", function () { setTimeout(update, 0); });

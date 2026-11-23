@@ -85,7 +85,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     box-shadow: 0 10px 22px -10px rgba(0, 0, 0, 0.45);
     transition: transform 0.25s var(--ease-out), background 0.2s, box-shadow 0.25s var(--ease-out);
   }
-  .wa:hover { background: var(--wa-deep); transform: translateY(-2px); box-shadow: 0 14px 26px -10px rgba(0, 0, 0, 0.5); }
+  @media (hover: hover) { .wa:hover { background: var(--wa-deep); transform: translateY(-2px); box-shadow: 0 14px 26px -10px rgba(0, 0, 0, 0.5); } }
   .wa:active { transform: translateY(0); }
   .wa svg { width: 22px; height: 22px; flex: none; }
 
@@ -144,6 +144,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     position: relative;
   }
   .line:last-child { border-bottom: 0; }
+  .line, .wa, .orig, .dock-dx button, .to-top { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
   .line input { position: absolute; opacity: 0; pointer-events: none; }
   .box { width: 26px; height: 26px; border: 2px solid var(--ink); border-radius: 5px; display: grid; place-items: center; background: #fff; transition: border-color 0.2s; }
   .box svg { width: 26px; height: 26px; overflow: visible; }
@@ -402,6 +403,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   /* legal dialogs */
   dialog { border: 0; border-radius: 16px; padding: 0; max-width: min(600px, calc(100vw - 32px)); max-height: 82vh; color: var(--ink); background: #fff; box-shadow: 0 30px 70px rgba(0,0,0,0.35); }
+  dialog { overscroll-behavior: contain; }
   dialog::backdrop { background: rgba(43,26,46,0.6); }
   .dlg { padding: 28px 26px 24px; font-size: 0.95rem; line-height: 1.75; color: #4a3a4b; }
   .dlg .dlg-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
@@ -421,7 +423,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     transition: transform 0.3s var(--ease-out), background 0.2s, opacity 0.3s;
   }
   .to-top[hidden] { display: none; }
-  .to-top:hover { background: var(--magenta-deep); transform: translateY(-2px); }
+  @media (hover: hover) { .to-top:hover { background: var(--magenta-deep); transform: translateY(-2px); } }
   body.docked .to-top { bottom: calc(88px + env(safe-area-inset-bottom, 0px)); }
 
   /* mobile sticky bar */

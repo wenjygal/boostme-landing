@@ -94,8 +94,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
   .brand { display: inline-flex; align-items: center; gap: 10px; color: var(--on-plum); text-decoration: none; font-weight: 800; letter-spacing: 0.02em; font-size: 1.1rem; }
   .brand img { width: 34px; height: auto; }
-  .top-note { color: var(--on-plum-soft); font-size: 0.95rem; margin: 0; }
-  .top-note strong { color: var(--on-plum); font-weight: 500; }
+  /* site nav (decision #30): quiet anchors, the diagnosis sheet stays the loud thing */
+  .site-nav { position: relative; }
+  .site-nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 24px; }
+  .site-nav a { color: var(--on-plum-soft); text-decoration: none; font-size: 0.95rem; padding: 6px 0; display: inline-block; touch-action: manipulation; }
+  .site-nav a:hover { color: var(--on-plum); text-decoration: underline; }
+  .nav-toggle { display: none; }
+  .section h2[id] { scroll-margin-top: 20px; }
 
   /* ---------- intake (first viewport) ---------- */
   .intake { padding-block: clamp(28px, 5vw, 56px) clamp(48px, 7vw, 88px); }
@@ -115,7 +120,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     text-wrap: balance;
   }
   .ask h1 .pen { color: var(--magenta); }
-  .ask .lede { color: var(--on-plum-soft); font-size: clamp(1.05rem, 1.6vw, 1.2rem); max-width: 34em; margin: 0 0 28px; }
+  .ask .lede { color: var(--on-plum-soft); font-size: clamp(1.05rem, 1.6vw, 1.2rem); max-width: 34em; margin: 0 0 28px; text-wrap: pretty; }
   .ask .lede strong { color: var(--on-plum); font-weight: 500; }
 
   /* the sheet */
@@ -445,6 +450,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .dock .wa { padding: 12px 18px; font-size: 0.98rem; }
 
   /* ---------- responsive ---------- */
+  @media (max-width: 760px) {
+    .nav-toggle { display: inline-flex; align-items: center; gap: 8px; font: inherit; font-size: 0.95rem; color: var(--on-plum); background: none; border: 1px solid rgba(255,248,240,0.35); border-radius: 50%; width: 44px; height: 44px; justify-content: center; padding: 0; cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+    .nav-toggle svg { width: 22px; height: 22px; }
+    .site-nav ul { display: none; position: absolute; inset-inline-end: 0; top: calc(100% + 8px); z-index: 80; flex-direction: column; gap: 0; min-width: 13em; padding: 6px 0; background: var(--plum-2); border-radius: 12px; box-shadow: 0 18px 40px -12px rgba(0,0,0,0.6); }
+    .site-nav.open ul { display: flex; }
+    .site-nav a { display: block; padding: 12px 20px; color: var(--on-plum); }
+  }
   @media (max-width: 920px) {
     .intake-grid { grid-template-columns: 1fr; }
     .slip { position: static; margin-top: 0; transform: none; }
@@ -473,7 +485,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
   @media (max-width: 560px) {
     body { font-size: 16px; }
-    .top-note { display: none; }
     .line { grid-template-columns: 28px 1fr; gap: 10px; }
     .steps { grid-template-columns: 1fr; }
     .steps li, .steps li + li { border-inline-start: 0; padding-inline: 0; }
@@ -501,7 +512,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <img src="./assets/robot-white.png" alt="" width="34" height="38" />
       BOOST ME
     </a>
-    <p class="top-note">כאב אחד. <strong>פתרון אחד.</strong></p>
+    <nav class="site-nav" id="site-nav" aria-label="ניווט ראשי">
+      <button class="nav-toggle" type="button" aria-label="תפריט" aria-expanded="false" aria-controls="nav-list"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>
+      <ul id="nav-list">
+        <li><a href="#work-title">בוסטים</a></li>
+        <li><a href="#ready-title">עמודים מוכנים</a></li>
+        <li><a href="#tools-title">כלים חינם</a></li>
+      </ul>
+    </nav>
   </div>
 </header>
 
@@ -1101,6 +1119,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     d.querySelector("[data-close]").addEventListener("click", function () { d.close(); });
     d.addEventListener("click", function (e) { if (e.target === d) d.close(); });
   });
+
+  /* site nav (decision #30) */
+  var nav = document.getElementById("site-nav");
+  var navBtn = nav.querySelector(".nav-toggle");
+  function setNav(open) { nav.classList.toggle("open", open); navBtn.setAttribute("aria-expanded", open ? "true" : "false"); }
+  navBtn.addEventListener("click", function () { setNav(!nav.classList.contains("open")); });
+  nav.querySelectorAll("a").forEach(function (a) {
+    a.addEventListener("click", function () { setNav(false); track({ event: "nav_click", target: a.getAttribute("href").slice(1) }); });
+  });
+  document.addEventListener("click", function (e) { if (!nav.contains(e.target)) setNav(false); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && nav.classList.contains("open")) { setNav(false); navBtn.focus(); } });
 
   var toTop = document.getElementById("to-top");
   function onScroll() { toTop.hidden = window.scrollY < window.innerHeight * 0.9; }

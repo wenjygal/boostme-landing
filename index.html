@@ -393,6 +393,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .more { margin: 8px 0 0; color: var(--ink-soft); max-width: 52em; }
   .more b { color: var(--ink); font-weight: 700; }
 
+  /* who */
+  .section.who { padding-block: clamp(48px, 6vw, 80px); }
+  .who-line { margin: 0; max-width: 30em; font-size: clamp(1.2rem, 2.2vw, 1.5rem); font-weight: 500; line-height: 1.45; text-wrap: pretty; }
+  .who-line b { font-weight: 800; }
+
   /* close */
   .close { background: linear-gradient(135deg, var(--magenta) 0%, #B5470A 100%); color: #fff; text-align: center; }
   .close .wrap { display: flex; flex-direction: column; align-items: center; }
@@ -518,6 +523,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <li><a href="#work-title">בוסטים</a></li>
         <li><a href="#ready-title">עמודים מוכנים</a></li>
         <li><a href="#tools-title">כלים חינם</a></li>
+        <li><a href="#who-title">מי אנחנו</a></li>
       </ul>
     </nav>
   </div>
@@ -799,10 +805,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <p>עבדתי בשני מקומות שקנו מערכות AI גדולות ויקרות. בשניהם השתמשו בערך בעשירית מהן. <strong>לא כי הן היו גרועות, כי הן היו גדולות מדי לבעיה האמיתית.</strong></p>
         <p>נפלתי בזה גם בעצמי: פרויקט שנכנסתי אליו בהתלהבות, נגרר, ונכשל. מאז השאלה הראשונה שלנו היא לא "כמה גדול לבנות", אלא "מה הכלי הנכון". ברוב המקרים התשובה קטנה בהרבה.</p>
         <p>ניסינו המון כלים, כדי שלך לא יהיה צורך.</p>
-        <p class="sig">גל והדס, BOOST ME</p>
-        <p>אנחנו בונות לעסקים קטנים עמודי נחיתה, אוטומציות ובוטים, ומלמדות AI.</p>
+        <p class="sig">גל, BOOST ME</p>
         <p class="tiny">ה-10% הם מהניסיון האישי שלנו, לא סקר.</p>
       </div>
+    </div>
+  </section>
+
+  <!-- WHO (decision #30 nav target; per-person lines wait for Hadas) -->
+  <section class="paper section who" aria-labelledby="who-title">
+    <div class="wrap">
+      <h2 id="who-title">מי אנחנו</h2>
+      <p class="who-line"><b>גל והדס.</b> בונות לעסקים קטנים עמודי נחיתה, אוטומציות ובוטים, ומלמדות AI.</p>
     </div>
   </section>
 
